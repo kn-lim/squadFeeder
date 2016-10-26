@@ -6,6 +6,9 @@ var handlebars = require('express3-handlebars')
 
 // SET UP ROUTE VARIABLES (pages)
 var index = require('./routes/index');
+var group = require('./routes/group');
+var selection = require('./routes/selection');
+var results = require('./routes/results');
 
 // all environments
 var app = express();
@@ -33,6 +36,9 @@ if ('development' == app.get('env')) {
 // 			will route project.view (which is project.handlebars)
 //			to <address>/project.html
 app.get('/', index.view);
+app.get('/group', group.view);
+app.get('/selection', selection.view);
+app.get('/results', results.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
