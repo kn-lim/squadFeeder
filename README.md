@@ -5,5 +5,4 @@ To use locally:
       - $ node app.js
   - server will be hosted locally on localhost:3000
 
-Boostrap Documentation
-http://v4-alpha.getbootstrap.com/getting-started/introduction/
+Bootstrap Documentation: http://devdocs.io/bootstrap~4/
