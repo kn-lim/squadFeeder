@@ -3,19 +3,83 @@
 <head>
 	<title>Selection Page</title>	
 	<meta charset="utf-8">
-	<!-- INSERT VIEWPORT META TAG FOR MOBILE DEVICES -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- LIBRARIES -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-flex.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-grid.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
-	<link href="/css/selection.css" rel="stylesheet">    
+	<!-- STYLESHEETS -->
+	<link href="/css/main.css" rel="stylesheet"> 
+	<link href="/css/selection.css" rel="stylesheet">
+	<!--FONTS-->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 
-<body>
-	<h1>Selection</h1>
-	<a href="./results">Results</a>
-	<a href="./group">Back to Group</a>
+<body class="gradient-bg">
+	<div class="container main-container">
+		<div class="row header">
+			<div class="col-sm-9">
+				<h1 class="display-4">[PLACEHOLDER]</h1>
+			</div>
+			<div class="col-sm-3 text-xs-right">
+				<a href="./group"><button type="button" class="btn btn-secondary">Back</button></a>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-sm-8 text-xs-center">
+				<h3>What kind of food would you like to eat?</h3>
+				<div class="form-group">
+					<div class="input-group">
+						<input class="form-control" type="search" placeholder="Search restaurants...">
+						<div class="input-group-addon">Search</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="select-cuisine">Cuisine Type:</label>
+					<select class="form-control" id="select-cuisine">
+						<option>Chinese</option>
+						<option>Steak</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="select-price">Price Range:</label>
+					<select class="form-control" id="select-price">
+						<option>$ ($0-$10)</option>
+						<option>$$ ($10-$20)</option>
+						<option>$$$ ($20-$40)</option>
+						<option>$$$$ ($40+)</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="select-distance">Distance:</label>
+					<select class="form-control" id="select-distance">
+						<option>Within 4 blocks</option>
+						<option>Walking (1 mile)</option>
+						<option>Biking (2 miles)</option>
+						<option>Driving (5 miles)</option>
+						<option>Bird's-Eye View</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-sm-4 text-xs-center">
+				<h3>Users</h3>
+				<ul class="list-group">
+					<li class="list-group-item">Nicholas Pung</li>
+					<li class="list-group-item">Kevin Lim</li>
+					<li class="list-group-item">Arlen Pan</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 text-xs-center">
+				<a href="./results"><button type="button" class="btn btn-primary btn-block btn-submit">Submit</button></a>
+			</div>
+		</div>
+	</div>
 
 	<!-- SCRIPTS -->
 	<script src="/js/jquery-3.1.1.min.js"></script>

@@ -1,3 +1,32 @@
-body {
-	background-color: beige;
+.header {
+	background-color: #F7F7F7;
+	color: #636363;
+	padding: 10px;
+}
+
+h3 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	margin: 30px;
+	color: #636363;
+	opacity: .5;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.input-group-addon {
+	width: 20%;
+}
+
+.btn-submit {
+	margin-top: 30px;
+	margin-bottom: 15px;
+	background-color: #DE7684;
+	border: 1px solid #DE7684;
+}
+
+.btn-submit:hover {
+	background-color: #615195;
+	border: 1px solid #615195;
 }
