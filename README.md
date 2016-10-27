@@ -6,5 +6,7 @@ To use locally:
   - server will be hosted locally on localhost:3000
 
 Bootstrap Documentation: http://devdocs.io/bootstrap~4/
+
 Google WebFont Examples: http://femmebot.github.io/google-type/
+
 Color Palettes: http://colorhunt.co/
