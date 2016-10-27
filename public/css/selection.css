@@ -1,12 +1,13 @@
 .header {
 	background-color: #F7F7F7;
 	color: #636363;
-	padding: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 h3 {
 	font-family: 'Open Sans Condensed', sans-serif;
-	margin: 30px;
+	margin: 20px;
 	color: #636363;
 	opacity: .5;
 }
