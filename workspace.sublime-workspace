@@ -391,7 +391,6 @@
 			"settings":
 			{
 				"buffer_size": 797,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -403,7 +402,6 @@
 			"settings":
 			{
 				"buffer_size": 768,
-				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
