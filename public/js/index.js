@@ -10,5 +10,10 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Page initialized!");
-	// add any functionality and listeners you want here
+	
+	//for random backgrounds
+	var value = Math.floor((Math.random() * 6) + 1);
+	var randombg = 	"linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash" + value + ".jpg";
+	console.log(randombg);
+	$('body').css('background-image', randombg)
 }
