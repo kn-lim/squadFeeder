@@ -12,8 +12,9 @@ function initializePage() {
 	console.log("Page initialized!");
 	
 	//for random backgrounds
-	var value = Math.floor((Math.random() * 6) + 1);
-	var randombg = 	"linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash" + value + ".jpg";
+	var images = 6;
+	var randomval = Math.floor(Math.random() * images);
+	var randombg = 	"linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash" + randomval + ".jpg";
 	console.log(randombg);
 	$('body').css('background-image', randombg)
 }
