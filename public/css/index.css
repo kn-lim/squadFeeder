@@ -1,3 +1,10 @@
+.splash-bg {
+	background-image: linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash3.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
 .header {
 	background-color: #F7F7F7;
 	color: #636363;
@@ -13,7 +20,7 @@ h3 {
 }
 
 .btn-submit {
-	margin-top: 30px;
+	margin-top: 15px;
 	margin-bottom: 15px;
 	background-color: #DE7684;
 	border: 1px solid #DE7684;
