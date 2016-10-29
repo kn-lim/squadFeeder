@@ -1,15 +1,11 @@
-.header {
-	background-color: #F7F7F7;
-	color: #636363;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
+@media (max-width: 768px) {
+	.header {
+		padding-top: 300px;
+	}
 
-h3 {
-	font-family: 'Open Sans Condensed', sans-serif;
-	margin: 20px;
-	color: #636363;
-	opacity: .5;
+	.display-4 {
+		font-size: 200%;
+	}
 }
 
 a:hover {
@@ -18,16 +14,4 @@ a:hover {
 
 .input-group-addon {
 	width: 20%;
-}
-
-.btn-submit {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	background-color: #DE7684;
-	border: 1px solid #DE7684;
-}
-
-.btn-submit:hover {
-	background-color: #615195;
-	border: 1px solid #615195;
 }

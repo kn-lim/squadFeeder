@@ -16,5 +16,5 @@ function initializePage() {
 	var randomval = Math.floor(Math.random() * images);
 	var randombg = 	"linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash" + randomval + ".jpg";
 	console.log(randombg);
-	$('body').css('background-image', randombg)
+	$('body').css('background-image', randombg);
 }
