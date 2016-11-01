@@ -17,13 +17,15 @@
 </head>
 
 <body class="gradient-bg">
+	<div class="container spacer">
+	</div>
 	<div class="container main-container">
 		<div class="row header">
 			<div class="col-sm-9">
-				<h1 class="display-4">[PLACEHOLDER]</h1>
+				<h1>Selection</h1>
 			</div>
 			<div class="col-sm-3 text-xs-right">
-				<a href="./group"><button type="button" class="btn btn-secondary">Back</button></a>
+				<a href="./group"><button type="button" class="btn btn-block btn-secondary">Back</button></a>
 			</div>
 		</div>
 
@@ -39,27 +41,25 @@
 				<div class="form-group">
 					<label for="select-cuisine">Cuisine Type:</label>
 					<select class="form-control" id="select-cuisine">
-						<option>Chinese</option>
-						<option>Steak</option>
+						{{#each select-cuisine}}
+						<option>{{this}}</option>
+						{{/each}}
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="select-price">Price Range:</label>
 					<select class="form-control" id="select-price">
-						<option>$ ($0-$10)</option>
-						<option>$$ ($10-$20)</option>
-						<option>$$$ ($20-$40)</option>
-						<option>$$$$ ($40+)</option>
+						{{#each select-price}}
+						<option>{{this}}</option>
+						{{/each}}
 					</select>
 				</div>
 				<div class="form-group">
 					<label for="select-distance">Distance:</label>
 					<select class="form-control" id="select-distance">
-						<option>Within 4 blocks</option>
-						<option>Walking (1 mile)</option>
-						<option>Biking (2 miles)</option>
-						<option>Driving (5 miles)</option>
-						<option>Bird's-Eye View</option>
+						{{#each select-distance}}
+						<option>{{this}}</option>
+						{{/each}}
 					</select>
 				</div>
 			</div>
@@ -67,10 +67,9 @@
 			<div class="col-sm-4 text-xs-center">
 				<h3>Users</h3>
 				<ul class="list-group">
-					<li class="list-group-item">Nicholas Pung</li>
-					<li class="list-group-item">Kevin Lim</li>
-					<li class="list-group-item">Arlen Pan</li>
-				</ul>
+					{{#each users}}
+					<li class="list-group-item">{{this.name}}</li>
+					{{/each}}
 			</div>
 		</div>
 
@@ -79,6 +78,8 @@
 				<a href="./results"><button type="button" class="btn btn-lg btn-primary btn-block btn-submit">Submit</button></a>
 			</div>
 		</div>
+	</div>
+	<div class="container spacer">
 	</div>
 
 	<!-- SCRIPTS -->

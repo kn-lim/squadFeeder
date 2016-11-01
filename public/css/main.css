@@ -39,8 +39,12 @@ html, body {
 	max-width: 800px;
 }
 
+.spacer {
+	height: 25px;
+}
+
 /*MEDIA QUERY FOR DESKTOP*/
-@media (min-width: 768px) {
+@media (min-width: 768px) and (min-height: 600px) {
 	.main-container {
 		position: absolute;
 		top: 50%;
@@ -75,4 +79,9 @@ h3 {
 .btn-submit:hover {
 	background-color: #615195;
 	border: 1px solid #615195;
+}
+
+.btn-submit:active, .btn-submit:focus {
+	background-color: #615195 !important;
+	border: 1px solid #615195 !important;
 }

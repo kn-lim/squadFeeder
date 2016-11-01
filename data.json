@@ -1,0 +1,34 @@
+{
+	"users": [
+		{
+			"name": "Kevin Lim"
+		},
+		{
+			"name": "Arlen Pan"
+		},
+		{
+			"name": "Nicholas Pung"
+		}
+	],
+
+	"select-cuisine": [
+		"Asian",
+		"Mexican",
+		"Seafood"
+	],
+
+	"select-price": [
+		"$ ($0-$10)",
+		"$$ ($10-$20)",
+		"$$$ ($20-$40)",
+		"$$$$ ($40+)"
+	],
+
+	"select-distance": [
+		"Within 4 blocks",
+		"Walking (1 mile)",
+		"Biking (2 miles)",
+		"Driving (5 miles)",
+		"Bird's-Eye View"
+	]
+}
