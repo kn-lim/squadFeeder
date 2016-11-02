@@ -6,6 +6,7 @@ COLORS:
 #E89FA9 FADED ORANGE
 #F7F7F7 FADED GREY
 #636363 MIDDLE GREY
+#70AE5D GREEN
 */
 
 html, body {
@@ -36,7 +37,7 @@ html, body {
 	background-color: white;
 	border-radius: 5px;
 	width: 90%;
-	max-width: 800px;
+	max-width: 1080px;
 }
 
 .spacer {

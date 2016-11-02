@@ -2,6 +2,7 @@ a:hover {
 	text-decoration: none;
 }
 
+/* SEARCHBAR */
 .input-group {
 	margin-bottom: 15px;
 }
@@ -11,6 +12,7 @@ a:hover {
 	border-bottom-left-radius: 0;
 }
 
+/* GIANT LIST OF CUSIINES */
 .btn-group {
 	margin-bottom: 15px;
 	vertical-align: middle;
@@ -30,10 +32,11 @@ a:hover {
 	color: white !important;
 }
 
-.tag-default {
+/* CHOOSING/DONE TAGS (in jquery)*/
+.tag-choosing {
 	background-color: #DE7684;
 }
 
 .tag-done {
-
+	background-color: #70AE5D;
 }

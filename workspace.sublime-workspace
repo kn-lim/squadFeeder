@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
 				"text-de",
 				"text-decoration"
 			],
@@ -224,10 +232,6 @@
 				"color-blue"
 			],
 			[
-				"pad",
-				"padding-left"
-			],
-			[
 				"fa-n",
 				"fa-pencil-square-o"
 			],
@@ -242,10 +246,6 @@
 			[
 				"mar",
 				"margin-right"
-			],
-			[
-				"margin",
-				"margin-top"
 			],
 			[
 				"time",
@@ -387,7 +387,7 @@
 			"file": "views/index.handlebars",
 			"settings":
 			{
-				"buffer_size": 1343,
+				"buffer_size": 1419,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -396,7 +396,7 @@
 			"file": "views/group.handlebars",
 			"settings":
 			{
-				"buffer_size": 806,
+				"buffer_size": 969,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -405,16 +405,7 @@
 			"file": "views/selection.handlebars",
 			"settings":
 			{
-				"buffer_size": 2826,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/CSE170Collaborate/README.md",
-			"settings":
-			{
-				"buffer_size": 322,
+				"buffer_size": 3130,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -423,67 +414,25 @@
 			"file": "views/results.handlebars",
 			"settings":
 			{
-				"buffer_size": 813,
+				"buffer_size": 986,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app.js",
+			"file": "data.json",
 			"settings":
 			{
-				"buffer_size": 1416,
+				"buffer_size": 1270,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/css/selection.css",
+			"file": "public/css/main.css",
 			"settings":
 			{
-				"buffer_size": 470,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/add.js",
-			"settings":
-			{
-				"buffer_size": 147,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/index.js",
-			"settings":
-			{
-				"buffer_size": 146,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/views/index.handlebars",
-			"settings":
-			{
-				"buffer_size": 1202,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/app.js",
-			"settings":
-			{
-				"buffer_size": 1121,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/arlen/Dropbox/CSE170Collaborate/public/css/main.css",
-			"settings":
-			{
-				"buffer_size": 530,
+				"buffer_size": 1696,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -492,16 +441,35 @@
 			"file": "public/css/index.css",
 			"settings":
 			{
-				"buffer_size": 610,
+				"buffer_size": 98,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/css/results.css",
+			"file": "public/css/selection.css",
 			"settings":
 			{
-				"buffer_size": 34,
+				"buffer_size": 626,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/index.js",
+			"settings":
+			{
+				"buffer_size": 544,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/selection.js",
+			"settings":
+			{
+				"buffer_size": 568,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -547,8 +515,19 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/group.css",
+		"/C/Program Files/Rainmeter/Rainmeter.exe.config",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/results.css",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/index.js",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/index.css",
+		"/C/Users/arlen/Dropbox/CSE170Collaborate/public/css/main.css",
+		"/C/Users/arlen/Dropbox/Code/CSE 170/lab5/app.js",
+		"/C/Users/arlen/Dropbox/Code/CSE 170/lab5/views/index.handlebars",
+		"/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/add.js",
+		"/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/index.js",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/selection.css",
+		"/C/Users/arlen/Dropbox/CSE170Collaborate/README.md",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/app.js",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/group.css",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/results.js",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/group.js",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/selection.js",
@@ -579,7 +558,6 @@
 		"/C/Users/Arlen/Dropbox/twittermockup/src/components/content.jsx",
 		"/C/Users/Arlen/Dropbox/twittermockup/src/components/sidebar.jsx",
 		"/C/Users/Arlen/Dropbox/twittermockup/src/sass/tweet.scss",
-		"/C/Users/arlen/Dropbox/CSE170Collaborate/README.md",
 		"/C/Users/arlen/Dropbox/CSE170Collaborate/app.js",
 		"/C/Users/arlen/Dropbox/CSE170Collaborate/public/js/introHCI.js",
 		"/C/Users/arlen/Dropbox/Code/CSE 170/lab4/public/js/introHCI.js",
@@ -664,9 +642,7 @@
 		"/C/Users/Arlen/Dropbox/twittermockup/styles/main.css",
 		"/C/Users/Arlen/Dropbox/Software/Sublime/Data/Packages/SublimeOnSaveBuild/SublimeOnSaveBuild.sublime-settings",
 		"/C/Users/Arlen/Dropbox/twittermockup/sass/main.scss",
-		"/C/Users/Arlen/Dropbox/Software/Sublime/Data/Packages/User/SublimeOnSaveBuild.sublime-settings",
-		"/C/Users/Arlen/Dropbox/twittermockup/sass/.sassbuilder-config.json",
-		"/C/Users/Arlen/Dropbox/twittermockup/.sassbuilder-config.json"
+		"/C/Users/Arlen/Dropbox/Software/Sublime/Data/Packages/User/SublimeOnSaveBuild.sublime-settings"
 	],
 	"find":
 	{
@@ -752,7 +728,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -761,15 +737,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1343,
+						"buffer_size": 1419,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								406,
-								406
+								851,
+								851
 							]
 						],
 						"settings":
@@ -780,7 +756,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -789,15 +765,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 806,
+						"buffer_size": 969,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								455,
-								455
+								757,
+								757
 							]
 						],
 						"settings":
@@ -818,15 +794,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2826,
+						"buffer_size": 3130,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								572,
-								462
+								2796,
+								2796
 							]
 						],
 						"settings":
@@ -835,179 +811,155 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 99.0,
+						"translation.y": 56.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/results.handlebars",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "data.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/C/Users/arlen/Dropbox/CSE170Collaborate/README.md",
+					"buffer": 5,
+					"file": "public/css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 322,
+						"buffer_size": 1696,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								748,
+								748
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "views/results.handlebars",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 813,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								599,
-								599
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1416,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								67,
-								68
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
-				{
 					"buffer": 6,
-					"file": "public/css/selection.css",
+					"file": "public/css/index.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 470,
+						"buffer_size": 98,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								310,
-								310
+								55,
+								55
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
-					"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/add.js",
+					"file": "public/css/selection.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 147,
+						"buffer_size": 626,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								535,
+								535
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/routes/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 146,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								48,
-								48
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1017,48 +969,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/views/index.handlebars",
+					"buffer": 8,
+					"file": "public/js/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1202,
+						"buffer_size": 544,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1176,
-								1176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/C/Users/arlen/Dropbox/Code/CSE 170/lab5/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								542,
+								542
 							]
 						],
 						"settings":
@@ -1073,88 +997,31 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "/C/Users/arlen/Dropbox/CSE170Collaborate/public/css/main.css",
+					"buffer": 9,
+					"file": "public/js/selection.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 530,
+						"buffer_size": 568,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								264,
-								311
+								133,
+								133
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "public/css/index.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 610,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								314,
-								314
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "public/css/results.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]

@@ -11,4 +11,14 @@ $(document).ready(function() {
 function initializePage() {
 	console.log("Page initialized!");
 	// add any functionality and listeners you want here
+
+	//get tags text, add color
+	$(".tag").each(function(index,obj) {
+		console.log($(this).text());
+		if ($(this).text() == "Choosing") {
+			$(this).addClass("tag-choosing");
+		} else if ($(this).text() == "Done!") {
+			$(this).addClass("tag-done");
+		}
+	});
 }
