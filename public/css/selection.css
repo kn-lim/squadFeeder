@@ -2,6 +2,38 @@ a:hover {
 	text-decoration: none;
 }
 
-.input-group-addon {
-	width: 20%;
+.input-group {
+	margin-bottom: 15px;
+}
+
+.input-group button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.btn-group {
+	margin-bottom: 15px;
+	vertical-align: middle;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.btn-group label {
+	border-radius: 0;
+	flex-grow: 1;
+}
+
+.active {
+	background-color: #DE7684 !important;
+	border: 1px solid #DE7684 !important;
+	color: white !important;
+}
+
+.tag-default {
+	background-color: #DE7684;
+}
+
+.tag-done {
+
 }

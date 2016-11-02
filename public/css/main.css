@@ -43,8 +43,8 @@ html, body {
 	height: 25px;
 }
 
-/*MEDIA QUERY FOR DESKTOP*/
-@media (min-width: 768px) and (min-height: 600px) {
+/*MEDIA QUERY FOR EXTRA LARGE*/
+@media (min-width: 768px) and (min-height: 1080px) {
 	.main-container {
 		position: absolute;
 		top: 50%;
@@ -68,20 +68,29 @@ h3 {
 	opacity: .5;
 }
 
-/*BUTTONS*/
+/*GENERAL BUTTON STYLE*/
+.btn-color {
+	transition: background-color 0.25s, outline 0.25s;
+	background-color: #DE7684;
+	border: 1px solid #DE7684;
+	outline: none !important;
+}
+
+.btn-color:hover, .btn-color:focus {
+	background-color: #615195 !important;
+	border: 1px solid #615195 !important;
+}
+	
+.btn-color:active {
+	background-color: #9085B5 !important;
+	border: 1px solid #9085B5 !important;
+}
+
+.btn-secondary {
+	outline: none !important;
+}
+
 .btn-submit {
 	margin-top: 15px;
 	margin-bottom: 15px;
-	background-color: #DE7684;
-	border: 1px solid #DE7684;
-}
-
-.btn-submit:hover {
-	background-color: #615195;
-	border: 1px solid #615195;
-}
-
-.btn-submit:active, .btn-submit:focus {
-	background-color: #615195 !important;
-	border: 1px solid #615195 !important;
 }
