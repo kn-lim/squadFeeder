@@ -1,3 +1,27 @@
 body {
 	background-color: beige;
 }
+
+#flexbox {
+	display: flex;
+}
+
+#flexbox input {
+	flex: auto;
+}
+
+img {
+	padding-bottom: 2px
+}
+
+[aria-label] {
+	position: relative;
+}
+
+button:focus {
+  outline:1px dashed #E92C6C;
+}
+
+[aria-label]:hover:after, [aria-label]:focus:after {
+display: block;
+}

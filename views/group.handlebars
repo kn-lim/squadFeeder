@@ -11,18 +11,23 @@
 	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
 	<!-- STYLESHEETS -->
 	<link href="/css/main.css" rel="stylesheet"> 
-	<link href="/css/group.css" rel="stylesheet"> 
+	<link href="/css/group.css" rel="stylesheet">
 </head>
 
 <body class="gradient-bg">
 	<div class="container spacer">
 	</div>
+
 	<div class="container main-container">
-		<div class="row header">
-			<h1>Group [Skeleton]</h1>
-			<a href="./selection">Selection</a>
+		<h1>Group [Skeleton]</h1>
+		<div class="form-inline" id="flexbox">
+			<input id="search" type="text" value="hello">
+    		<button aria-label="Copied!" class="btn" type="button" data-clipboard-action="copy" data-clipboard-target="#search" ><img src="/assets/clippy.svg" alt="Copy to clipboard" width="13"></button>
 		</div>
+		<br>
+		<a href="./selection">Selection</a>
 	</div>
+	
 	<div class="container spacer">
 	</div>
 
@@ -31,5 +36,18 @@
 	<script src="/js/tether.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/group.js"></script>
+	<script src="/js/clipboard.min.js"></script>
+
+	<script>
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
 </body>
 </html>
