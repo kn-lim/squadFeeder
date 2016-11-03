@@ -15,6 +15,17 @@
 </head>
 
 <body class="gradient-bg">
+	<!-- Load Facebook SDK for JavaScript -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+ 		 var js, fjs = d.getElementsByTagName(s)[0];
+ 		 if (d.getElementById(id)) return;
+ 		 js = d.createElement(s); js.id = id;
+  		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+ 		 fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+
 	<div class="container spacer">
 	</div>
 	<div class="container main-container">
@@ -29,12 +40,27 @@
 			</div>
 		</div>
 		
+		<!-- BODY DESCRIPTION -->
+		<div class="row">
+			<div class="col-sm-12 text-xs-center">
+				<br>
+				<p>Copy the link below and share it with your friends. Once they click on the link, it will redirect them into a group with you where you can choose your preferences, and start to decide what you guys should eat!</p>
+			</div>
+		</div>
+
 		<!-- COPY LINK -->
 		<div class="form-inline" id="flexbox">
 			<input id="search" type="text" value="hello">
     		<button aria-label="Copied!" class="btn" type="button" data-clipboard-action="copy" data-clipboard-target="#search" ><img src="/assets/clippy.svg" alt="Copy to clipboard" width="13"></button>
 		</div>
 		
+		<!-- FACEBOOK BUTTON -->
+		<div class="row">
+		<h3>Share with your friends!</h3>
+		<br>
+		<div class="fb-send" data-href="http://www.google.com"></div>
+		</div>
+
 		<!-- SUBMIT BUTTON -->
 		<div class="row">
 			<div class="col-sm-12 text-xs-center">
