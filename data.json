@@ -92,5 +92,9 @@
 		"Biking (2 miles)",
 		"Driving (5 miles)",
 		"Bird's-Eye View"
-	]
+	],
+
+	"randomurl": [
+		"cse170collaborate.herokuapp.com/selection"
+	]	
 }

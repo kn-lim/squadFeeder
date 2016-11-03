@@ -12,5 +12,3 @@ function initializePage() {
 	console.log("Page initialized!");
 	// add any functionality and listeners you want here
 }
-
-// Clipboard script
