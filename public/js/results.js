@@ -14,14 +14,17 @@ function initializePage() {
 }
 
 /* Initialize map */
-function initMap() {
-    var uluru = {lat: -25.363, lng: 131.044};
+/*function initMap() {
+    var def_loc = {lat: 32.8800649, lng: -117.2362022};
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
+        zoom: 12,
+        center: def_loc
     });
-    var marker = new google.maps.Marker({
-        position: uluru,
+
+    var marker1 = new google.maps.Marker({
+        position: def_loc,
         map: map
     });
-}
+
+    console.log("Map initialized!");
+}*/
