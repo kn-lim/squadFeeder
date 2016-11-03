@@ -32,15 +32,15 @@
 		<div class="row">
 			<div class="col-sm-8 text-xs-center">
 				
-				<!-- SEARCH BAR -->
 				<h3>What kind of food would you like to eat?</h3>
-				<div class="input-group">
+
+				<!-- SEARCH BAR -->
+				<!-- <div class="input-group">
 					<input type="text" class="form-control" placeholder="Search restaurants...">
 					<button type="button" class="btn btn-primary btn-color">Search</button>
 				</div>
-
+ -->
 				<!--TOGGLE GROUP -->
-				<p>What are you feeling? Select Cuisine(s):</p>
 				<div class="btn-group" data-toggle="buttons">
 					{{#each select-cuisine}}
 					<label class="btn btn-secondary btn-toggle">
@@ -82,17 +82,40 @@
 					<span class="tag tag-default float-xs-right">{{this.status}}</span>
 					</li>
 					{{/each}}
+				</ul>
+
 			</div>
 		</div>
 
 		<!-- SUBMIT BUTTON -->
 		<div class="row">
 			<div class="col-sm-12 text-xs-center">
-				<a href="./results"><button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Submit</button></a>
+				<button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color" data-toggle="modal" data-target="#confirmModal">Submit</button>
 			</div>
 		</div>
 	</div>
 	<div class="container spacer">
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+	     		<div class="modal-header">
+	    			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          			<span aria-hidden="true">&times;</span>
+	        		</button>
+	        		<h4 class="modal-title" id="myModalLabel">Submitted!</h4>
+	      		</div>
+	      		<div class="modal-body">
+	      			Waiting on other users to complete submissions....
+	      		</div>
+	      		<div class="modal-footer">
+	        	<a href="./results"><button type="button" class="btn btn-secondary">(TEST TRIGGER: Everyone Finishes Submission)</button></a>
+	        	<button type="button" class="btn btn-primary btn-color" data-dismiss="modal">I've Made a Mistake!</button>
+	      		</div>
+	    	</div>
+	  	</div>
 	</div>
 
 	<!-- SCRIPTS -->
