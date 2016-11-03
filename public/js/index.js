@@ -18,3 +18,14 @@ function initializePage() {
 	console.log(randombg);
 	$('body').css('background-image', randombg);
 }
+
+// TURN OFF MODAL SCRIPT
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}

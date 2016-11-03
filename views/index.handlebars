@@ -16,22 +16,61 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 </head>
 
-<body align="center" class="splash-bg gradient-bg">
-	<div class="container main-container">
-        <div class="row header">
-			<div class="col-sm">
-				<h1>Welcome to [Placeholder]</h1>
+<body class="splash-bg gradient-bg">
+
+	<!-- LOG IN BUTTONS -->
+	<div align="right">
+		<button onclick="document.getElementById('id01').style.display='block'">Sign Up</button>
+		<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+	</div>
+
+	<!-- BODY MAIN SCREEN -->
+	<div align="center">
+		<div class="container main-container">
+	        <div class="row header">
+				<div class="col-sm">
+					<h1>Welcome to [Placeholder]</h1>
+				</div>
+			</div>
+
+	        <h3>[Placeholder] helps you decide what food your group wants to eat!</h3>
+	        <h3>continued description here...</h3>
+
+	        <div class="row">
+				<div class="col-sm-12 text-xs-center">
+					<a href="./group"><button type="button" class="btn btn-lg btn-primary btn-color btn-submit">Click here to start!</button></a>
+				</div>
 			</div>
 		</div>
+	</div>
 
-        <h3>[Placeholder] helps you decide what food your group wants to eat!</h3>
-        <h3>continued description here...</h3>
+	<!-- The Modal -->
+	<div id="id01" class="modal">
+	  <span onclick="document.getElementById('id01').style.display='none'" 
+	class="close" title="Close Modal">&times;</span>
 
-        <div class="row">
-			<div class="col-sm-12 text-xs-center">
-				<a href="./group"><button type="button" class="btn btn-lg btn-primary btn-color btn-submit">Click here to start!</button></a>
-			</div>
-		</div>
+	  <!-- Modal Content -->
+	  <form class="modal-content animate" action="action_page.php">
+	    <div class="imgcontainer">
+	      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+	    </div>
+
+	    <div class="container">
+	      <label><b>Username</b></label>
+	      <input type="text" placeholder="Enter Username" name="uname" required>
+
+	      <label><b>Password</b></label>
+	      <input type="password" placeholder="Enter Password" name="psw" required>
+
+	      <button type="submit"><a href="./group">Login</a></button>
+	      <input type="checkbox" checked="unchecked"> Remember me
+	    </div>
+
+	    <div class="container" style="background-color:#f1f1f1">
+	      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+	      <span class="psw">Forgot <a href="#">password?</a></span>
+	    </div>
+	  </form>
 	</div>
 
 	<!-- SCRIPTS -->
@@ -39,5 +78,7 @@
 	<script src="/js/tether.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/index.js"></script>
+
+
 </body>
 </html>
