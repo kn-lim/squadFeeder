@@ -79,6 +79,16 @@
 	<script src="/js/group.js"></script>
 	<script src="/js/clipboard.min.js"></script>
 
-	
+	<!-- SCRIPT FOR COPY TO CLIPBOARD -->
+	<script>
+	var clipboard = new Clipboard('.btn');
+
+	clipboard.on('success', function(e) {
+	    console.log(e);
+	});
+
+	clipboard.on('error', function(e) {
+	    console.log(e);
+	});</script>
 </body>
 </html>
