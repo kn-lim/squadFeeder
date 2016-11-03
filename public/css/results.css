@@ -9,3 +9,9 @@ h4 {
 	opacity: .7;
     padding-left: 7px;
 }
+
+#map {
+    height: 400px;
+    width: 100%;
+    background-color: grey;
+}

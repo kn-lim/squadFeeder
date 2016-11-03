@@ -45,7 +45,7 @@
             </div>
         </div>
         <!-- SHOWS RESULTS -->
-        <div class="col-sm-8">
+        <div class="col-sm-6">
             <div class="row">
                 <h4>Yelp Results:</h4>
             </div>
@@ -70,12 +70,25 @@
                 <!-- INSERT YELP RESULT HERE -->
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <div class="row">
                 <h4>Google Maps:</h4>
             </div>
-            <p>google map</p>
-            <!-- INSERT GOOGLE MAP HERE -->
+            <div id="map"></div>
+            <script>
+                function initMap() {
+                    var uluru = {lat: -25.363, lng: 131.044};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 4,
+                        center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map
+                    });
+                }
+            </script>
+            <div class="row spacer"></div>
         </div>
 	</div>
 	<div class="container spacer">
@@ -86,10 +99,7 @@
 	<script src="/js/tether.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/results.js"></script>
-
     <!-- GOOGLE MAP API SCRIPT -->
-    <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk&libraries=initMap,places">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk&callback=initMap" type="text/javascript"></script>
 </body>
 </html>
