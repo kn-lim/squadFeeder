@@ -16,7 +16,7 @@ function initializePage() {
 jQuery(function($) {
     // Asynchronously Load the map API
     var script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+    script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize&key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk";
     document.body.appendChild(script);
 });
 
