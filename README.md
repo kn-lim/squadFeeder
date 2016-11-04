@@ -1,4 +1,4 @@
-# CSE170Collaborate
+# squadFeeder
 To use locally:
   - navigate to dir
   - with node.js installed, use
