@@ -37,7 +37,7 @@ function initialize() {
     // Multiple Markers
     var markers = [
         ['manna BBQ', 32.8206185,-117.1726334],
-        ['Grandma\'s Tofu', 32.8205014,-117.1567012],
+        ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
         ['Min Sok Chon', 32.8258868,-117.1580301],
         ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
         ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
