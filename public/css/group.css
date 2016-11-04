@@ -8,6 +8,8 @@
 	padding: 10px;
 	color: #636363;
 	flex: auto;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 }
 
 #copylink button {
