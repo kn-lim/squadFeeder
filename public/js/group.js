@@ -11,6 +11,7 @@ $(document).ready(function() {
 function initializePage() {
 	console.log("Page initialized!");
 	// add any functionality and listeners you want here
+	updateGroup();
 
 	$("h3").click(function() {
 		 FB.ui({
@@ -20,4 +21,23 @@ function initializePage() {
 		    $("#response").html(response);
 		  });
 	})
+}
+
+//update lists with new groups
+function updateGroup() {
+	console.log("updateGroup called ");
+
+	//write entire group in (for no args)
+	console.log("first write");
+	$(".list-group").empty();
+	$.get("/selection/user", function(res) {
+		$(".list-group").append('<li class="list-group-item list-user">' + res.name + '</li>');
+	});
+
+	//write members in
+	$.get("/selection/group", function(res) {
+		for (var i in res) {
+			$(".list-group").append('<li class="list-group-item">' + res[i].name + '</li>');
+		}
+	});
 }
