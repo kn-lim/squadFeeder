@@ -34,7 +34,6 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
     map.setTilt(45);
 
-
     // Multiple Markers
     var markers = [
         //['current location', pos.lat, pos.lng],
@@ -100,11 +99,13 @@ function initialize() {
                 title: "current location",
                 icon: "http://www.robotwoods.com/dev/misc/bluecircle.png"
             });
+
             //refit bounds
             map.fitBounds(bounds);
         }, function() {
         handleLocationError(true, infoWindow, map.getCenter());
     });
+
     } else {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
@@ -115,5 +116,4 @@ function initialize() {
     //     this.setZoom(13);
     //     google.maps.event.removeListener(boundsListener);
     // });
-
 }
