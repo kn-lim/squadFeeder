@@ -10,3 +10,5 @@ Bootstrap Documentation: http://devdocs.io/bootstrap~4/
 Google WebFont Examples: http://femmebot.github.io/google-type/
 
 Color Palettes: http://colorhunt.co/
+
+Created by: Zi Pan, Kevin Lim, Nicholas Pung
