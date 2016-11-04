@@ -37,7 +37,12 @@ if ('development' == app.get('env')) {
 //			to <address>/project.html
 app.get('/', index.view);
 app.get('/group', group.view);
+
 app.get('/selection', selection.view);
+app.get('/selection/status/:id', selection.changeStatus);
+app.get('/selection/group', selection.getGroup);
+app.get('/selection/user', selection.getUser);
+
 app.get('/results', results.view);
 
 http.createServer(app).listen(app.get('port'), function(){

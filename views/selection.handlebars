@@ -19,6 +19,7 @@
 <body class="gradient-bg">
 	<div class="container spacer">
 	</div>
+
 	<div class="container main-container">
 		<div class="row header">
 			<div class="col-sm-8">
@@ -38,8 +39,7 @@
 				<!-- <div class="input-group">
 					<input type="text" class="form-control" placeholder="Search restaurants...">
 					<button type="button" class="btn btn-primary btn-color">Search</button>
-				</div>
- -->
+				</div> -->
 				<!--TOGGLE GROUP -->
 				<div class="btn-group" data-toggle="buttons">
 					{{#each select-cuisine}}
@@ -70,18 +70,11 @@
 				</div>
 			</div>
 
-			<!-- SIDEBAR - USERS -->
+			<!-- SIDEBAR -->
 			<div class="col-sm-4 text-xs-center">
 				<h3>Users</h3>
 				<ul class="list-group">
-					<li class="list-group-item">You (Name)
-					<span class="tag tag-default float-xs-right">Choosing</span>
-					</li>
-					{{#each users}}
-					<li class="list-group-item">{{this.name}}
-					<span class="tag tag-default float-xs-right">{{this.status}}</span>
-					</li>
-					{{/each}}
+					<!-- JQUERY CONTENTS -->
 				</ul>
 
 			</div>
@@ -94,34 +87,39 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="container spacer">
 	</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-	     		<div class="modal-header">
-	    			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          			<span aria-hidden="true">&times;</span>
-	        		</button>
-	        		<h4 class="modal-title" id="myModalLabel">Submitted!</h4>
-	      		</div>
-	      		<div class="modal-body">
-	      			Waiting on other users to complete submissions....
-	      		</div>
-	      		<div class="modal-footer">
-	        	<a href="./results"><button type="button" class="btn btn-secondary">(TEST TRIGGER: Everyone Finishes Submission)</button></a>
-	        	<button type="button" class="btn btn-primary btn-color" data-dismiss="modal">I've Made a Mistake!</button>
-	      		</div>
-	    	</div>
-	  	</div>
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Submitted!</h4>
+			</div>
+			<div class="modal-body">
+				<p>Waiting on other users to complete submissions....</p>
+				<ul class="list-group">
+					<!-- JQUERY CONTENTS -->
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<a href="./results"><button id="btn-success" type="button" class="btn btn-secondary">(TEST TRIGGER: Everyone Finishes Submission)</button></a>
+				
+				<button id="btn-mistake" type="button" class="btn btn-primary btn-color" data-dismiss="modal">I've Made a Mistake!</button>
+			</div>
+		</div>
 	</div>
+</div>
 
-	<!-- SCRIPTS -->
-	<script src="/js/jquery-3.1.1.min.js"></script>
-	<script src="/js/tether.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/selection.js"></script>
+<!-- SCRIPTS -->
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/tether.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/selection.js"></script>
 </body>
 </html>

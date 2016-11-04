@@ -387,7 +387,7 @@
 			"file": "views/index.handlebars",
 			"settings":
 			{
-				"buffer_size": 1419,
+				"buffer_size": 2779,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -396,7 +396,7 @@
 			"file": "views/group.handlebars",
 			"settings":
 			{
-				"buffer_size": 969,
+				"buffer_size": 2935,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -405,7 +405,7 @@
 			"file": "views/selection.handlebars",
 			"settings":
 			{
-				"buffer_size": 3130,
+				"buffer_size": 4052,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -414,7 +414,7 @@
 			"file": "views/results.handlebars",
 			"settings":
 			{
-				"buffer_size": 986,
+				"buffer_size": 5046,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -423,7 +423,7 @@
 			"file": "data.json",
 			"settings":
 			{
-				"buffer_size": 1270,
+				"buffer_size": 1338,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -441,7 +441,7 @@
 			"file": "public/css/index.css",
 			"settings":
 			{
-				"buffer_size": 98,
+				"buffer_size": 1400,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -459,7 +459,7 @@
 			"file": "public/js/index.js",
 			"settings":
 			{
-				"buffer_size": 544,
+				"buffer_size": 812,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -468,7 +468,7 @@
 			"file": "public/js/selection.js",
 			"settings":
 			{
-				"buffer_size": 568,
+				"buffer_size": 569,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -737,15 +737,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1419,
+						"buffer_size": 2779,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								851,
-								851
+								0,
+								0
 							]
 						],
 						"settings":
@@ -765,15 +765,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 969,
+						"buffer_size": 2935,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								757,
-								757
+								0,
+								0
 							]
 						],
 						"settings":
@@ -794,15 +794,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3130,
+						"buffer_size": 4052,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2796,
-								2796
+								2270,
+								2270
 							]
 						],
 						"settings":
@@ -811,10 +811,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 56.0,
+						"translation.y": 980.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -823,15 +823,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 986,
+						"buffer_size": 5046,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								772,
-								772
+								0,
+								0
 							]
 						],
 						"settings":
@@ -858,15 +858,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1270,
+						"buffer_size": 1338,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								62,
-								62
+								0,
+								0
 							]
 						],
 						"settings":
@@ -907,7 +907,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -916,15 +916,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 98,
+						"buffer_size": 1400,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								55,
-								55
+								0,
+								0
 							]
 						],
 						"settings":
@@ -974,15 +974,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 544,
+						"buffer_size": 812,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								542,
-								542
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1002,15 +1002,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 568,
+						"buffer_size": 569,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								133,
-								133
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1103,7 +1103,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
