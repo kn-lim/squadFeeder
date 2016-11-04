@@ -1,27 +1,21 @@
-body {
-	background-color: beige;
+/*COPY LINK*/
+#copylink img {
+	width: 30px;
+	opacity: 0.7;
 }
 
-#flexbox {
-	display: flex;
-}
-
-#flexbox input {
+#copylink input {
+	padding: 10px;
+	color: #636363;
 	flex: auto;
 }
 
-img {
-	padding-bottom: 2px
+#copylink button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border: 1px solid #A9A9A9;
 }
 
-[aria-label] {
-	position: relative;
-}
-
-button:focus {
-  outline:1px dashed #E92C6C;
-}
-
-[aria-label]:hover:after, [aria-label]:focus:after {
-display: block;
+.fb-send {
+	height: 500px;
 }

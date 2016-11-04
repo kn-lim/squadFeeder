@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Group Page</title>	
+	<title>Group</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- LIBRARIES -->
@@ -17,14 +17,24 @@
 <body class="gradient-bg">
 	<!-- Load Facebook SDK for JavaScript -->
 	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
- 		 var js, fjs = d.getElementsByTagName(s)[0];
- 		 if (d.getElementById(id)) return;
- 		 js = d.createElement(s); js.id = id;
-  		js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
- 		 fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
+	<script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '415331085257838',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+	    FB.AppEvents.logPageView();
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+</script>
 
 	<div class="container spacer">
 	</div>
@@ -33,7 +43,7 @@
 		<!-- HEADER -->
 		<div class="row header">
 			<div class="col-sm-8">
-				<h1>Share Link with Friends!</h1>
+				<h1>Your Squad</h1>
 			</div>
 			<div class="col-sm-4">
 				<a href="./"><button type="button" class="btn btn-block btn-secondary">Back to Home Page</button></a>
@@ -42,29 +52,35 @@
 		
 		<!-- BODY DESCRIPTION -->
 		<div class="row">
-			<div class="col-sm-12 text-xs-center">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8 text-xs-center">
 				<br>
 				<p>Copy the link below and share it with your friends. Once they click on the link, it will redirect them into a group with you where you can choose your preferences, and start to decide what you guys should eat!</p>
-			</div>
-		</div>
 
-		<!-- COPY LINK -->
-		<div class="form-inline" id="flexbox">
-			<input id="search" type="text" value="{{randomurl}}">
-    		<button aria-label="Copied!" class="btn" type="button" data-clipboard-action="copy" data-clipboard-target="#search" ><img src="/assets/clippy.svg" alt="Copy to clipboard" width="13"></button>
+				<!-- COPY LINK -->
+				<div id="copylink" class="input-group" id="flexbox">
+					<input id="input-link" type="text" value="{{randomurl}}" readonly>
+		    		<button class="btn btn-secondary" type="button" data-clipboard-action="copy" data-clipboard-target="#input-link">
+		    			<img src="/assets/clippy.svg" alt="Copy to clipboard">
+		    		</button>
+				</div>
+
+			</div>
+			<div class="col-sm-2"></div>
 		</div>
 		
 		<!-- FACEBOOK BUTTON -->
 		<div class="row">
-		<h3>Share with your friends!</h3>
-		<br>
-		<div class="fb-send" data-href="{{randomurl}}"></div>
+			<div class="col-sm-12 text-xs-center">
+				<h3>Share with your friends!</h3>
+				<div class="fb-send" data-href="https://developers.facebook.com/docs/plugins/"></div>
+			</div>
 		</div>
 
 		<!-- SUBMIT BUTTON -->
 		<div class="row">
 			<div class="col-sm-12 text-xs-center">
-				<a href="./selection"><button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Click here when you are ready</button></a>
+				<a href="./selection"><button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Is Everyone Ready?</button></a>
 			</div>
 		</div>
 	</div>

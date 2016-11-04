@@ -36,6 +36,7 @@ function initializePage() {
 	});
 }
 
+//update lists with new groups
 function updateGroup(res) {
 	console.log("updateGroup called " + (res));
 

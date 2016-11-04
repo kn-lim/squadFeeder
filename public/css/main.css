@@ -69,6 +69,10 @@ h3 {
 	opacity: .7;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 /*GENERAL BUTTON STYLE*/
 .btn-color {
 	transition: background-color 0.25s, outline 0.25s;

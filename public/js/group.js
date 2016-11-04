@@ -11,4 +11,13 @@ $(document).ready(function() {
 function initializePage() {
 	console.log("Page initialized!");
 	// add any functionality and listeners you want here
+
+	$("h3").click(function() {
+		 FB.ui({
+		    method: 'share',
+		    href: 'https://developers.facebook.com/docs/' //REPLACE THIS WITH A VALID URL FROM YOUR SITE OR USE PHP TO POPULATE IT
+		  }, function(response) {
+		    $("#response").html(response);
+		  });
+	})
 }

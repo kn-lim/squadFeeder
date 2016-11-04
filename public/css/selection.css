@@ -40,3 +40,7 @@ a:hover {
 .tag-done {
 	background-color: #70AE5D;
 }
+
+.list-user {
+	font-weight: bold;
+}
