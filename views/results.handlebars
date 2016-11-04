@@ -85,9 +85,11 @@
                     var default_loc = {lat: 32.8800649, lng: -117.2362022};
                     var map = new google.maps.Map(document.getElementById('map'), {
                         center: default_loc,
-                        zoom: 12
+                        zoom: 10
                     });
                     var infoWindow = new google.maps.InfoWindow({map: map});
+
+                    console.log("Map initialized!");
 
                     // Try HTML5 geolocation.
                     if (navigator.geolocation) {
@@ -103,12 +105,33 @@
                         }, function() {
                             handleLocationError(true, infoWindow, map.getCenter());
                         });
+
+                        console.log("Location found!");
                     }
 
                     else {
                         // Browser doesn't support Geolocation
                         handleLocationError(false, infoWindow, map.getCenter());
                     }
+
+
+
+                    /* creating markers */
+                    //32.8206185,-117.1726334 - Manna BBQ
+                    var loc1 = {lat: 32.8206185, lng: -117.1726334};
+                    var marker1 = new google.maps.Marker({
+                        position: loc1,
+                        map: map
+                    });
+
+                    //32.8205014,-117.1567012 - Grandma's Tofu
+                    /*var loc2 = {lat: 32.8206185, lng: -117.1726334};
+                    var marker2 = new google.maps.Marker({
+                        position: loc2,
+                        map: map
+                    });*/
+
+                    console.log("Markers initialized!");
                 }
 
                 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -116,6 +139,8 @@
                     infoWindow.setContent(browserHasGeolocation ?
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
+
+                    console.log("Geolocation failed!");
                 }
                 </script>
             </script>
