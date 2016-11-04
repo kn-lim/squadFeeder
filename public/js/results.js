@@ -26,26 +26,30 @@ function initialize() {
     var mapOptions = {
         mapTypeId: 'roadmap'
     };
+    var def_zoom = {
+        zoom: 7
+    };
 
     // Display a map on the page
-    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
     map.setTilt(45);
 
     // Multiple Markers
     var markers = [
-        ['London Eye, London', 51.503454,-0.119562],
-        ['Palace of Westminster, London', 51.499633,-0.124755]
+        ['manna BBQ', 32.8206185,-117.1726334],
+        ['Grandma\'s Tofu', 32.8205014,-117.1567012],
+        ['Min Sok Chon', 32.8258868,-117.1580301],
+        ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
+        ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
     ];
 
     // Info Window Content
     var infoWindowContent = [
-        ['<div class="info_content">' +
-        '<h3>London Eye</h3>' +
-        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' +        '</div>'],
-        ['<div class="info_content">' +
-        '<h3>Palace of Westminster</h3>' +
-        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +
-        '</div>']
+        ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
+        ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
+        ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
+        ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
+        ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
     ];
 
     // Display multiple markers on a map
