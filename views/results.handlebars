@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Results Page</title>
+	<title>squadFeeder</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- LIBRARIES -->
@@ -17,8 +17,7 @@
 </head>
 
 <body class="gradient-bg">
-	<div class="container spacer">
-	</div>
+	<div class="container spacer"></div>
 	<div class="container main-container">
 		<!-- HEADER -->
 		<div class="row header">
@@ -33,66 +32,66 @@
         <div class="row">
             <h3>Here are your group's top 3 preferences:</h3>
         </div>
-        <div class="row">
+        <div class="row results">
             <div class="col-sm-4 text-xs-center">
-                <p>Korean</p>
+                <p>Korean: <span>3 votes</span></p>
             </div>
             <div class="col-sm-4 text-xs-center">
-                <p>Asian</p>
+                <p>Asian: <span>2 votes</span></p>
             </div>
             <div class="col-sm-4 text-xs-center">
-                <p>Sushi</p>
+                <p>Sushi: <span>2 votes</span></p>
             </div>
         </div>
         <!-- SHOWS RESULTS -->
-        <div class="col-sm-6">
-            <div class="row">
-                <h4>Yelp Results:</h4>
-            </div>
-            <div class="row">
-                <!-- INSERT YELP RESULT HERE -->
-                <p>manna BBQ </p>
-                <p>- Korean</p>
-                <p>4428 Convoy St #210, San Diego, CA 92111</p>
-            </div>
-            <div class="row">
-                <!-- INSERT YELP RESULT HERE -->
-                <p>Grandma's Tofu Shop </p>
-                <p>- Korean</p>
-                <p>4425 Convoy St, San Diego, CA 92111</p>
-            </div>
-            <div class="row">
-                <!-- INSERT YELP RESULT HERE -->
-                <p>Min Sok Chon </p>
-                <p>- Korean</p>
-                <p>4620 Convoy St D, San Diego, CA 92111</p>
-            </div>
-            <div class="row">
-                <!-- INSERT YELP RESULT HERE -->
-                <p>Tajima Japanese Restaurant </p>
-                <p>- Asian</p>
-                <p>4681 Convoy St, San Diego, CA 92111</p>
-            </div>
-            <div class="row">
-                <!-- INSERT YELP RESULT HERE -->
-                <p>Kula Revolving Sushi Bar </p>
-                <p>- Sushi</p>
-                <p>4609 Convoy St f, San Diego, CA 92111</p>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="row">
-                <h4>Google Maps:</h4>
-            </div>
-            <div id="map_wrapper">
-                <div id="map_canvas" class="mapping"></div>
-            </div>
-            </script>
-            <div class="row spacer"></div>
-        </div>
+        <div class="row">
+	        <div class="col-sm-6">
+	            <h4>Best Choices:</h4>
+	            	<!-- INSERT DATA HERE, FAKE FOR NOW -->
+	            	<ul class="list-group">
+	            		<li class="list-group-item">
+			                <p>manna BBQ (Korean)</p>
+			                <a href="https://www.google.com/maps/dir/Current+Location/4428+Convoy+Street+%23210+SD+92111">
+			                <p>4428 Convoy St #210, San Diego, CA 92111</p>
+			                </a>
+	            		</li>
+	            		<li class="list-group-item">
+			                <p>Grandma's Tofu Shop (Korean)</p>
+			                <a href="https://www.google.com/maps/dir/Current+Location/Grandma+Tofu+%26+BBQ,+4425+Convoy+Street+SD+92111">
+			                <p>4425 Convoy St, San Diego, CA 92111</p>
+			                </a>
+	            		</li>
+	            		<li class="list-group-item">
+			                <p>Min Sok Chon (Korean)</p>
+			                <a href="https://www.google.com/maps/dir/Current+Location/4620+Convoy+Street+SD+92111">
+			                <p>4620 Convoy St D, San Diego, CA 92111</p>
+			                </a>
+	            		</li>
+	            		<li class="list-group-item">
+			                <p>Tajima Japanese Restaurant (Asian)</p>
+			                <a href="https://www.google.com/maps/dir/Current+Location/4681+Convoy+Street+SD+92111">
+			                <p>4681 Convoy St, San Diego, CA 92111</p>
+			                </a>
+	            		</li>
+	            		<li class="list-group-item">
+			                <p>Kula Revolving Sushi Bar (Sushi)</p>
+			                <a href="https://www.google.com/maps/dir/Current+Location/Kula+Revolving+Sushi+Bar,+4609+Convoy+Street+f,+SD+92111">
+			                <p>4609 Convoy St f, San Diego, CA 92111</p>
+			                </a>
+	            		</li>
+	            	</ul>
+	        </div>
+	        <div class="col-sm-6">
+	                <h4>Map:</h4>
+	            <div id="map_wrapper">
+	                <div id="map_canvas" class="mapping"></div>
+	            </div>
+	            </script>
+	        </div>
+	    </div>
+	    <div class="row spacer"></div>
 	</div>
-	<div class="container spacer">
-	</div>
+	<div class="container spacer"></div>
 
     <!-- GOOGLE MAP API SCRIPT -->
     <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk&callback=initMap" type="text/javascript"></script> -->

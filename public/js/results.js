@@ -16,7 +16,7 @@ function initializePage() {
 jQuery(function($) {
     // Asynchronously Load the map API
     var script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize&key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk";
+    script.src = "https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk";
     document.body.appendChild(script);
 });
 
@@ -34,9 +34,11 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
     map.setTilt(45);
 
+
     // Multiple Markers
     var markers = [
-        ['manna BBQ', 32.8206185,-117.1726334],
+        //['current location', pos.lat, pos.lng],
+        ['manna BBQ', 32.827480, -117.157500],
         ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
         ['Min Sok Chon', 32.8258868,-117.1580301],
         ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
@@ -77,10 +79,41 @@ function initialize() {
         map.fitBounds(bounds);
     }
 
-    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-    var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-        this.setZoom(14);
-        google.maps.event.removeListener(boundsListener);
+    //GEOLOCATION MARKER
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            // infoWindow.setPosition(pos);
+            // infoWindow.setContent('Location found.');
+            // map.setCenter(pos);
+
+            //create marker
+            var position = new google.maps.LatLng(pos.lat, pos.lng);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: "current location",
+                icon: "http://www.robotwoods.com/dev/misc/bluecircle.png"
+            });
+            //refit bounds
+            map.fitBounds(bounds);
+        }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
     });
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+
+    // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+    // var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+    //     this.setZoom(13);
+    //     google.maps.event.removeListener(boundsListener);
+    // });
 
 }
