@@ -23,4 +23,12 @@ exports.createGroup = function(req, res) {
 	store.add(newGroup, function(err) {
 		if (err) throw err;
 	});
+
+	// push group into master
+	store.load("/master", function(err, obj) {
+		obj.groups.push(groupid);
+		store.add(obj, function(err) {
+			if (err) throw err;
+		});
+	});
 }

@@ -5,23 +5,26 @@ exports.view = function(req, res) {
 	// get group data
 	var groupid = req.params.groupid;
 
-	store.load("/groups/" + groupid, function(err, obj) {
-		console.log("Group Loaded: " + groupid)
-		res.render('group', obj);
-	});
+	// check master if group exists
+	store.load("/master", function(err, obj) {
+		exists = false;
+		for (var i = 0; i < obj.groups.length; i++) {
+			//if name is in master, load
+			console.log(obj.groups[i]);
+			if (obj.groups[i] == groupid) {	
+				exists = true;	
+				store.load("/groups/" + groupid, function(err, obj) {
+					console.log("Group Loaded: " + groupid)
+					res.render('group', obj);
+				});
+				break;
+			}
+		}
 
-	//check if group file exists (if it does, load that group)
-	// var fs = require("fs");
-	// fs.access("./tmp/groups/" + groupid + ".json", fs.F_OK, function(err) {
-	// 	if (!err) {
-	// 		store.load("/groups/" + groupid, function(err, obj) {
-	// 			console.log("Group Loaded: " + groupid)
-	// 			res.render('group', obj);
-	// 		});
-	// 	} else {
-	// 		res.render("error");
-	// 	}
-	// })
+		if (!exists) {
+			res.render('error');
+		}
+	});
 };
 
 // get group

@@ -1,17 +1,17 @@
 {
-  "id": "./groups/urx8l",
-  "name": "urx8l",
-  "url": "squadfeeder.herokuapp.com/urx8l",
+  "id": "./groups/default",
+  "name": "default",
+  "url": "squadfeeder.herokuapp.com/default",
   "members": [
     {
-      "id": "3kutYVpVJb",
+      "id": "ukGUjrgKPJ",
       "name": "User",
-      "connected": 1,
+      "connected": 0,
       "status": 0,
       "choices": []
     },
     {
-      "id": "3DPeCaP6oU",
+      "id": "3kutYVpVJb",
       "name": "User",
       "connected": 0,
       "status": 0,
