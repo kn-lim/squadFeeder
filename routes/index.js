@@ -1,4 +1,4 @@
-var store = require('json-fs-store')('./data');
+var store = require('json-fs-store')('./tmp');
 
 // GET HOMEPAGE
 exports.view = function(req, res) {

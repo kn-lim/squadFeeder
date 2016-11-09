@@ -4,7 +4,6 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var socketio = require('socket.io');
-var store = require('json-fs-store')('./data');
 
 // SET UP ROUTE VARIABLES (pages)
 var index = require('./routes/index');

@@ -1,4 +1,4 @@
-var store = require('json-fs-store')('./data');
+var store = require('json-fs-store')('./tmp');
 
 // GET PAGE
 exports.view = function(req, res) {
@@ -7,7 +7,7 @@ exports.view = function(req, res) {
 
 	//check if group file exists (if it does, load that group)
 	var fs = require("fs");
-	fs.access("./data/groups/" + groupid + ".json", fs.F_OK, function(err) {
+	fs.access("./tmp/groups/" + groupid + ".json", fs.F_OK, function(err) {
 		if (!err) {
 			store.load("/groups/" + groupid, function(err, obj) {
 				console.log("Group Loaded: " + groupid)

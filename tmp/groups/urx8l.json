@@ -1,0 +1,21 @@
+{
+  "id": "./groups/urx8l",
+  "name": "urx8l",
+  "url": "squadfeeder.herokuapp.com/urx8l",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "User",
+      "connected": 1,
+      "status": 0,
+      "choices": []
+    },
+    {
+      "id": "3DPeCaP6oU",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    }
+  ]
+}
