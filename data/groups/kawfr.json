@@ -1,0 +1,14 @@
+{
+  "id": "./groups/kawfr",
+  "name": "kawfr",
+  "url": "squadfeeder.herokuapp.com/kawfr",
+  "members": [
+    {
+      "id": "ukGUjrgKPJ",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    }
+  ]
+}

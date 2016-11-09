@@ -1,0 +1,105 @@
+{
+	"user": {
+		"name": "You",
+		"status": 0
+	},
+
+	"group": [
+		{
+			"name": "Arlen Pan",
+			"status": 0
+		},
+		{
+			"name": "Kevin Lim",
+			"status": 0
+		},
+		{
+			"name": "Nicholas Pung",
+			"status": 1
+		}
+	],
+
+	"select-cuisine": [
+		"African",
+		"American",
+		"Asian",
+		"Australian",
+		"Barbeque",
+		"Brazilian",
+		"Burgers",
+		"Burmese",
+		"Cajun/Creole",
+		"Cambodian",
+		"Cheesesteaks",
+		"Chinese",
+		"Cuban",
+		"Ethiopian",
+		"Filipino",
+		"Fish & Chips",
+		"Fondue",
+		"French",
+		"German",
+		"Greek",
+		"Halal",
+		"Hawaiian",
+		"Hot Dogs",
+		"Hot Pot",
+		"Indian",
+		"Irish",
+		"Italian",
+		"Japanese",
+		"Korean",
+		"Kosher",
+		"Latin American",
+		"Malaysian",
+		"Mediterranean",
+		"Mexican",
+		"Middle Eastern",
+		"Mongolian",
+		"Moroccan",
+		"Pizza",
+		"Polish",
+		"Portuguese",
+		"Salad",
+		"Sandwiches",
+		"Seafood",
+		"Soul Food",
+		"Soup",
+		"Steakhouses",
+		"Sushi",
+		"Taiwanese",
+		"Thai",
+		"Vegan",
+		"Vegetarian",
+		"Vietnamese"
+	],
+
+	"select-type": [
+		"Buffets",
+		"Cafes",
+		"Creperies",
+		"Delis",
+		"Diners",
+		"Food Stands",
+		"Fast Food"
+	],
+
+	"select-price": [
+		"$ (< $10)",
+		"$$ (< $20)",
+		"$$$ (< $40)",
+		"$$$$ ($40+)"
+	],
+
+	"select-distance": [
+		"Within 4 blocks",
+		"Walking (1 mile)",
+		"Biking (2 miles)",
+		"Driving (5 miles)",
+		"Bird's-Eye View"
+	],
+
+	"randomurl": [
+		"http://squadfeeder.herokuapp.com/instanceURL"
+	]	
+}

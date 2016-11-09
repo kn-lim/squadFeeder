@@ -10,34 +10,55 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Page initialized!");
-	// add any functionality and listeners you want here
-	updateGroup();
 
-	// $("h3").click(function() {
-	// 	 FB.ui({
-	// 	    method: 'share',
-	// 	    href: 'https://developers.facebook.com/docs/' //REPLACE THIS WITH A VALID URL FROM YOUR SITE OR USE PHP TO POPULATE IT
-	// 	  }, function(response) {
-	// 	    $("#response").html(response);
-	// 	  });
-	// })
+	// name change form listener
+	$("#btn-namechange").click(function(e) {
+		var name = $("#input-namechange").val();
+		window.localStorage.setItem("username", name);
+		$.get("/changename/" + group + "/" + id + "/" + name, function(res) {
+			window.setTimeout(function() {
+				updateGroup(res);
+			}, 1000);
+			socket.emit("namechange");
+		});
+	});
+
+	// submit for moving
+	$(".btn-submit").click(function(e) {
+		socket.emit("allready");
+	});
 }
 
 //update lists with new groups
-function updateGroup() {
-	console.log("updateGroup called ");
-
+function updateGroup(resobj=0) {
 	//write entire group in (for no args)
-	console.log("first write");
 	$(".list-group").empty();
-	$.get("/selection/user", function(res) {
-		$(".list-group").append('<li class="list-group-item list-user">' + res.name + '</li>');
-	});
 
-	//write members in
-	$.get("/selection/group", function(res) {
-		for (var i in res) {
-			$(".list-group").append('<li class="list-group-item">' + res[i].name + '</li>');
+	//write members in if no args
+	if (!resobj) {
+		$.get("/getgroup/" + group, function(res) {
+			updateGroupWrite(res);
+		});
+	} else {
+		updateGroupWrite(resobj);
+	}
+
+	//repair parent (for mobile)
+	$(".list-group").hide();
+	$('.list-group').get(0).offsetHeight;
+	$('.list-group').show();
+}
+
+function updateGroupWrite(res) {
+	for (var i in res.members) {
+		//show all online members
+		if (res.members[i].id == id) {
+			$(".list-group").append('<li class="list-group-item">' + "<b>" + res.members[i].name + " (You) " + "</b>" + 
+				"<a href='javascript:;' data-toggle='modal' data-target='#modal-namechange'>(Change Name)</a>" + 
+				// "<button type='button' class='btn btn-primary btn-color'>Change Name</button>" +
+				'</li>');
+		} else if (res.members[i].connected) {
+			$(".list-group").append('<li class="list-group-item">' + res.members[i].name + '</li>');
 		}
-	});
+	}	
 }

@@ -1,0 +1,14 @@
+{
+  "id": "./groups/vrdni",
+  "name": "vrdni",
+  "url": "squadfeeder.herokuapp.com/vrdni",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    }
+  ]
+}

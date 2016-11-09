@@ -104,3 +104,12 @@ a:hover {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
+
+.progress-bg {
+	height: 5px;
+	background-color: #F7F7F7;
+}
+
+.progress-bar {
+	background-color: #DE7684;
+}

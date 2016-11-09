@@ -2,7 +2,9 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
+var socketio = require('socket.io');
+var store = require('json-fs-store')('./data');
 
 // SET UP ROUTE VARIABLES (pages)
 var index = require('./routes/index');
@@ -31,21 +33,56 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-// Control routes here
+// CONTROL ROUTES HERE
 // EXAMPLE: app.get('/project.html', project.view)
 // 			will route project.view (which is project.handlebars)
 //			to <address>/project.html
-app.get('/', index.view);
-app.get('/group', group.view);
-app.get('/instanceURL', group.view);
 
-app.get('/selection', selection.view);
+// main route for page nav
+app.get('/', index.view);
+app.get('/:groupid', group.view);
+app.get('/:groupid/selection', selection.view);
+app.get('/:groupid/results', results.view);
+
+// routes for data logic
+app.get('/creategroup/:groupid', index.createGroup);
+app.get('/getgroup/:groupid', group.getGroup);
+app.get('/changename/:groupid/:id/:name', group.changeName);
+
 app.get('/selection/status/:id', selection.changeStatus);
 app.get('/selection/group', selection.getGroup);
 app.get('/selection/user', selection.getUser);
 
-app.get('/results', results.view);
-
-http.createServer(app).listen(app.get('port'), function(){
+//start server
+var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+});
+
+// SOCKET IO CODE
+var io = socketio.listen(server);
+
+// SOCKET LISTENERS
+io.on('connection', function(socket) {
+	console.log("SOCKETIO: " + socket.id + "connected");
+
+	//socket group listener and check user id exists
+	socket.on("group", function(idgroup) {
+		console.log("new user has joined the group: " + idgroup[1]);
+		socket.join(idgroup[1]);
+		group.checkID(idgroup[0], idgroup[1]);
+		io.in(idgroup[1]).emit('update');
+
+		socket.on("disconnect", function(socket) {
+			io.in(idgroup[1]).emit("update");
+			group.userLeave(idgroup[0], idgroup[1]);
+		});
+
+		socket.on("namechange", function(socket) {
+			io.in(idgroup[1]).emit("update");
+		});
+
+		socket.on("allready", function(socket) {
+			io.in(idgroup[1]).emit("allready");
+		})
+	});
 });

@@ -11,21 +11,42 @@ $(document).ready(function() {
 function initializePage() {
 	console.log("Page initialized!");
 	
-	//for random backgrounds
+	// for random backgrounds
 	var images = 6;
 	var randomval = Math.floor(Math.random() * images);
 	var randombg = 	"linear-gradient(rgba(50,50,50,0.7),rgba(50,50,50,0.7)), url('../images/splash" + randomval + ".jpg";
-	console.log(randombg);
+	console.log("background: " + randombg);
 	$('body').css('background-image', randombg);
+
+	// on submit button click
+	$(".btn-submit").click(function(e) {
+		//generate new random URL
+		var url = generateURL();
+		console.log("generated URL: " + url);
+
+		//get url and send to data (for new group generated)
+		$.get("/creategroup/" + url, function(res) {
+			console.log(res);
+		});
+
+		//wait for server to finish, open progress circle
+		$("#modal-progress").modal({
+			backdrop: "static",
+			keyboard: false
+		});		
+
+		//route to random URL after delay
+		window.setTimeout(function() {
+			window.location.href = "/" + url;
+		}, 5000);
+	});
 }
 
-// TURN OFF MODAL SCRIPT
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+function generateURL() {
+	var url = "";
+	var possible = "abcdefghijklmnopqrstuvwxyz1234567890";
+	for (var i=0; i < 5; i++) {
+		url += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return url;
 }

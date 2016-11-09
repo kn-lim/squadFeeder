@@ -1,0 +1,28 @@
+{
+  "id": "./groups/esdbb",
+  "name": "esdbb",
+  "url": "squadfeeder.herokuapp.com/esdbb",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    },
+    {
+      "id": "3DPeCaP6oU",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    },
+    {
+      "id": "ukGUjrgKPJ",
+      "name": "User",
+      "connected": 0,
+      "status": 0,
+      "choices": []
+    }
+  ]
+}

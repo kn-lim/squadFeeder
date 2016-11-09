@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Group</title>	
+	<title>squadFeeder: {{name}}</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- LIBRARIES -->
@@ -12,6 +12,10 @@
 	<!-- STYLESHEETS -->
 	<link href="/css/main.css" rel="stylesheet"> 
 	<link href="/css/group.css" rel="stylesheet">
+	<!-- SOCKET IO /EARLY SCRIPTS -->
+	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+	<script>var group = "{{name}}"</script>
+	<script src="/js/init.js"></script>
 </head>
 
 <body class="gradient-bg">
@@ -49,6 +53,12 @@
 				<a href="./"><button type="button" class="btn btn-block btn-secondary">Back to Home Page</button></a>
 			</div>
 		</div>
+
+		<!-- PROGRESSBAR -->
+		<div class="row progress-bg">
+    		<div class="progress-bar progress-bar-custom" role="progressbar" style="width: 33%;">
+			</div>
+		</div>
 		
 		<!-- BODY DESCRIPTION -->
 		<div class="row">
@@ -58,7 +68,7 @@
 
 				<!-- COPY LINK -->
 				<div id="copylink" class="input-group" id="flexbox">
-					<input id="input-link" type="text" value="{{randomurl}}" readonly>
+					<input id="input-link" type="text" value="{{url}}" readonly>
 		    		<button class="btn btn-secondary" type="button" data-clipboard-action="copy" data-clipboard-target="#input-link">
 		    			<img src="/assets/clippy.svg" alt="Copy to clipboard">
 		    		</button>
@@ -67,10 +77,14 @@
 			</div>
 		</div>
 		
-		<!-- FACEBOOK BUTTON -->
+		<!-- FACEBOOK BUTTON-->
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="fb-send" data-href="https://squadfeeder.herokuapp.com/instanceURL"></div>
+				<!-- <div class="fb-send" data-href={{url}}></div> -->
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
 				<h3>Joined:</h3>
 				<ul class="list-group">
 					<!-- JQUERY CONTENTS -->
@@ -81,13 +95,33 @@
 		<!-- SUBMIT BUTTON -->
 		<div class="row">
 			<div class="col-sm-12 text-xs-center">
-				<a href="./selection"><button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Is Everyone Ready?</button></a>
+				<button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Is Everyone Ready?</button>
 			</div>
 		</div>
 	</div>
 	
 	<div class="container spacer">
 	</div>
+
+	<!-- NAME CHANGE MODAL -->
+	<div class="modal fade" id="modal-namechange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+				    	<label for="input-namechange">Change Name</label>
+				    	<input type="email" class="form-control" id="input-namechange" placeholder="Enter name">
+				    	<small id="namehelp" class="form-text text-muted">Choose an unique one!</small>
+				  	</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="btn-namechange" type="button" class="btn btn-primary btn-color" data-dismiss="modal">Change Name</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 	<!-- SCRIPTS -->
 	<script src="/js/jquery-3.1.1.min.js"></script>
