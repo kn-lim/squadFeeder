@@ -13,6 +13,24 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
+/*function yelpSearch() {
+    $.post("https://api.yelp.com/oauth2/token", {
+        client_id: "XSB11XkGiPzzB6Oq3rJ77A",
+        client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
+        grant_type: "client_credentials"
+        },
+        function(response) {
+            console.log("Yelp Authorization Successful ", response);
+            var token = response.access_token;
+            var token_type = response.token_type;
+
+            $.ajax({
+                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                data: {key: "Authorization", value: token_type + " " + token}
+            })
+        });
+};*/
+
 jQuery(function($) {
     // Asynchronously Load the map API
     var script = document.createElement('script');
