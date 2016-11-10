@@ -1,4 +1,5 @@
 var store = require('json-fs-store')('./tmp');
+var animalList = require('../tmp/animals');
 
 // GET PAGE
 exports.view = function(req, res) {
@@ -10,7 +11,6 @@ exports.view = function(req, res) {
 		exists = false;
 		for (var i = 0; i < obj.groups.length; i++) {
 			//if name is in master, load
-			console.log(obj.groups[i]);
 			if (obj.groups[i] == groupid) {	
 				exists = true;	
 				store.load("/groups/" + groupid, function(err, obj) {
@@ -38,11 +38,14 @@ exports.getGroup = function(req, res) {
 	});
 }
 
-// check if id is in group
+// check if id is in group and write new member
 exports.checkID = function(id, group) {
 	//load group obj
 	store.load("/groups/" + group, function(err, obj) {
-		if (err) console.log(err);
+		if (err) throw err;
+
+		//determine if leader (first one to join)
+		var leader = !obj.members.length ? 1 : 0;
 
 		//look for name in array
 		exists = false;
@@ -54,18 +57,22 @@ exports.checkID = function(id, group) {
 			}
 		}
 
+		//choose random animal
+		animal = "Anonymous " + animalList.animals[Math.floor(Math.random() * animalList.animals.length)];
+
 		//if id doesn't exist, add to group
 		if (!exists) {
 			obj.members.push({
 				"id": id,
-				"name": "User",
+				"name": animal,
+				"leader": leader,
 				"connected": 1,
 				"status": 0,
 				"choices": []
 			});
 		}
 
-		//write new group
+		// write new group
 		store.add(obj, function(err) {
 			if (err) throw err;
 		});

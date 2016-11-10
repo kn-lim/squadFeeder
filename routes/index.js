@@ -8,7 +8,7 @@ exports.view = function(req, res) {
 exports.createGroup = function(req, res) {
 	// get group id
 	var groupid = req.params.groupid;
-	console.log("createGroup: " + groupid);
+	console.log("creating group: " + groupid);
 
 	// create new group json
 	var newGroup = {

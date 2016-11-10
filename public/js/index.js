@@ -37,6 +37,7 @@ function initializePage() {
 
 		//route to random URL after delay
 		window.setTimeout(function() {
+			$("#modal-progress").modal("hide");
 			window.location.href = "/" + url;
 		}, 5000);
 	});
