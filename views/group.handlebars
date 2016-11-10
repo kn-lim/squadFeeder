@@ -72,7 +72,7 @@
 				<!-- COPY LINK -->
 				<div id="copylink" class="input-group" id="flexbox">
 					<input id="input-link" type="text" value="{{url}}" readonly>
-		    		<button class="btn btn-secondary" type="button" data-clipboard-action="copy" data-clipboard-target="#input-link">
+		    		<button class="btn btn-secondary" type="button" data-clipboard-action="copy" data-clipboard-target="#input-link" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
 		    			<img src="/assets/clippy.svg" alt="Copy to clipboard">
 		    		</button>
 				</div>
@@ -147,5 +147,29 @@
 	clipboard.on('error', function(e) {
 	    console.log(e);
 	});</script>
+
+	<!-- GOOGLE ANALYTICS for squadfeeder-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-87206604-1', 'auto');
+	  ga('send', 'pageview', 'button');
+
+	</script>
+
+	<!-- GOOGLE ANALYTICS for hcibuild -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-87217404-1', 'auto');
+	  ga('send', 'pageview', 'button');
+
+	</script>
 </body>
 </html>
