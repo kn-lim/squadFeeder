@@ -25,7 +25,7 @@ function initializePage() {
 
 	// submit for moving
 	$(".btn-submit").click(function(e) {
-		//socket.emit("allready");
+		socket.emit("allready");
 	});
 }
 
@@ -41,7 +41,9 @@ function changeName() {
 	});
 }
 //update lists with new groups
-function updateGroup(resobj=0) {
+function updateGroup(resobj) {
+	resobj = resobj || 0;
+
 	//write entire group in (for no args)
 	$(".list-group").empty();
 
