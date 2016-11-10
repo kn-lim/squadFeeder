@@ -25,34 +25,31 @@ function yelpSearch() {
             var token_type = response.token_type;
 
             console.log("Yelp - Beginning Search", response);
-            console.log("Yelp - Searching Restuarant 1", response);
+            /*
+             * term = food: Only searches up restaurants
+             * limit = 5: Returns 5 businesses
+             * categories = food_category_1,food_category_2, food_category_3: Searches restaurants that falls under those 3 Categories
+             * latitude, longitude: Location of where user is
+             * sort_by = rating: Sorts results by ratings
+             * price = price: Filters results by $
+             * open_now = true: Only returns results that are currently open
+             */
             $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
+                    + "&latitude=" + latitude + "&longitude=" + longitude + "&sort_by=" + rating + "&price=" + price + "&open_now=true",
                 data: {key: "Authorization", value: token_type + " " + token}
-            })
-
-            console.log("Yelp - Searching Restuarant 2", response);
-            $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
-                data: {key: "Authorization", value: token_type + " " + token}
-            })
-
-            console.log("Yelp - Searching Restuarant 3", response);
-            $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
-                data: {key: "Authorization", value: token_type + " " + token}
-            })
-
-            console.log("Yelp - Searching Restuarant 4", response);
-            $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
-                data: {key: "Authorization", value: token_type + " " + token}
-            })
-
-            console.log("Yelp - Searching Restuarant 5", response);
-            $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
-                data: {key: "Authorization", value: token_type + " " + token}
+            },
+            function(result) {
+                console.log("Yelp - Results Found", result);
+                // Set variables found from JSON result
+                /*
+                 * url
+                 * categories -> title
+                 * coordinates -> longitude, latitude
+                 * location -> location": country, address3, zip_code, city, address2, state, address1
+                 * image_url
+                 * name
+                 */
             })
         });
 };
