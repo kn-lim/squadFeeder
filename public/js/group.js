@@ -13,22 +13,33 @@ function initializePage() {
 
 	// name change form listener
 	$("#btn-namechange").click(function(e) {
-		var name = $("#input-namechange").val();
-		window.localStorage.setItem("username", name);
-		$.get("/changename/" + group + "/" + id + "/" + name, function(res) {
-			window.setTimeout(function() {
-				updateGroup(res);
-			}, 1000);
-			socket.emit("namechange");
-		});
+		changeName();
+	});
+
+	// namechange on enter keypress
+	$("#input-namechange").on("keypress", function(e) {
+		if (e.which == 13) {
+			changeName();
+		}
 	});
 
 	// submit for moving
 	$(".btn-submit").click(function(e) {
-		socket.emit("allready");
+		//socket.emit("allready");
 	});
 }
 
+
+function changeName() {
+	var name = $("#input-namechange").val();
+	window.localStorage.setItem("username", name);
+	$.get("/changename/" + group + "/" + id + "/" + name, function(res) {
+		window.setTimeout(function() {
+			updateGroup(res);
+		}, 1000);
+		socket.emit("namechange");
+	});
+}
 //update lists with new groups
 function updateGroup(resobj=0) {
 	//write entire group in (for no args)
@@ -42,11 +53,6 @@ function updateGroup(resobj=0) {
 	} else {
 		updateGroupWrite(resobj);
 	}
-
-	//repair parent (for mobile)
-	$(".list-group").hide();
-	$('.list-group').get(0).offsetHeight;
-	$('.list-group').show();
 }
 
 function updateGroupWrite(res) {
@@ -55,7 +61,6 @@ function updateGroupWrite(res) {
 		if (res.members[i].id == id) {
 			$(".list-group").append('<li class="list-group-item">' + "<b>" + res.members[i].name + " (You) " + "</b>" + 
 				"<a href='javascript:;' data-toggle='modal' data-target='#modal-namechange'>(Change Name)</a>" + 
-				// "<button type='button' class='btn btn-primary btn-color'>Change Name</button>" +
 				'</li>');
 		} else if (res.members[i].connected) {
 			$(".list-group").append('<li class="list-group-item">' + res.members[i].name + '</li>');

@@ -15,7 +15,7 @@
 	<!-- SOCKET IO /EARLY SCRIPTS -->
 	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
 	<script>var group = "{{name}}"</script>
-	<script src="/js/init.js"></script>
+	<!-- <script src="/js/initsocket.js"></script> -->
 </head>
 
 <body class="gradient-bg">
@@ -56,7 +56,7 @@
 
 		<!-- PROGRESSBAR -->
 		<div class="row progress-bg">
-    		<div class="progress-bar progress-bar-custom" role="progressbar" style="width: 33%;">
+    		<div class="progressbar" role="progressbar" style="width: 50%;">
 			</div>
 		</div>
 		
@@ -111,7 +111,7 @@
 				<form>
 					<div class="form-group">
 				    	<label for="input-namechange">Change Name</label>
-				    	<input type="email" class="form-control" id="input-namechange" placeholder="Enter name">
+				    	<input type="text" class="form-control" id="input-namechange" placeholder="Enter name">
 				    	<small id="namehelp" class="form-text text-muted">Choose an unique one!</small>
 				  	</div>
 				</form>
