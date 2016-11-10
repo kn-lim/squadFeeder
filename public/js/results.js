@@ -13,7 +13,8 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
-function yelpSearch() {
+/* Grab access token and token type from Yelp */
+function yelp_init() {
     $.post("https://api.yelp.com/oauth2/token", {
         client_id: "XSB11XkGiPzzB6Oq3rJ77A",
         client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
@@ -23,36 +24,39 @@ function yelpSearch() {
             console.log("Yelp Authorization Successful ", response);
             var token = response.access_token;
             var token_type = response.token_type;
-
-            console.log("Yelp - Beginning Search", response);
-            /*
-             * term = food: Only searches up restaurants
-             * limit = 5: Returns 5 businesses
-             * categories = food_category_1,food_category_2, food_category_3: Searches restaurants that falls under those 3 Categories
-             * latitude, longitude: Location of where user is
-             * sort_by = rating: Sorts results by ratings
-             * price = price: Filters results by $
-             * open_now = true: Only returns results that are currently open
-             */
-            $.ajax({
-                url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
-                    + "&latitude=" + latitude + "&longitude=" + longitude + "&sort_by=" + rating + "&price=" + price + "&open_now=true",
-                data: {key: "Authorization", value: token_type + " " + token}
-            },
-            function(result) {
-                console.log("Yelp - Results Found", result);
-                // Set variables found from JSON result
-                /*
-                 * url
-                 * categories -> title
-                 * coordinates -> longitude, latitude
-                 * location -> location": country, address3, zip_code, city, address2, state, address1
-                 * image_url
-                 * name
-                 */
-            })
         });
 };
+
+/* searches Yelp to find businesses */
+function yelp_search(var price, var token, var token_type) {
+    console.log("Yelp - Beginning Search");
+    /*
+     * term = food: Only searches up restaurants
+     * limit = 5: Returns 5 businesses
+     * categories = food_category_1,food_category_2, food_category_3: Searches restaurants that falls under those 3 Categories
+     * latitude, longitude: Location of where user is
+     * sort_by = rating: Sorts results by ratings
+     * price = price: Filters results by $
+     * open_now = true: Only returns results that are currently open
+     */
+    $.ajax({
+        url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
+            + "&latitude=" + latitude + "&longitude=" + longitude + "&sort_by=" + rating + "&price=" + price + "&open_now=true",
+        data: {key: "Authorization", value: token_type + " " + token}
+    },
+    function(result) {
+        console.log("Yelp - Results Found", result);
+        // Set variables found from JSON result
+        /*
+         * url
+         * categories -> title
+         * coordinates -> longitude, latitude
+         * location -> location": country, address3, zip_code, city, address2, state, address1
+         * image_url
+         * name
+         */
+    })
+}
 
 jQuery(function($) {
     // Asynchronously Load the map API
