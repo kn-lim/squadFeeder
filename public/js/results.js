@@ -13,7 +13,7 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
-/*function yelpSearch() {
+function yelpSearch() {
     $.post("https://api.yelp.com/oauth2/token", {
         client_id: "XSB11XkGiPzzB6Oq3rJ77A",
         client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
@@ -24,12 +24,38 @@ function initializePage() {
             var token = response.access_token;
             var token_type = response.token_type;
 
+            console.log("Yelp - Beginning Search", response);
+            console.log("Yelp - Searching Restuarant 1", response);
+            $.ajax({
+                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                data: {key: "Authorization", value: token_type + " " + token}
+            })
+
+            console.log("Yelp - Searching Restuarant 2", response);
+            $.ajax({
+                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                data: {key: "Authorization", value: token_type + " " + token}
+            })
+
+            console.log("Yelp - Searching Restuarant 3", response);
+            $.ajax({
+                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                data: {key: "Authorization", value: token_type + " " + token}
+            })
+
+            console.log("Yelp - Searching Restuarant 4", response);
+            $.ajax({
+                url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
+                data: {key: "Authorization", value: token_type + " " + token}
+            })
+
+            console.log("Yelp - Searching Restuarant 5", response);
             $.ajax({
                 url: "https://api.yelp.com/v3/businesses/search?term=" + food_category + "&latitude=" + latitude + "&longitude=" + longitude,
                 data: {key: "Authorization", value: token_type + " " + token}
             })
         });
-};*/
+};
 
 jQuery(function($) {
     // Asynchronously Load the map API
