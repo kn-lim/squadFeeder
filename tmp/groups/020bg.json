@@ -1,0 +1,60 @@
+{
+  "id": "./groups/020bg",
+  "name": "020bg",
+  "open": 0,
+  "url": "squadfeeder.herokuapp.com/020bg",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "Anonymous Beaver",
+      "leader": 1,
+      "connected": 1,
+      "status": "1",
+      "choices": {
+        "cuisine": [
+          "burmese",
+          "greek",
+          "hotdog",
+          "irish",
+          "pizza",
+          "seafood",
+          "vegan"
+        ],
+        "price": "4"
+      }
+    },
+    {
+      "id": "3DPeCaP6oU",
+      "name": "Anonymous Bison",
+      "leader": 0,
+      "connected": 0,
+      "status": "1",
+      "choices": {
+        "cuisine": [
+          "cajun",
+          "chinese",
+          "german",
+          "japanese",
+          "mongolian"
+        ],
+        "price": "2"
+      }
+    },
+    {
+      "id": "JVslLAoAVs",
+      "name": "Anonymous Skunk",
+      "leader": 0,
+      "connected": 0,
+      "status": "1",
+      "choices": {
+        "cuisine": [
+          "ethiopian",
+          "greek",
+          "kosher",
+          "mideastern"
+        ],
+        "price": "2"
+      }
+    }
+  ]
+}

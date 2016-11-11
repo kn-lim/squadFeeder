@@ -73,8 +73,8 @@ io.on('connection', function(socket) {
 		io.in(idgroup[1]).emit('update');
 
 		socket.on("disconnect", function(socket) {
-			io.in(idgroup[1]).emit("update");
 			group.userLeave(idgroup[0], idgroup[1]);
+			io.in(idgroup[1]).emit("update");
 		});
 
 		socket.on("infochange", function(socket) {

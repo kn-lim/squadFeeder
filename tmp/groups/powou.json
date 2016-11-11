@@ -1,0 +1,38 @@
+{
+  "id": "./groups/powou",
+  "name": "powou",
+  "open": 0,
+  "url": "squadfeeder.herokuapp.com/powou",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "Anonymous Boar",
+      "leader": 1,
+      "connected": 0,
+      "status": "1",
+      "choices": {
+        "price": "1"
+      }
+    },
+    {
+      "id": "3DPeCaP6oU",
+      "name": "Anonymous Crocodile",
+      "leader": 0,
+      "connected": 0,
+      "status": "1",
+      "choices": {
+        "price": "1"
+      }
+    },
+    {
+      "id": "JVslLAoAVs",
+      "name": "Anonymous Mandrill",
+      "leader": 0,
+      "connected": 0,
+      "status": "1",
+      "choices": {
+        "price": "1"
+      }
+    }
+  ]
+}
