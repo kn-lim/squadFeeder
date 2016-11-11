@@ -26,8 +26,8 @@ function initialize() {
 
     console.log("Yelp - Finding User Location");
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition({
-            //console.log("Yelp - Found User Location");
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Yelp - Found User Location");
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -35,9 +35,9 @@ function initialize() {
         });
     } else {
         /* Set default position as UCSD */
-        //console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
+        console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
         var pos = {
-            lat: 32.8800604
+            lat: 32.8800604,
             lng: -117.2362022
         };
     }
@@ -51,24 +51,24 @@ function initialize() {
      * price = price: Filters results by $
      * open_now = true: Only returns results that are currently open
      */
-    $.ajax({
-        url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
-            + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
-        data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
-        },
-        function(result) {
-            console.log("Yelp - Results Found", result);
-            // Set variables found from JSON result
-            /*
-             * url
-             * categories -> title
-             * coordinates -> longitude, latitude
-             * location -> location": country, address3, zip_code, city, address2, state, address1
-             * image_url
-             * name
-             */
-        }
-    )
+    // $.ajax({
+    //     url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
+    //         + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
+    //     data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
+    //     },
+    //     function(result) {
+    //         console.log("Yelp - Results Found", result);
+    //         // Set variables found from JSON result
+    //         /*
+    //          * url
+    //          * categories -> title
+    //          * coordinates -> longitude, latitude
+    //          * location -> location": country, address3, zip_code, city, address2, state, address1
+    //          * image_url
+    //          * name
+    //          */
+    //     }
+    // )
 
     /* show google maps*/
     var map;
@@ -131,7 +131,7 @@ function initialize() {
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            //console.log("Google Maps - Found User Location");
+            console.log("Google Maps - Found User Location")
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
