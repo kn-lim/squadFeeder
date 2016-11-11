@@ -121,6 +121,7 @@ function initialize() {
 
 /* Grab access token and token type from Yelp */
 function yelp_init() {
+    console.log("Yelp - Starting Authorization");
     $.post("https://api.yelp.com/oauth2/token", {
         client_id: "XSB11XkGiPzzB6Oq3rJ77A",
         client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
