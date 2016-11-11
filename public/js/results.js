@@ -53,6 +53,8 @@ function initialize() {
     var token_type = "Bearer";
 
     /* show google maps*/
+    var markers = [];
+    var infoWindowContent = [];
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
@@ -96,8 +98,6 @@ function initialize() {
              */
 
             $(".list-group").empty();
-            var markers = [];
-            var infoWindowContent = [];
 
             for(i = 0; i < 5; i++) {
                 var res_url = businesses[i].url;
