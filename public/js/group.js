@@ -36,9 +36,6 @@ function changeName() {
 function updateGroup(resobj) {
 	resobj = resobj || 0;
 
-	//write entire group in (for no args)
-	$(".list-group").empty();
-
 	//write members in if no args
 	if (!resobj) {
 		$.get("/getgroup/" + group, function(res) {
@@ -51,6 +48,7 @@ function updateGroup(resobj) {
 
 //method for writing users
 function updateGroupWrite(res) {
+	$(".list-group").empty();
 	for (var i in res.members) {
 		//show all online members
 		var listitem = "";

@@ -71,11 +71,7 @@ exports.checkID = function(id, group) {
 				"leader": leader,
 				"connected": 1,
 				"status": 0,
-				"choices": {
-					"cuisine": [],
-					"price": 0,
-					"distance": 0
-				}
+				"choices": 0
 			});
 		}
 
@@ -92,19 +88,17 @@ exports.userLeave = function(id, group) {
 	store.load("/groups/" + group, function(err, obj) {
 		if (err) throw err;
 
-		if (obj.open == 1) {
-			//search for item
-			for (var i = 0; i < obj.members.length; i++) {
-				if (obj.members[i].id == id) {
-					obj.members[i].connected = 0;
-				}
+		//search for item
+		for (var i = 0; i < obj.members.length; i++) {
+			if (obj.members[i].id == id) {
+				obj.members[i].connected = 0;
 			}
-
-			//write new group
-			store.add(obj, function(err) {
-				if (err) throw err;
-			});
 		}
+
+		//write new group
+		store.add(obj, function(err) {
+			if (err) throw err;
+		});
 	});
 }
 

@@ -26,8 +26,10 @@ exports.view = function(req, res) {
 
 					if (userInGroup) {
 						console.log("Group Loaded: " + groupid);
-						//combine json into one
-						res.render('selection', Object.assign(obj, data));
+						//combine json into one and delay writing
+						setTimeout((function() {
+							res.render('selection', Object.assign(obj, data));
+						}), 1000);
 					} else {
 						res.render('error', {"errmsg":"You are not in this group."});
 					}
@@ -85,3 +87,27 @@ exports.allSubmitted = function(req, res) {
 		res.send(allSubmitted);
 	});
 };
+
+//gets post request data and writes it to file
+exports.collectData = function(req, res) {
+	var group = req.params.groupid;
+	var id = req.params.id;
+	console.log(req.body);
+
+	//get data and write to user
+	store.load("/groups/" + group, function(err, obj) {
+		if (err) throw err;
+
+		for (var i=0; i < obj.members.length; i++) {
+			if (obj.members[i].id == id) {
+				//overwrite data
+				obj.members[i].choices = req.body;
+				store.add(obj, function(err) {
+					if (err) throw err;
+					res.send("post successful!");
+				})
+				break;
+			}
+		}
+	});
+}

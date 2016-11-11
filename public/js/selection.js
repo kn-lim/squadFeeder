@@ -3,7 +3,7 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	console.log("Page initialized!");
-	
+
 	//check status done or not (if so, open modal and wait)
 	$.get("/getgroup/" + group, function(res) {
 		//search for id
@@ -16,6 +16,8 @@ $(document).ready(function() {
 
 	//on button submit change status to 1
 	$(".btn-submit").click(function(e) {
+
+		//change status to 1
 		$.get("/changestatus/" + group + "/" + id + "/1", function(res) {
 			window.setTimeout(function() {
 				updateGroup(res);
@@ -32,6 +34,11 @@ $(document).ready(function() {
 				})
 			}, 1000);
 		});
+
+		//submit data
+		window.setTimeout(function() {
+			collectData();
+		}, 2000);
 	});
 
 	//on modal close
@@ -49,9 +56,6 @@ $(document).ready(function() {
 function updateGroup(resobj) {
 	resobj = resobj || 0;
 
-	//write entire group in (for no args)
-	$(".list-group").empty();
-
 	//write members in if no args
 	if (!resobj) {
 		$.get("/getgroup/" + group, function(res) {
@@ -64,6 +68,7 @@ function updateGroup(resobj) {
 
 //method for writing users
 function updateGroupWrite(res) {
+	$(".list-group").empty();
 	for (var i in res.members) {
 		//show all online members
 		var listitem = "";
@@ -89,4 +94,32 @@ function updateGroupWrite(res) {
 			$(".list-group").append(listitem);
 		}
 	}	
+}
+
+//collect all the data inputted
+function collectData() {
+	//collect checkbox data
+	var cuisine = [];
+	$("input[type=checkbox]").each(function() {
+		if (this.checked) {
+			cuisine.push($(this).val());
+		}
+	});
+
+	//create object to send
+	var choices = {
+		"cuisine": cuisine,
+		"price": $("#select-price").val()
+	}
+
+	//send data
+	$.ajax({
+		url: "/senddata/" + group + "/" + id,
+		type: "POST",
+		dataType: "json",
+		data: choices,
+		success: function(res) {
+			console.log("request successful!");
+		}
+	});
 }

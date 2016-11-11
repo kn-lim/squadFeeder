@@ -27,11 +27,10 @@ function initSocketIO() {
 	});
 
 	socket.on('allready', function() {
-		window.setTimeout(function() {
-			window.location.replace("/" + group + "/selection/" + id);	
-		}, 1000);
+		window.location.replace("/" + group + "/selection/" + id);
 	});
-	
+
+	//when everyone has submitted
 	socket.on('allsubmitted', function() {
 		window.setTimeout(function() {
 			window.location.href = "/" + group + "/results";

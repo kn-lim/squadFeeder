@@ -32,7 +32,7 @@ $(document).ready(function() {
 		window.setTimeout(function() {
 			$("#modal-progress").modal("hide");
 			window.location.href = "/" + url;
-		}, 5000);
+		}, 3000);
 	});
 })
 
