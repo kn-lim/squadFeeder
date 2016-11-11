@@ -66,27 +66,31 @@ function yelpSearch(searchurl) {
 function writeResults(res) {
     $(".list-group").empty();
     for(var i = 0; i < res.businesses.length; i++) {
+        var res = res.businesses[i].name;
         var res_url = res.businesses[i].url;
+        var res_image_url = res.businesses[i].image_url;
         var res_lng = res.businesses[i].coordinates.longitude;
         var res_lat = res.businesses[i].coordinates.latitude;
+        var res_loc_address1 = res.business[i].location.address1;
+        // // var res_loc_address2 = res.businesses[i].location.address2;
         var res_loc_country = res.businesses[i].location.county;
         var res_loc_zip_code = res.businesses[i].location.zip_code;
         var res_loc_city = res.businesses[i].location.city;
-        var res_loc_address2 = res.businesses[i].location.address2;
         var res_loc_state = res.businesses[i].location.state;
-        var res_loc_address1 = res.business[i].location.address1;
-        var res_image_url = res.businesses[i].image_url;
-        var res_name = res.businesses[i].name;
 
         var listitem = "";
 
-        listitem += '<div class="row"> <img src="' + res_image_url + '">' + 
-            "<a href='" + res_url + "'>" + "<p>" + res_name + "</p></a>" +
-            "<a href='https://www.google.com/maps/@" + res_lat + "," + res_lng +
-            "'><p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a></div></li>";
-
-        listitem = '<li class="list-group-item">' + listitem;
-        $(".list-group").append(listitem);
+        listitem += '<div class="results-item">' + 
+                        '<div class="results-img">' +
+                            '<img src="' + res_image_url + '">' + 
+                        '</div>' +
+                        '<div class="results-text>' +
+                            "<p>" + "<a href='" + res_url + "'>" + res_name + "</a></p>" +
+                            "<p>" + "<a href='https://www.google.com/maps/@" + res_lat + "," + res_lng + "'>" +
+                            res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
+                        "</div>" + 
+                    "</div>";
+        $(".results-container").append(listitem);
 
         // Multiple Markers
         // markers[i] = [];

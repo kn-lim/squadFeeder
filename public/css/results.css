@@ -15,10 +15,24 @@ h4 {
     height: 100%;
 }
 
-.results {
-    font-weight: bold;
+.results-container {
+    display: flex;
+    flex-direction: column;
 }
 
-.results span {
-    opacity: 0.5;
+.results-item {
+    display: flex;
+}
+
+.results-img {
+    flex: 1;
+}
+
+.results-img img {
+    height: 100px;
+    width: 100px;
+}
+
+.results-text {
+    flex: auto;
 }
