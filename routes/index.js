@@ -15,7 +15,7 @@ exports.createGroup = function(req, res) {
 		"id": "./groups/" + groupid,
 		"name": groupid,
 		"open": 1,
-		"url": "squadfeeder.herokuapp.com/" + groupid,
+		"url": "https://squadfeeder.herokuapp.com/" + groupid,
 		"members": [
 		]
 	}
