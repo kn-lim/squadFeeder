@@ -26,8 +26,13 @@ exports.view = function(req, res) {
 
 					if (userInGroup) {
 						console.log("Group Loaded: " + groupid);
-						//combine json into one and delay writing
-						res.render('selection', Object.assign(obj, data));
+
+						//combine json into one
+						for (var key in data) {
+							obj[key] = data[key];
+						}
+
+						res.render('selection', obj);
 					} else {
 						res.render('error', {"errmsg":"You are not in this group."});
 					}

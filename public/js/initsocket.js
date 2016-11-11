@@ -27,7 +27,9 @@ function initSocketIO() {
 	});
 
 	socket.on('allready', function() {
-		window.location.replace("/" + group + "/selection/" + id);
+		window.setTimeout(function() {
+			window.location.replace("/" + group + "/selection/" + id);
+		}, 1000);
 	});
 
 	//when everyone has submitted

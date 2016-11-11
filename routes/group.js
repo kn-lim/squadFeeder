@@ -86,19 +86,21 @@ exports.checkID = function(id, group) {
 exports.userLeave = function(id, group) {
 	//load group obj
 	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
-
-		//search for item
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				obj.members[i].connected = 0;
-			}
-		}
-
-		//write new group
-		store.add(obj, function(err) {
+		if (obj.open == 1) {
 			if (err) throw err;
-		});
+
+			//search for item
+			for (var i = 0; i < obj.members.length; i++) {
+				if (obj.members[i].id == id) {
+					obj.members[i].connected = 0;
+				}
+			}
+
+			//write new group
+			store.add(obj, function(err) {
+				if (err) throw err;
+			});
+		}
 	});
 }
 
