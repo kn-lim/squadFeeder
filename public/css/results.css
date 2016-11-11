@@ -20,10 +20,6 @@ h4 {
     font-weight: bold;
 }
 
-.results span {
-    color: #636363;
-}
-
 /* RESULTS LIST */
 .results-container {
     display: flex;

@@ -25,10 +25,11 @@ var bounds;
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
     var topthree = [];
-    $(".category").each(function() {
+    $(".results span").each(function() {
         topthree.push($(this).text());
     });
 
+    console.log(topthree);
     var url = "https://api.yelp.com/v3/businesses/search?term=food";
 
     //categories
@@ -54,6 +55,7 @@ $(document).ready(function() {
     //location
     url += "&latitude=32.8800604&longitude=-117.2362022";
 
+    console.log(url);
     if (!nocategories) {
         yelpSearch(url);
     }
