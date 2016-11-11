@@ -52,6 +52,20 @@ function initialize() {
     var token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
     var token_type = "Bearer";
 
+    /* show google maps*/
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+    var def_zoom = {
+        zoom: 7
+    };
+
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
+    map.setTilt(45);
+
     /*
      * term = restaurants: Only searches up restaurants
      * limit = 5: Returns 5 businesses
@@ -81,7 +95,7 @@ function initialize() {
              * name
              */
 
-            &(".list-group").empty();
+            $(".list-group").empty();
             for(i = 0; i < 5; i++) {
                 var res_url = businesses[i].url;
                 var res_lng = businesses[i].coordinates.longitude;
@@ -100,27 +114,13 @@ function initialize() {
                 listitem += "<div class=row><img src=\"" + res_image_url + "\"alt=" + res_name + "\">"
                     "<a href=\"" + res_url + "\">" + "<p>" + res_name + "</p></a>" +
                     "<b href=\"https://www.google.com/maps/@" + res_lat + "," + res_lng +
-                    "\"<p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></b></li>"
+                    "\"<p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></b></li>i ca"
 
                 listitem = '<li class="list-group-item">' + listitem;
                 $(".list-group").append(listitem);
             }
         }
     });
-
-    /* show google maps*/
-    var map;
-    var bounds = new google.maps.LatLngBounds();
-    var mapOptions = {
-        mapTypeId: 'roadmap'
-    };
-    var def_zoom = {
-        zoom: 7
-    };
-
-    // Display a map on the page
-    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
-    map.setTilt(45);
 
     // Multiple Markers
     var markers = [
