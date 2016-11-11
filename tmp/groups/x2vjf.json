@@ -1,0 +1,15 @@
+{
+  "id": "./groups/x2vjf",
+  "name": "x2vjf",
+  "url": "squadfeeder.herokuapp.com/x2vjf",
+  "members": [
+    {
+      "id": "Nj2RKSt5AD",
+      "name": "Anonymous Muskrat",
+      "leader": 1,
+      "connected": 1,
+      "status": 0,
+      "choices": []
+    }
+  ]
+}
