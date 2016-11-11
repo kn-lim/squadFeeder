@@ -34,13 +34,11 @@ a:hover {
 
 /* CHOOSING/DONE TAGS (in jquery)*/
 .tag-choosing {
-	background-color: #DE7684;
+	color: #DE7684;
+	font-weight: bold;
 }
 
 .tag-done {
-	background-color: #70AE5D;
-}
-
-.list-user {
+	color: #70AE5D;
 	font-weight: bold;
 }

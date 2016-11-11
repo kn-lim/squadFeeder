@@ -2,81 +2,91 @@
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	initializePage();
-});
-
-/*
- * Function that is called when the document is ready.
- */
-function initializePage() {
 	console.log("Page initialized!");
-
-	//pass no parameters for initialization
-	updateGroup(0);
+	
+	//check status done or not (if so, open modal and wait)
+	$.get("/getgroup/" + group, function(res) {
+		//search for id
+		for (var i in res.members) {
+			if (res.members[i].id == id && res.members[i].status == 1) {
+				$("#confirmModal").modal("show");
+			}
+		}
+	});
 
 	//on button submit change status to 1
 	$(".btn-submit").click(function(e) {
-		$.get("/selection/status/1", function(res) {
-			updateGroup(res);
-		});
-	});
+		$.get("/changestatus/" + group + "/" + id + "/1", function(res) {
+			window.setTimeout(function() {
+				updateGroup(res);
+				socket.emit("infochange");
 
-	//on button success
-	$("#btn-success").click(function(e) {
-		$.get("/selection/status/0", function(res) {
-			updateGroup(res);
+				//on status change, check if all status complete
+				$.get("/allSubmitted/" + group, function(res) {
+					if (res) {
+						console.log("all submitted!");
+						socket.emit("allsubmitted");
+					} else {
+						console.log("not all submitted");
+					}
+				})
+			}, 1000);
 		});
 	});
 
 	//on modal close
-	$(".modal").on("hide.bs.modal", function(e) {
-		$.get("/selection/status/0", function(res) {
-			updateGroup(res);
+	$("#confirmModal").on("hide.bs.modal", function(e) {
+		$.get("/changestatus/" + group + "/" + id + "/0", function(res) {
+			window.setTimeout(function() {
+				updateGroup(res);
+				socket.emit("infochange");	
+			}, 1000);
 		});
 	});
-}
+});
 
 //update lists with new groups
-function updateGroup(res) {
-	console.log("updateGroup called " + (res));
+function updateGroup(resobj) {
+	resobj = resobj || 0;
 
 	//write entire group in (for no args)
-	if (res == 0) {
-		console.log("first write");
-		$(".list-group").empty();
-		$.get("/selection/user", function(res) {
-			//sort tag
-			if (res.status == 1) {
-				var tag = '<span class="tag tag-default tag-done float-xs-right">Done!</span>';
-			} else {
-				var tag = '<span class="tag tag-default tag-choosing float-xs-right">Choosing</span>';
-			}
-			//append
-			$(".list-group").append('<li class="list-group-item list-user">' + res.name + tag + '</li>');
-		});
+	$(".list-group").empty();
 
-		//write members in
-		$.get("/selection/group", function(res) {
-			for (var i in res) {
-				//sort tag
-				if (res[i].status) {
-					var tag = '<span class="tag tag-default tag-done float-xs-right">Done!</span>';
-				} else {
-					var tag = '<span class="tag tag-default tag-choosing float-xs-right">Choosing</span>';
-				}
-
-				$(".list-group").append('<li class="list-group-item">' + res[i].name + tag + '</li>');
-			}
+	//write members in if no args
+	if (!resobj) {
+		$.get("/getgroup/" + group, function(res) {
+			updateGroupWrite(res);
 		});
 	} else {
-		//overwrite user element
-		console.log("overwriting user");
-		console.log(res.status);
-		if (res.status == 1) {
-				var tag = '<span class="tag tag-default tag-done float-xs-right">Done!</span>';
-			} else {
-				var tag = '<span class="tag tag-default tag-choosing float-xs-right">Choosing</span>';
-			}
-		$(".list-user").html(res.name + tag);
+		updateGroupWrite(resobj);
 	}
+}
+
+//method for writing users
+function updateGroupWrite(res) {
+	for (var i in res.members) {
+		//show all online members
+		var listitem = "";
+
+		//status tag
+		if (res.members[i].connected) {
+			if (res.members[i].status == 1) {
+				var tag = '<span class="tag-done text-xs-right"> (Done!)</span>';
+			} else {
+				var tag = '<span class="tag-choosing text-xs-right"> (Choosing...)</span>';
+			}
+		}
+
+		if (res.members[i].id == id) {
+			//check if user
+			listitem += "<b>" + res.members[i].name + " (You)" + "</b>" + tag + '</li>';
+			listitem = '<li class="list-group-item">' + listitem;
+			$(".list-group").append(listitem);
+		} else if (res.members[i].connected) {
+			//check other users connected
+			listitem += res.members[i].name + tag + '</li>';			
+			listitem = '<li class="list-group-item">' + listitem;
+			$(".list-group").append(listitem);
+		}
+	}	
 }

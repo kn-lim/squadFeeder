@@ -40,17 +40,15 @@ if ('development' == app.get('env')) {
 // main route for page nav
 app.get('/', index.view);
 app.get('/:groupid', group.view);
-app.get('/:groupid/selection', selection.view);
+app.get('/:groupid/selection/:id', selection.view);
 app.get('/:groupid/results', results.view);
 
 // routes for data logic
 app.get('/creategroup/:groupid', index.createGroup);
 app.get('/getgroup/:groupid', group.getGroup);
 app.get('/changename/:groupid/:id/:name', group.changeName);
-
-app.get('/selection/status/:id', selection.changeStatus);
-app.get('/selection/group', selection.getGroup);
-app.get('/selection/user', selection.getUser);
+app.get('/changestatus/:groupid/:id/:status', selection.changeStatus);
+app.get('/allsubmitted/:groupid', selection.allSubmitted);
 
 //start server
 var server = http.createServer(app).listen(app.get('port'), function(){
@@ -62,7 +60,7 @@ var io = socketio.listen(server);
 
 // SOCKET LISTENERS
 io.on('connection', function(socket) {
-	console.log("SOCKETIO: " + socket.id + "connected");
+	console.log("SOCKETIO: " + socket.id + " connected");
 
 	//socket group listener and check user id exists
 	socket.on("group", function(idgroup) {
@@ -76,12 +74,17 @@ io.on('connection', function(socket) {
 			group.userLeave(idgroup[0], idgroup[1]);
 		});
 
-		socket.on("namechange", function(socket) {
+		socket.on("infochange", function(socket) {
 			io.in(idgroup[1]).emit("update");
 		});
 
 		socket.on("allready", function(socket) {
+			group.closeGroup(idgroup[1]);
 			io.in(idgroup[1]).emit("allready");
+		});
+
+		socket.on("allsubmitted", function(socket) {
+			io.in(idgroup[1]).emit("allsubmitted");
 		})
 	});
 });

@@ -1,24 +1,4 @@
 {
-	"user": {
-		"name": "You",
-		"status": 0
-	},
-
-	"group": [
-		{
-			"name": "Arlen Pan",
-			"status": 0
-		},
-		{
-			"name": "Kevin Lim",
-			"status": 0
-		},
-		{
-			"name": "Nicholas Pung",
-			"status": 1
-		}
-	],
-
 	"select-cuisine": [
 		"African",
 		"American",
@@ -97,9 +77,5 @@
 		"Biking (2 miles)",
 		"Driving (5 miles)",
 		"Bird's-Eye View"
-	],
-
-	"randomurl": [
-		"http://squadfeeder.herokuapp.com/instanceURL"
-	]	
+	]
 }

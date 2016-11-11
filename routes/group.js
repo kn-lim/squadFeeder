@@ -8,21 +8,26 @@ exports.view = function(req, res) {
 
 	// check master if group exists
 	store.load("/master", function(err, obj) {
-		exists = false;
+		groupExists = false;
 		for (var i = 0; i < obj.groups.length; i++) {
 			//if name is in master, load
 			if (obj.groups[i] == groupid) {	
-				exists = true;	
+				groupExists = true;	
 				store.load("/groups/" + groupid, function(err, obj) {
-					console.log("Group Loaded: " + groupid)
-					res.render('group', obj);
+					//check if group is open
+					if (obj.open == 1) {
+						console.log("Group Loaded: " + groupid)
+						res.render('group', obj);
+					} else {
+						res.render('error', {"errmsg":"Your group is closed!"});
+					}
 				});
 				break;
 			}
 		}
 
-		if (!exists) {
-			res.render('error');
+		if (!groupExists) {
+			res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
 		}
 	});
 };
@@ -31,9 +36,7 @@ exports.view = function(req, res) {
 exports.getGroup = function(req, res) {
 	var groupid = req.params.groupid;
 	store.load("/groups/" + groupid, function(err, obj) {
-		if (err) console.log("NO SUCH FILE!");
-		console.log("GET GROUP:");
-		console.log(obj);
+		if (err) throw err;
 		res.json(obj);
 	});
 }
@@ -68,7 +71,11 @@ exports.checkID = function(id, group) {
 				"leader": leader,
 				"connected": 1,
 				"status": 0,
-				"choices": []
+				"choices": {
+					"cuisine": [],
+					"price": 0,
+					"distance": 0
+				}
 			});
 		}
 
@@ -85,24 +92,26 @@ exports.userLeave = function(id, group) {
 	store.load("/groups/" + group, function(err, obj) {
 		if (err) throw err;
 
-		//search for item
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				obj.members[i].connected = 0;
+		if (obj.open == 1) {
+			//search for item
+			for (var i = 0; i < obj.members.length; i++) {
+				if (obj.members[i].id == id) {
+					obj.members[i].connected = 0;
+				}
 			}
-		}
 
-		//write new group
-		store.add(obj, function(err) {
-			if (err) throw err;
-		});
+			//write new group
+			store.add(obj, function(err) {
+				if (err) throw err;
+			});
+		}
 	});
 }
 
 exports.changeName = function(req, res) {
+	var group = req.params.groupid;
 	var id = req.params.id;
 	var name = req.params.name;
-	var group = req.params.groupid;
 	console.log("change name on id " + id + " with name " + name);
 	store.load("/groups/" + group, function(err, obj) {
 		if (err) throw err;
@@ -115,10 +124,23 @@ exports.changeName = function(req, res) {
 		}
 
 		//store and return obj
-		console.log(obj);
 		store.add(obj, function(err) {
 			if (err) throw err;
 			res.json(obj);
 		})
 	})
+}
+
+exports.closeGroup = function(group) {
+	console.log("Closing group " + group);
+	store.load("/groups/" + group, function(err, obj) {
+		if (err) throw err;
+
+		obj.open = 0;
+
+		//write new group
+		store.add(obj, function(err) {
+			if (err) throw err;
+		});
+	});
 }

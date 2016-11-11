@@ -2,7 +2,6 @@
 if (!window.localStorage.getItem("userid")) {
 	var id = generateNewID();
 	window.localStorage.setItem("userid", id);
-	window.localStorage.setItem("username", "User");
 } else {
 	//user id found, get and check with group logs
 	var id = window.localStorage.getItem("userid");
@@ -29,7 +28,13 @@ function initSocketIO() {
 
 	socket.on('allready', function() {
 		window.setTimeout(function() {
-			window.location.href = "/" + group + "/selection";
+			window.location.replace("/" + group + "/selection/" + id);	
+		}, 1000);
+	});
+	
+	socket.on('allsubmitted', function() {
+		window.setTimeout(function() {
+			window.location.href = "/" + group + "/results";
 		}, 1000);
 	});
 }

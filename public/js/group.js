@@ -2,13 +2,6 @@
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	initializePage();
-})
-
-/*
- * Function that is called when the document is ready.
- */
-function initializePage() {
 	console.log("Page initialized!");
 
 	// name change form listener
@@ -26,17 +19,16 @@ function initializePage() {
 	window.setTimeout(function() {
 		leaderCheck();
 	}, 1000);	
-}
+})
 
 //change name write
 function changeName() {
 	var name = $("#input-namechange").val();
-	window.localStorage.setItem("username", name);
 	$.get("/changename/" + group + "/" + id + "/" + name, function(res) {
 		window.setTimeout(function() {
 			updateGroup(res);
+			socket.emit("infochange");
 		}, 1000);
-		socket.emit("namechange");
 	});
 }
 
@@ -99,7 +91,7 @@ function leaderCheck() {
 
 		console.log("isleader" + isLeader);
 		if (isLeader) {
-			$(".div-button").html('<button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Is Everyone Ready?</button>');
+			$(".div-button").html('<button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color">Everyone Ready? Click Here</button>');
 
 			// submit listener for moving group
 			$(".btn-submit").click(function(e) {
