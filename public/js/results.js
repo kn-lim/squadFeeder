@@ -1,7 +1,6 @@
 'use strict';
 
-// var yelp, Yelp;
-// Yelp = require('yelp');
+var yelp, Yelp;
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
@@ -25,19 +24,27 @@ jQuery(function($) {
 });
 
 function initialize() {
-    // console.log("Yelp - Finding User Location");
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log("Yelp - Found User Location");
-    //         var pos = {
-    //             lat: position.coords.latitude,
-    //             lng: position.coords.longitude
-    //         };
-    //     });
-    // } else {
-    //     /* Set default position as UCSD */
-    //
-    // }
+    console.log("Yelp - Finding User Location");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Yelp - Found User Location");
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        });
+    } else {
+        /* Set default position as UCSD */
+        console.log("Cannot find user location. Setting location to UCSD");
+        var pos = {
+            lat: 32.8800604,
+            lng: -117.2362022
+        };
+    }
+
+    /* Authorization Tokens for Yelp */
+    var token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
+    var token_type = "Bearer";
 
     /*
      * term = restaurants: Only searches up restaurants
@@ -48,25 +55,25 @@ function initialize() {
      * price = price: Filters results by $
      * open_now = true: Only returns results that are currently open
      */
-    // console.log("Yelp - Beginning Search");
-    // $.ajax({
-    //     url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
-    //         + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
-    //     data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
-    //     },
-    //     function(result) {
-    //         console.log("Yelp - Results Found", result);
-    //         // Set variables found from JSON result
-    //         /*
-    //          * url
-    //          * categories -> title
-    //          * coordinates -> longitude, latitude
-    //          * location -> location": country, address3, zip_code, city, address2, state, address1
-    //          * image_url
-    //          * name
-    //          */
-    //     }
-    // )
+    console.log("Yelp - Beginning Search");
+    $.ajax({
+        // url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
+        //     + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
+        // data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
+        // },
+        function(result) {
+            console.log("Yelp - Results Found", result);
+            // Set variables found from JSON result
+            /*
+             * url
+             * categories -> title
+             * coordinates -> longitude, latitude
+             * location -> country, address3, zip_code, city, address2, state, address1
+             * image_url
+             * name
+             */
+        }
+    });
 
     /* show google maps*/
     var map;
@@ -157,11 +164,6 @@ function initialize() {
 
     } else {
         // Browser doesn't support Geolocation
-        console.log("Cannot find User Location - Setting Location to UCSD");
-        var pos = {
-            lat: 32.8800604,
-            lng: -117.2362022
-        };
         handleLocationError(false, infoWindow, map.getCenter());
     }
 
@@ -173,7 +175,8 @@ function initialize() {
 
     // Request API access: http://www.yelp.com/developers/getting_started/api_access
 
-
+    // Yelp = require('yelp');
+    //
     // yelp = new Yelp({
     //     consumer_key: 'qYUWnP08Pf_KtJrIKt_Bzw',
     //     consumer_secret: 'AJ5LUL9w78Oc7bZaS2Ti3ri1Lqk',
@@ -181,7 +184,7 @@ function initialize() {
     //     token_secret: 'gQi4BGWZLKbeYy4WWloG8qNYcaQ',
     // });
     //
-    // console.log("Yelp Authorization");
+    // console.log("Yelp Authorized");
 }
 
 // /* Grab access token and token type from Yelp */
