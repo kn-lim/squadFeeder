@@ -87,7 +87,7 @@ function writeResults(res) {
                         '<div class="results-img">' +
                             '<img src="' + res_image_url + '">' + 
                         '</div>' +
-                        '<div class="results-text>' +
+                        '<div class="results-text">' +
                             "<p>" + "<a href='" + res_url + "'>" + res_name + "</a></p>" +
                             "<p>" + "<a href='https://www.google.com/maps/@" + res_lat + "," + res_lng + "'>" +
                             res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
