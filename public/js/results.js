@@ -27,7 +27,7 @@ function initialize() {
     console.log("Yelp - Finding User Location");
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition({
-            console.log("Yelp - Found User Location");
+            //console.log("Yelp - Found User Location");
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -35,7 +35,7 @@ function initialize() {
         });
     } else {
         /* Set default position as UCSD */
-        console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
+        //console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
         var pos = {
             lat: 32.8800604
             lng: -117.2362022
@@ -131,7 +131,7 @@ function initialize() {
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Google Maps - Found User Location");
+            //console.log("Google Maps - Found User Location");
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
