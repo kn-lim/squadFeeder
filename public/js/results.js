@@ -93,7 +93,7 @@ function writeResults(res) {
                         '<div class="results-text">' +
                             "<p><span>" + "<a href='" + res_url + "'>" + res_name + "</a></span></p>" +
                             "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" + 
-                            mapaddress + "+" + mapcity + "+" + res_loc_state + "+" res_loc_zip_code + "'>" +
+                            mapaddress + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
                             res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
                         "</div>" + 
                     "</div>";
