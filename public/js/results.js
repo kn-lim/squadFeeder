@@ -24,7 +24,7 @@ var bounds;
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-    topthree = [];
+    var topthree = [];
     $(".category").each(function() {
         topthree.push($(this).text());
     });
@@ -53,7 +53,7 @@ $(document).ready(function() {
 
     //location
     url += "&latitude=32.8800604&longitude=-117.2362022";
-    
+
     if (!nocategories) {
         yelpSearch(url);
     }
