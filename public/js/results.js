@@ -76,6 +76,22 @@ function initialize() {
     var token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
     var token_type = "Bearer";
 
+    /* show google maps*/
+    var markers = [];
+    var infoWindowContent = [];
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+    var def_zoom = {
+        zoom: 7
+    };
+
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions, def_zoom);
+    map.setTilt(45);
+
     /*
      * term = restaurants: Only searches up restaurants
      * limit = 5: Returns 5 businesses
@@ -106,7 +122,8 @@ function initialize() {
              */
 
             $(".list-group").empty();
-            for (i = 0; i < 5; i++) {
+
+            for(i = 0; i < 5; i++) {
                 var res_url = businesses[i].url;
                 var res_lng = businesses[i].coordinates.longitude;
                 var res_lat = businesses[i].coordinates.latitude;
@@ -124,10 +141,35 @@ function initialize() {
                 listitem += "<div class=row><img src=\"" + res_image_url + "\"alt=" + res_name + "\">"
                     "<a href=\"" + res_url + "\">" + "<p>" + res_name + "</p></a>" +
                     "<b href=\"https://www.google.com/maps/@" + res_lat + "," + res_lng +
-                    "\"<p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></b></li>"
+                    "\"<p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></b></li>i ca"
 
                 listitem = '<li class="list-group-item">' + listitem;
                 $(".list-group").append(listitem);
+
+                // Multiple Markers
+                // var markers = [
+                //     //['current location', pos.lat, pos.lng],
+                //     ['manna BBQ', 32.827480, -117.157500],
+                //     ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
+                //     ['Min Sok Chon', 32.8258868,-117.1580301],
+                //     ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
+                //     ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
+                // ];
+                markers[i] = [];
+                markers[i][0] = res_name;
+                markers[i][1] = rec_lat;
+                markers[i][2] = rec_lng;
+
+                // // Info Window Content
+                // var infoWindowContent = [
+                //     ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
+                // ];
+                infoWindowContent[i] = [];
+                infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
             }
         }
     });
