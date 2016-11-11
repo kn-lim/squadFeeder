@@ -1,27 +1,51 @@
 'use strict';
-
-var yelp, Yelp;
+var access_token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	initializePage();
-    //yelp_init();
-})
+    // yelpInit();
 
-/*
- * Function that is called when the document is ready.
- */
-function initializePage() {
-	console.log("Page initialized!");
-	// add any functionality and listeners you want here
-}
-
-jQuery(function($) {
-    // Asynchronously Load the map API
-    var script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk";
-    document.body.appendChild(script);
+    var url = "https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972";
+    yelpSearch(url);
 });
+
+/* Grab access token and token type from Yelp */
+function yelpInit() {
+    console.log("Yelp - Starting Authorization");
+    $.ajax({
+        url: "https://api.yelp.com/oauth2/token",
+        method: "POST",
+        dataType: "json",
+        data: {
+            client_id: "XSB11XkGiPzzB6Oq3rJ77A",
+            client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
+            grant_type: "client_credentials"
+        }
+    }).done(function(res) {
+        console.log("Yelp Authorization Successful", res);
+    });
+};
+
+function yelpSearch(searchurl) {
+    $.ajax({
+        url: searchurl,
+        method: "GET",
+        dataType: "json",
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+        },
+        success: function(res) {
+            console.log("Yelp Search Successful", res);
+        }
+    });
+};
+
+// jQuery(function($) {
+//     // Asynchronously Load the map API
+//     var script = document.createElement('script');
+//     script.src = "https://maps.googleapis.com/maps/api/js?callback=initialize&key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk";
+//     document.body.appendChild(script);
+// });
 
 function initialize() {
     // console.log("Yelp - Finding User Location");
@@ -81,8 +105,8 @@ function initialize() {
              * name
              */
 
-            &(".list-group").empty();
-            for(i = 0; i < 5; i++) {
+            $(".list-group").empty();
+            for (i = 0; i < 5; i++) {
                 var res_url = businesses[i].url;
                 var res_lng = businesses[i].coordinates.longitude;
                 var res_lat = businesses[i].coordinates.latitude;
@@ -108,7 +132,7 @@ function initialize() {
         }
     });
 
-    /* show google maps*/
+     // show google maps
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
@@ -219,23 +243,3 @@ function initialize() {
     //
     // console.log("Yelp Authorized");
 }
-
-// /* Grab access token and token type from Yelp */
-// function yelp_init() {
-//     console.log("Yelp - Starting Authorization");
-//     $.ajax({
-//         url: "https://api.yelp.com/oauth2/token",
-//         type: "POST",
-//         dataType: "jsonp",
-//         data: {
-//             client_id: "XSB11XkGiPzzB6Oq3rJ77A",
-//             client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
-//             grant_type: "client_credentials"
-//         }},
-//         function(response) {
-//             console.log("Yelp Authorization Successful ", response);
-//
-//             window.localStorage.setItem("token", response.access_token);
-//             window.localStorage.setItem("token_type", response.token_type);
-//         });
-// };

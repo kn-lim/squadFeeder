@@ -113,13 +113,5 @@ function collectData() {
 	}
 
 	//send data
-	$.ajax({
-		url: "/senddata/" + group + "/" + id,
-		type: "POST",
-		dataType: "json",
-		data: choices,
-		success: function(res) {
-			console.log("request successful!");
-		}
-	});
+	$.post("/senddata/" + group + "/" + id, choices);
 }

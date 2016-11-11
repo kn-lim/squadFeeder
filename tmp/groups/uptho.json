@@ -1,0 +1,25 @@
+{
+  "id": "./groups/uptho",
+  "name": "uptho",
+  "open": 0,
+  "url": "squadfeeder.herokuapp.com/uptho",
+  "members": [
+    {
+      "id": "3kutYVpVJb",
+      "name": "Anonymous Goat",
+      "leader": 1,
+      "connected": 1,
+      "status": "0",
+      "choices": {
+        "cuisine": [
+          "breakfast_brunch",
+          "hotdog",
+          "italian",
+          "latin",
+          "sushi"
+        ],
+        "price": "3"
+      }
+    }
+  ]
+}
