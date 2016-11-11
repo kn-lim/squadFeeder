@@ -65,19 +65,20 @@ function yelpSearch(searchurl) {
 
 function writeResults(res) {
     $(".list-group").empty();
-    for(var i = 0; i < res.businesses.length; i++) {
-        console.log(res.businesses[i]);
-        var res = res.businesses[i].name;
-        var res_url = res.businesses[i].url;
-        var res_image_url = res.businesses[i].image_url;
-        var res_lng = res.businesses[i].coordinates.longitude;
-        var res_lat = res.businesses[i].coordinates.latitude;
-        var res_loc_address1 = res.business[i].location.address1;
+    var loc = res["businesses"];
+    for(var i = 0; i < loc.length; i++) {
+        console.log(loc[i]);
+        var res = loc[i].name;
+        var res_url = loc[i].url;
+        var res_image_url = loc[i].image_url;
+        var res_lng = loc[i].coordinates.longitude;
+        var res_lat = loc[i].coordinates.latitude;
+        var res_loc_address1 = loc[i].location.address1;
         // // var res_loc_address2 = res.businesses[i].location.address2;
-        var res_loc_country = res.businesses[i].location.county;
-        var res_loc_zip_code = res.businesses[i].location.zip_code;
-        var res_loc_city = res.businesses[i].location.city;
-        var res_loc_state = res.businesses[i].location.state;
+        var res_loc_country = loc[i].location.county;
+        var res_loc_zip_code = loc[i].location.zip_code;
+        var res_loc_city = loc[i].location.city;
+        var res_loc_state = loc[i].location.state;
 
         var listitem = "";
 
