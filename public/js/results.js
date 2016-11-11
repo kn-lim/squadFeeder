@@ -29,7 +29,6 @@ $(document).ready(function() {
         topthree.push($(this).text());
     });
 
-    console.log(topthree);
     var url = "https://api.yelp.com/v3/businesses/search?term=food";
 
     //categories
@@ -103,6 +102,7 @@ function writeResults(res) {
         var res = loc[i].name;
         var res_name = loc[i].name;
         var res_url = loc[i].url;
+        var res_rating = loc[i].rating;
         var res_image_url = loc[i].image_url;
         var res_lng = loc[i].coordinates.longitude;
         var res_lat = loc[i].coordinates.latitude;
@@ -112,18 +112,27 @@ function writeResults(res) {
         var res_loc_zip_code = loc[i].location.zip_code;
         var res_loc_city = loc[i].location.city;
         var res_loc_state = loc[i].location.state;
-
-        var listitem = "";
-
         var mapaddress = res_loc_address1.replace(/ /g,"+");
         var mapcity = res_loc_city.replace(/ /g,"+");
+    
+        var listitem = "";
+
+        //appending rating string
+        var ratingstring = " (";
+        for (var i=0; i < res_rating; i++) {
+            ratingstring += "&#9733";
+        }
+        if (res_rating % 1 > 0) {
+            ratingstring += "&#189"
+        }
+        ratingstring += ")"
 
         listitem += '<div class="results-item">' + 
                         '<div class="results-img">' +
                             '<img src="' + res_image_url + '">' + 
                         '</div>' +
                         '<div class="results-text">' +
-                            "<p><span>" + "<a href='" + res_url + "'>" + res_name + "</a></span></p>" +
+                            "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
                             "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" + 
                             mapaddress + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
                             res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
