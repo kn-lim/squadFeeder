@@ -15,6 +15,16 @@ h4 {
     height: 100%;
 }
 
+/* RESULTS BAR */
+.results {
+    font-weight: bold;
+}
+
+.results span {
+    color: #636363;
+}
+
+/* RESULTS LIST */
 .results-container {
     display: flex;
     flex-direction: column;

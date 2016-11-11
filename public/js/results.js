@@ -66,6 +66,7 @@ function yelpSearch(searchurl) {
 function writeResults(res) {
     $(".list-group").empty();
     for(var i = 0; i < res.businesses.length; i++) {
+        console.log(res.businesses[i]);
         var res = res.businesses[i].name;
         var res_url = res.businesses[i].url;
         var res_image_url = res.businesses[i].image_url;
