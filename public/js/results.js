@@ -24,23 +24,29 @@ jQuery(function($) {
 });
 
 function initialize() {
-    console.log("Yelp - Finding User Location");
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Yelp - Found User Location");
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
-    } else {
-        /* Set default position as UCSD */
-        console.log("Cannot find user location. Setting location to UCSD");
-        var pos = {
-            lat: 32.8800604,
-            lng: -117.2362022
-        };
-    }
+    // console.log("Yelp - Finding User Location");
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log("Yelp - Found User Location");
+    //         var pos = {
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //         };
+    //     });
+    // } else {
+    //     /* Set default position as UCSD */
+    //     console.log("Cannot find user location. Setting location to UCSD");
+    //     var pos = {
+    //         lat: 32.8800604,
+    //         lng: -117.2362022
+    //     };
+    // }
+
+    console.log("Setting location to UCSD");
+    var pos = {
+        lat: 32.8800604,
+        lng: -117.2362022
+    };
 
     /* Authorization Tokens for Yelp */
     var token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
@@ -59,11 +65,13 @@ function initialize() {
     $.ajax({
         // url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
         //     + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
-        // data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
-        // },
-        function(result) {
-            console.log("Yelp - Results Found", result);
-            // Set variables found from JSON result
+        url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5" + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=rating" + "&open_now=true",
+        type: "GET",
+        dataType: "json",
+        headers: {"key": "Authorization", "value": window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)},
+        success: function(res) {
+            console.log("Yelp - Results Found");
+
             /*
              * url
              * categories -> title
@@ -72,6 +80,31 @@ function initialize() {
              * image_url
              * name
              */
+
+            &(".list-group").empty();
+            for(i = 0; i < 5; i++) {
+                var res_url = businesses[i].url;
+                var res_lng = businesses[i].coordinates.longitude;
+                var res_lat = businesses[i].coordinates.latitude;
+                var res_loc_country = businesses[i].location.county;
+                var res_loc_zip_code = businesses[i].location.zip_code;
+                var res_loc_city = businesses[i].location.city;
+                var res_loc_address2 = businesses[i].location.address2;
+                var res_loc_state = businesses[i].location.state;
+                var res_loc_address1 = business[i].location.address1;
+                var res_image_url = businesses[i].image_url;
+                var res_name = businesses[i].name;
+
+                var listitem = "";
+
+                listitem += "<div class=row><img src=\"" + res_image_url + "\"alt=" + res_name + "\">"
+                    "<a href=\"" + res_url + "\">" + "<p>" + res_name + "</p></a>" +
+                    "<b href=\"https://www.google.com/maps/@" + res_lat + "," + res_lng +
+                    "\"<p>" + res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></b></li>"
+
+                listitem = '<li class="list-group-item">' + listitem;
+                $(".list-group").append(listitem);
+            }
         }
     });
 

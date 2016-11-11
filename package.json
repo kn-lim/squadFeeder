@@ -15,8 +15,7 @@
     "body-parser": "^1.15.2",
     "express": "3.x",
     "express3-handlebars": "*",
-    "socket.io": "^1.5.1",
-    "yelp": "^1.0.1"
+    "socket.io": "^1.5.1"
   },
   "engines": {
     "node": "0.10.x"
