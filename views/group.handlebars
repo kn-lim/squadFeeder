@@ -15,7 +15,7 @@
 	<!-- SOCKET IO /EARLY SCRIPTS -->
 	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
 	<script>var group = "{{name}}"</script>
-	<script src="/js/initsocket.js"></script>
+	<script src="/js/initsocket-group.js"></script>
 </head>
 
 <body class="gradient-bg">
@@ -41,8 +41,6 @@
 	</script>
 
 	
-	<div class="container spacer">
-	</div>
 	<div class="container spacer">
 	</div>
 	<div class="container main-container">
@@ -83,7 +81,7 @@
 		<!-- FACEBOOK BUTTON -->
 		<div class="row">
 			<div class="col-sm-12">
-				<!-- <div class="fb-send" data-href={{url}}></div> -->
+				<div class="fb-send" data-href={{url}}></div>
 			</div>
 		</div>
 
@@ -111,23 +109,23 @@
 
 	<!-- NAME CHANGE MODAL -->
 	<div class="modal fade" id="modal-namechange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-body">
-				<form>
-					<div class="form-group">
-				    	<label for="input-namechange">Change Name</label>
-				    	<input type="text" class="form-control" id="input-namechange" placeholder="Enter name">
-				    	<small id="namehelp" class="form-text text-muted">Choose an unique one!</small>
-				  	</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button id="btn-namechange" type="button" class="btn btn-primary btn-color" data-dismiss="modal">Change Name</button>
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+					    	<label for="input-namechange">Change Name</label>
+					    	<input type="text" class="form-control" id="input-namechange" placeholder="Enter name">
+					    	<small id="namehelp" class="form-text text-muted">Choose an unique one!</small>
+					  	</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button id="btn-namechange" type="button" class="btn btn-primary btn-color" data-dismiss="modal">Change Name</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- SCRIPTS -->
 	<script src="/js/jquery-3.1.1.min.js"></script>
@@ -138,15 +136,16 @@
 
 	<!-- SCRIPT FOR COPY TO CLIPBOARD -->
 	<script>
-	var clipboard = new Clipboard('.btn');
+		var clipboard = new Clipboard('.btn');
 
-	clipboard.on('success', function(e) {
-	    console.log(e);
-	});
+		clipboard.on('success', function(e) {
+		    console.log(e);
+		});
 
-	clipboard.on('error', function(e) {
-	    console.log(e);
-	});</script>
+		clipboard.on('error', function(e) {
+		    console.log(e);
+		});
+	</script>
 
 	<!-- GOOGLE ANALYTICS for squadfeeder-->
 	<script>
@@ -157,7 +156,6 @@
 
 	  ga('create', 'UA-87206604-1', 'auto');
 	  ga('send', 'pageview');
-
 	</script>
 
 	<!-- GOOGLE ANALYTICS for hcibuild -->
