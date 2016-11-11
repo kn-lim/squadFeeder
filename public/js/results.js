@@ -69,6 +69,7 @@ function writeResults(res) {
     for(var i = 0; i < loc.length; i++) {
         console.log(loc[i]);
         var res = loc[i].name;
+        var res_name = loc[i].name;
         var res_url = loc[i].url;
         var res_image_url = loc[i].image_url;
         var res_lng = loc[i].coordinates.longitude;
@@ -183,7 +184,7 @@ function initialize() {
             map.fitBounds(bounds);
 
         }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
+            handleLocationError(true, infoWindow, map.getCenter());
         });
     } else {
         // Browser doesn't support Geolocation
