@@ -131,6 +131,7 @@ function initialize() {
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Google Maps - Found User Location");
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
