@@ -41,15 +41,12 @@
             <h3>Here are your group's top 3 preferences:</h3>
         </div>
         <div class="row results">
+        	{{#each list}}
             <div class="col-sm-4 text-xs-center">
-                <!-- <p>Korean: <span>3 votes</span></p> -->
+                {{this.name}}
+                <p>{{this.val}}</p>
             </div>
-            <div class="col-sm-4 text-xs-center">
-                <!-- <p>Asian: <span>2 votes</span></p> -->
-            </div>
-            <div class="col-sm-4 text-xs-center">
-                <!-- <p>Sushi: <span>2 votes</span></p> -->
-            </div>
+            {{/each}}
         </div>
         <!-- SHOWS RESULTS -->
         <div class="row">
@@ -74,7 +71,7 @@
 	<div class="container spacer"></div>
 
     <!-- GOOGLE MAP API SCRIPT -->
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk&callback=initMap" type="text/javascript"></script> -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABZaEhz5AnijS8IZ8mYWYq-tQJ1dMTNxk&callback=initialize" type="text/javascript"></script>
 
 	<!-- SCRIPTS -->
 	<script src="/js/jquery-3.1.1.min.js"></script>
