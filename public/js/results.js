@@ -1,9 +1,12 @@
 'use strict';
 
+// var yelp, Yelp;
+// Yelp = require('yelp');
+
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
-    yelp_init();
+    //yelp_init();
 })
 
 /*
@@ -22,25 +25,19 @@ jQuery(function($) {
 });
 
 function initialize() {
-    console.log("Yelp - Beginning Search");
-
-    console.log("Yelp - Finding User Location");
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Yelp - Found User Location");
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
-    } else {
-        /* Set default position as UCSD */
-        console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
-        var pos = {
-            lat: 32.8800604,
-            lng: -117.2362022
-        };
-    }
+    // console.log("Yelp - Finding User Location");
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log("Yelp - Found User Location");
+    //         var pos = {
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //         };
+    //     });
+    // } else {
+    //     /* Set default position as UCSD */
+    //
+    // }
 
     /*
      * term = restaurants: Only searches up restaurants
@@ -51,6 +48,7 @@ function initialize() {
      * price = price: Filters results by $
      * open_now = true: Only returns results that are currently open
      */
+    // console.log("Yelp - Beginning Search");
     // $.ajax({
     //     url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
     //         + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
@@ -159,6 +157,11 @@ function initialize() {
 
     } else {
         // Browser doesn't support Geolocation
+        console.log("Cannot find User Location - Setting Location to UCSD");
+        var pos = {
+            lat: 32.8800604,
+            lng: -117.2362022
+        };
         handleLocationError(false, infoWindow, map.getCenter());
     }
 
@@ -167,20 +170,36 @@ function initialize() {
     //     this.setZoom(13);
     //     google.maps.event.removeListener(boundsListener);
     // });
+
+    // Request API access: http://www.yelp.com/developers/getting_started/api_access
+
+
+    // yelp = new Yelp({
+    //     consumer_key: 'qYUWnP08Pf_KtJrIKt_Bzw',
+    //     consumer_secret: 'AJ5LUL9w78Oc7bZaS2Ti3ri1Lqk',
+    //     token: 'PiaLHdYCp4-8Dwb1WO0o78EuBvW9p3m9',
+    //     token_secret: 'gQi4BGWZLKbeYy4WWloG8qNYcaQ',
+    // });
+    //
+    // console.log("Yelp Authorization");
 }
 
-/* Grab access token and token type from Yelp */
-function yelp_init() {
-    console.log("Yelp - Starting Authorization");
-    $.post("https://api.yelp.com/oauth2/token", {
-        client_id: "XSB11XkGiPzzB6Oq3rJ77A",
-        client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
-        grant_type: "client_credentials"
-        },
-        function(response) {
-            console.log("Yelp Authorization Successful ", response);
-
-            window.localStorage.setItem("token", response.access_token);
-            window.localStorage.setItem("token_type", response.token_type);
-        });
-};
+// /* Grab access token and token type from Yelp */
+// function yelp_init() {
+//     console.log("Yelp - Starting Authorization");
+//     $.ajax({
+//         url: "https://api.yelp.com/oauth2/token",
+//         type: "POST",
+//         dataType: "jsonp",
+//         data: {
+//             client_id: "XSB11XkGiPzzB6Oq3rJ77A",
+//             client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
+//             grant_type: "client_credentials"
+//         }},
+//         function(response) {
+//             console.log("Yelp Authorization Successful ", response);
+//
+//             window.localStorage.setItem("token", response.access_token);
+//             window.localStorage.setItem("token_type", response.token_type);
+//         });
+// };
