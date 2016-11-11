@@ -119,7 +119,7 @@ function writeResults(res) {
 
         //appending rating string
         var ratingstring = " (";
-        for (var i=0; i < res_rating; i++) {
+        for (var j=0; j < res_rating; j++) {
             ratingstring += "&#9733";
         }
         if (res_rating % 1 > 0) {
