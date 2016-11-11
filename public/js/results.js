@@ -27,17 +27,15 @@ function yelpInit() {
 };
 
 function yelpSearch(searchurl) {
-    $.ajax({
+    $.jsonp({
         url: "https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972",
-        method: "GET",
-        dataType: "jsonp",
-        headers: {
-            'Authorization' : 'Bearer 9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx'
-        },
+        // method: "GET",
+        corsSupport: true,
+        jsonpSupport: true,
         crossDomain: true,
-        // beforeSend: function(xhr) {
-        //     xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
-        // },
+        beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
+        },
         success: function(res) {
             console.log("Yelp Search Successful", res);
         }
