@@ -13,6 +13,10 @@ Created by: Zi Pan, Kevin Lim, Nicholas Pung
 [Tether](http://tether.io/)
   
 [clipboard.js](https://clipboardjs.com/)
+
+[URL.js](https://medialize.github.io/URI.js/)
+
+[JSONProxy](https://jsonp.afeld.me/) a lifesaver!
   
 [fs-json-store](https://github.com/alexkwolfe/json-fs-store)
   
