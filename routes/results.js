@@ -41,7 +41,7 @@ function calculateData(data) {
 	topthree = {"list":[]};
 	for (var i=0; i < 3; i++) {
 
-		highestval = {"name": "<blank>", "val": 0};
+		highestval = {"name": "no category", "val": 0};
 		for (key in cuisinecount) {
 			if (cuisinecount[key] > highestval.val) {
 				highestval.name = key;

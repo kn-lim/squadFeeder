@@ -24,9 +24,39 @@ var bounds;
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-    var url = "https://api.yelp.com/v3/businesses/search?term=delis&latitude=37.786882&longitude=-122.399972";
-    yelpSearch(url);
+    topthree = [];
+    $(".category").each(function() {
+        topthree.push($(this).text());
+    });
 
+    var url = "https://api.yelp.com/v3/businesses/search?term=food";
+
+    //categories
+    var nocategories = false;
+    if (topthree[2] == "no category") {
+        if (topthree[1] == "no category") {
+            if (topthree[0] == "nocategory") {
+                //no categories
+                nocategories = true;
+            } else {      
+                //1 category
+                url += "&categories=" + topthree[0];
+            }
+        } else {
+            //2 categories
+            url += "&categories=" + topthree[0] + "," + topthree[1];
+        }
+    } else {
+        //3 categories
+        url += "&categories=" + topthree[0] + "," + topthree[1] + "," + topthree[2];
+    }
+
+    //location
+    url += "&latitude=32.8800604&longitude=-117.2362022";
+    
+    if (!nocategories) {
+        yelpSearch(url);
+    }
 });
 
 /* Grab access token and token type from Yelp */
@@ -112,28 +142,11 @@ function writeResults(res) {
 }
 
 function initialize() {
-    // console.log("Yelp - Finding User Location");
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log("Yelp - Found User Location");
-    //         var pos = {
-    //             lat: position.coords.latitude,
-    //             lng: position.coords.longitude
-    //         };
-    //     });
-    // } else {
-    //     /* Set default position as UCSD */
-    //     console.log("Cannot find user location. Setting location to UCSD");
-    //     var pos = {
-    //         lat: 32.8800604,
-    //         lng: -117.2362022
-    //     };
-    // }
 
     console.log("Setting location to UCSD");
     var pos = {
-        lat: 32.8800604,
-        lng: -117.2362022
+        lng: 32.8800604,
+        lat: -117.2362022
     };
 
     // Display a map on the page
