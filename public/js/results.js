@@ -96,6 +96,9 @@ function initialize() {
              */
 
             $(".list-group").empty();
+            var markers = [];
+            var infoWindowContent = [];
+
             for(i = 0; i < 5; i++) {
                 var res_url = businesses[i].url;
                 var res_lng = businesses[i].coordinates.longitude;
@@ -118,28 +121,34 @@ function initialize() {
 
                 listitem = '<li class="list-group-item">' + listitem;
                 $(".list-group").append(listitem);
+
+                // Multiple Markers
+                // var markers = [
+                //     //['current location', pos.lat, pos.lng],
+                //     ['manna BBQ', 32.827480, -117.157500],
+                //     ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
+                //     ['Min Sok Chon', 32.8258868,-117.1580301],
+                //     ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
+                //     ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
+                // ];
+                markers[i] = [];
+                markers[i][0] = res_name;
+                markers[i][1] = rec_lat;
+                markers[i][2] = rec_lng;
+
+                // // Info Window Content
+                // var infoWindowContent = [
+                //     ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
+                //     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
+                // ];
+                infoWindowContent[i] = [];
+                infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
             }
         }
     });
-
-    // Multiple Markers
-    var markers = [
-        //['current location', pos.lat, pos.lng],
-        ['manna BBQ', 32.827480, -117.157500],
-        ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
-        ['Min Sok Chon', 32.8258868,-117.1580301],
-        ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
-        ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
-    ];
-
-    // Info Window Content
-    var infoWindowContent = [
-        ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
-        ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
-        ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
-        ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
-        ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
-    ];
 
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;
