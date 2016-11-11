@@ -36,15 +36,22 @@ h4 {
 }
 
 .results-img {
-    flex: 1;
     width: 75px;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: right;
 }
 
 .results-img img {
+    border-radius: 5px;
     height: 75px;
-    width: 75px;
 }
 
 .results-text {
-    flex: auto;
+    padding-left: 10px;
+    background-color: white;
+}
+
+.results-text span {
+    font-weight: bold;
 }

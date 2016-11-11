@@ -83,13 +83,17 @@ function writeResults(res) {
 
         var listitem = "";
 
+        var mapaddress = res_loc_address1.replace(/ /g,"+");
+        var mapcity = res_loc_city.replace(/ /g,"+");
+
         listitem += '<div class="results-item">' + 
                         '<div class="results-img">' +
                             '<img src="' + res_image_url + '">' + 
                         '</div>' +
                         '<div class="results-text">' +
-                            "<p>" + "<a href='" + res_url + "'>" + res_name + "</a></p>" +
-                            "<p>" + "<a href='https://www.google.com/maps/@" + res_lat + "," + res_lng + "'>" +
+                            "<p><span>" + "<a href='" + res_url + "'>" + res_name + "</a></span></p>" +
+                            "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" + 
+                            mapaddress + "+" + mapcity + "+" + res_loc_state + "+" res_loc_zip_code + "'>" +
                             res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
                         "</div>" + 
                     "</div>";
