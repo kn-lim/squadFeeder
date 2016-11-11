@@ -22,6 +22,55 @@ jQuery(function($) {
 });
 
 function initialize() {
+    console.log("Yelp - Beginning Search");
+
+    console.log("Yelp - Finding User Location");
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition({
+            console.log("Yelp - Found User Location");
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        });
+    } else {
+        /* Set default position as UCSD */
+        console.log("Yelp - Cannot find User Location - Setting Location to UCSD");
+        var pos = {
+            lat: 32.8800604
+            lng: -117.2362022
+        };
+    }
+
+    /*
+     * term = restaurants: Only searches up restaurants
+     * limit = 5: Returns 5 businesses
+     * categories = food_category_1,food_category_2, food_category_3: Searches restaurants that falls under those 3 Categories
+     * latitude, longitude: Location of where user is
+     * sort_by = rating: Sorts results by ratings
+     * price = price: Filters results by $
+     * open_now = true: Only returns results that are currently open
+     */
+    $.ajax({
+        url: "https://api.yelp.com/v3/businesses/search?term=restaurants&limit=5&categories=" + food_category_1 + "," +  food_category_2 + "," + food_category_3 + ","
+            + "&latitude=" + pos.lat + "&longitude=" + pos.lng + "&sort_by=" + rating + "&open_now=true",
+        data: {key: "Authorization", value: window.localStorage.getItem(token_type) + " " + window.localStorage.getItem(token)}
+        },
+        function(result) {
+            console.log("Yelp - Results Found", result);
+            // Set variables found from JSON result
+            /*
+             * url
+             * categories -> title
+             * coordinates -> longitude, latitude
+             * location -> location": country, address3, zip_code, city, address2, state, address1
+             * image_url
+             * name
+             */
+        }
+    )
+
+    /* show google maps*/
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
