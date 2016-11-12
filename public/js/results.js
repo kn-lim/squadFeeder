@@ -32,7 +32,7 @@ $(document).ready(function() {
         topthree.push($(this).text());
     });
 
-    var url = "https://api.yelp.com/v3/businesses/search?term=food";
+    var url = "https://api.yelp.com/v3/businesses/search?term=food&limit=5";
 
     //categories
     var nocategories = false;
