@@ -142,6 +142,7 @@ function writeResults(res) {
                         "</div>" +
                     "</div>";
         $(".results-container").append(listitem);
+        console.log("Appended");
 
         // Multiple Markers
         // markers[i] = [];
@@ -162,6 +163,8 @@ function writeResults(res) {
         // Info Window Content
         infoWindowContent[i].push([]);
         infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
+
+        console.log("Added to Marker and infoWindowContent array");
     }
 };
 
