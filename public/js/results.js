@@ -160,7 +160,7 @@ function write_results(res) {
             rating_string += "&#189";
         }
 
-        rating_string += ")":
+        rating_string += ")";
 
         list_item += '<div class="results-item">' +
                         '<div class="results-img">' +
