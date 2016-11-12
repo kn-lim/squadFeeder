@@ -65,8 +65,6 @@ $(document).ready(function() {
     if (!nocategories) {
         yelpSearch(url);
     }
-
-    map_init();
 });
 
 function createArray(length) {
@@ -186,7 +184,7 @@ function writeResults(res) {
     }
 };
 
-function map_init() {
+function initialize() {
     console.log("Setting location to UCSD");
     var pos = {
         lng: 32.8800604,
@@ -197,30 +195,30 @@ function map_init() {
     bounds = new google.maps.LatLngBounds()
     map = new google.maps.Map(document.getElementById("map_canvas"));
 
-    // Display multiple markers on a map
-    var infoWindow = new google.maps.InfoWindow(), marker, i;
-
-    // Loop through our array of markers &  place each one on the map
-    for( i = 0; i < 5; i++ ) {
-        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-        bounds.extend(position);
-        marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            title: markers[i][0]
-        });
-
-        // Allow each marker to have an info window
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infoWindow.setContent(infoWindowContent[i][0]);
-                infoWindow.open(map, marker);
-            }
-        })(marker, i));
-
-        // Automatically center the map fitting all markers on the screen
-        map.fitBounds(bounds);
-    }
+    // // Display multiple markers on a map
+    // var infoWindow = new google.maps.InfoWindow(), marker, i;
+    //
+    // // Loop through our array of markers &  place each one on the map
+    // for( i = 0; i < 5; i++ ) {
+    //     var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+    //     bounds.extend(position);
+    //     marker = new google.maps.Marker({
+    //         position: position,
+    //         map: map,
+    //         title: markers[i][0]
+    //     });
+    // 
+    //     // Allow each marker to have an info window
+    //     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    //         return function() {
+    //             infoWindow.setContent(infoWindowContent[i][0]);
+    //             infoWindow.open(map, marker);
+    //         }
+    //     })(marker, i));
+    //
+    //     // Automatically center the map fitting all markers on the screen
+    //     map.fitBounds(bounds);
+    // }
 
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
