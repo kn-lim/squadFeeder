@@ -16,9 +16,9 @@ var pos;
 
 /* Call this function when the page loads (The "READY event") */
 $(document).ready(function() {
-    var topthree = []; // Variable used to store top 3 food categories users picked
+    var top_three = []; // Variable used to store top 3 food categories users picked
     $(".results span").each(function() {
-        topthree.push($(this).text());
+        top_three.push($(this).text());
     });
 
     var search_url ="https://api.yelp.com/v3/businesses/search?term=food&limit=5&open_now=true&sort_by=rating";
@@ -26,22 +26,22 @@ $(document).ready(function() {
     /* Grabs categories to add to the Yelp Search URL */
     var no_categories = false;
 
-    if (topthree[2] == "no category") {
-        if (topthree[1] == "no category") {
-            if (topthree[0] == "nocategory") {
+    if (top_three[2] == "no category") {
+        if (top_three[1] == "no category") {
+            if (top_three[0] == "nocategory") {
                 // No categories
-                nocategories = true;
+                no_categories = true;
             } else {
                 // 1 category
-                url += "&categories=" + topthree[0];
+                search_url += "&categories=" + top_three[0];
             }
         } else {
             // 2 categories
-            url += "&categories=" + topthree[0] + "," + topthree[1];
+            search_url += "&categories=" + top_three[0] + "," + top_three[1];
         }
     } else {
         // 3 categories
-        url += "&categories=" + topthree[0] + "," + topthree[1] + "," + topthree[2];
+        search_url += "&categories=" + top_three[0] + "," + top_three[1] + "," + top_three[2];
     }
 
     /* Grabbing User Location */
