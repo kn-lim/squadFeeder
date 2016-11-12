@@ -110,6 +110,7 @@ function yelpSearch(searchurl) {
         success: function(res) {
             console.log("Yelp Search Successful", res);
             writeResults(res);
+            initialize();
         }
     });
 };
@@ -197,30 +198,30 @@ function initialize() {
     bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map_canvas"), {zoom: 13});
 
-    // // Display multiple markers on a map
-    // var infoWindow = new google.maps.InfoWindow(), marker, i;
-    //
-    // // Loop through our array of markers &  place each one on the map
-    // for( i = 0; i < 5; i++ ) {
-    //     var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
-    //     bounds.extend(position);
-    //     marker = new google.maps.Marker({
-    //         position: position,
-    //         map: map,
-    //         title: markers[i][0]
-    //     });
-    //
-    //     // Allow each marker to have an info window
-    //     google.maps.event.addListener(marker, 'click', (function(marker, i) {
-    //         return function() {
-    //             infoWindow.setContent(infoWindowContent[i][0]);
-    //             infoWindow.open(map, marker);
-    //         }
-    //     })(marker, i));
-    //
-    //     // Automatically center the map fitting all markers on the screen
-    //     map.fitBounds(bounds);
-    // }
+    // Display multiple markers on a map
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+    // Loop through our array of markers &  place each one on the map
+    for( i = 0; i < 5; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: markers[i][0]
+        });
+
+        // Allow each marker to have an info window
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
 
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
