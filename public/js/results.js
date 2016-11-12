@@ -3,22 +3,25 @@
 var access_token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
 // google map variables
 var map;
-var markers = [
-    //['current location', pos.lat, pos.lng],
-    ['manna BBQ', 32.827480, -117.157500],
-    ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
-    ['Min Sok Chon', 32.8258868,-117.1580301],
-    ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
-    ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
-];
+// var markers = [
+//     //['current location', pos.lat, pos.lng],
+//     ['manna BBQ', 32.827480, -117.157500],
+//     ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
+//     ['Min Sok Chon', 32.8258868,-117.1580301],
+//     ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
+//     ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
+// ];
+//
+// var infoWindowContent = [
+//     ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
+//     ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
+//     ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
+//     ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
+//     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
+// ];
 
-var infoWindowContent = [
-    ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
-    ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
-    ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
-    ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
-    ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
-];
+var markers;
+var infoWindowContent;
 
 var bounds;
 
@@ -38,7 +41,7 @@ $(document).ready(function() {
             if (topthree[0] == "nocategory") {
                 //no categories
                 nocategories = true;
-            } else {      
+            } else {
                 //1 category
                 url += "&categories=" + topthree[0];
             }
@@ -114,7 +117,7 @@ function writeResults(res) {
         var res_loc_state = loc[i].location.state;
         var mapaddress = res_loc_address1.replace(/ /g,"+");
         var mapcity = res_loc_city.replace(/ /g,"+");
-    
+
         var listitem = "";
 
         //appending rating string
@@ -127,16 +130,16 @@ function writeResults(res) {
         }
         ratingstring += ")"
 
-        listitem += '<div class="results-item">' + 
+        listitem += '<div class="results-item">' +
                         '<div class="results-img">' +
-                            '<img src="' + res_image_url + '">' + 
+                            '<img src="' + res_image_url + '">' +
                         '</div>' +
                         '<div class="results-text">' +
                             "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
-                            "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" + 
+                            "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
                             mapaddress + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
-                            res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+ 
-                        "</div>" + 
+                            res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
+                        "</div>" +
                     "</div>";
         $(".results-container").append(listitem);
 
@@ -149,11 +152,21 @@ function writeResults(res) {
         // // // Info Window Content
         // infoWindowContent[i] = [];
         // infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
+
+        // Multiple Markers
+        markers[i].push([]);
+        markers[i][0].push(res_name);
+        markers[i][1].push(rec_lat);
+        markers[i][2].push(rec_lng);
+
+        // Info Window Content
+        infoWindowContent[i].push([]);
+        infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
+        }
     }
 }
 
 function initialize() {
-
     console.log("Setting location to UCSD");
     var pos = {
         lng: 32.8800604,
