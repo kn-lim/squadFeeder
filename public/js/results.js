@@ -163,8 +163,8 @@ function writeResults(res) {
 
         // Multiple Markers
         markers[i][0] = res_name;
-        markers[i][1] = rec_lat;
-        markers[i][2] = rec_lng;
+        markers[i][1] = res_lat;
+        markers[i][2] = res_lng;
 
         // Info Window Content
         infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
@@ -196,7 +196,7 @@ function initialize() {
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
     // Loop through our array of markers &  place each one on the map
-    for( i = 0; i < markers.length; i++ ) {
+    for( i = 0; i < 5; i++ ) {
         var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
         bounds.extend(position);
         marker = new google.maps.Marker({
