@@ -192,7 +192,7 @@ function initialize() {
     };
 
     // Display a map on the page
-    bounds = new google.maps.LatLngBounds()
+    bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map_canvas"));
 
     // // Display multiple markers on a map
@@ -207,7 +207,7 @@ function initialize() {
     //         map: map,
     //         title: markers[i][0]
     //     });
-    // 
+    //
     //     // Allow each marker to have an info window
     //     google.maps.event.addListener(marker, 'click', (function(marker, i) {
     //         return function() {
@@ -223,7 +223,7 @@ function initialize() {
     //GEOLOCATION MARKER
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Google Maps - Found User Location")
+            console.log("Google Maps - Found User Location");
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
