@@ -191,6 +191,8 @@ function initialize() {
         lat: -117.2362022
     };
 
+    var marker;
+
     // Display a map on the page
     bounds = new google.maps.LatLngBounds();
     map = new google.maps.Map(document.getElementById("map_canvas"));
