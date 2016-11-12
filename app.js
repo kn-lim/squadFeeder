@@ -58,10 +58,8 @@ var server = http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-// SOCKET IO CODE
+// SOCKET IO CODE + LISTENERS
 var io = socketio.listen(server);
-
-// SOCKET LISTENERS
 io.on('connection', function(socket) {
 	console.log("SOCKETIO: " + socket.id + " connected");
 

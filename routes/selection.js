@@ -1,116 +1,88 @@
-var store = require('json-fs-store')('./tmp');
-var data = require("../tmp/data.json");
+var db = require('diskdb');
+db.connect("./tmp/").loadCollections(["groups"]);
+var datajson = require("../tmp/data.json");
 
-/* GET homepage */
+// GET REQUEST FOR SELECTION PAGE
 exports.view = function(req, res) {
-	// get group data
 	var groupid = req.params.groupid;
 	var id = req.params.id;
+	var data = db.groups.findOne({"name": groupid});
 
-	// check master if group exists
-	store.load("/master", function(err, obj) {
-		groupExists = false;
-		for (var i = 0; i < obj.groups.length; i++) {
-			//if name is in master, load
-			if (obj.groups[i] == groupid) {	
-				groupExists = true;	
-				store.load("/groups/" + groupid, function(err, obj) {
-					//check if user in group. if so, load selection
-					userInGroup = false;
-					for (var i=0; i < obj.members.length; i++) {
-						if (obj.members[i].id == id) {
-							userInGroup = true;
-							break;
-						}
-					}
-
-					if (userInGroup) {
-						console.log("Group Loaded: " + groupid);
-
-						//combine json into one
-						for (var key in data) {
-							obj[key] = data[key];
-						}
-
-						res.render('selection', obj);
-					} else {
-						res.render('error', {"errmsg":"You are not in this group."});
-					}
-				});
+	//if group exists, load
+	if (data) {
+		//check if user in group
+		var userInGroup = false;
+		for (var i=0; i< data.members.length; i++) {
+			if (data.members[i].id == id) {
+				userInGroup = true;
 				break;
 			}
 		}
 
-		if (!groupExists) {
-			res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
-		}
-	});
-};
-
-//change user status
-exports.changeStatus = function(req, res) {
-	var group = req.params.groupid;
-	var id = req.params.id;
-	var status = req.params.status;
-	console.log("change status on id " + id + " with status " + status);
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
-
-		//search for item, rewrite new name
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				obj.members[i].status = status;
+		if (userInGroup) {
+			console.log("Group loaded: " + groupid);
+			//combine json and load
+			for (var key in datajson) {
+				data[key] = datajson[key];
 			}
+			res.render('selection', data);
+		} else {
+			res.render('error', {"errmsg":"You are not in this group."});
 		}
-
-		//store and return obj
-		store.add(obj, function(err) {
-			if (err) throw err;
-			res.json(obj);
-		})
-	})
+	} else {
+		res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
+	}
 }
 
-//checks if all statuses are true. if so, return true
-exports.allSubmitted = function(req, res) {
-	var group = req.params.groupid;
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
+// CHANGE USER STATUS
+exports.changeStatus = function(req, res) {
+	var groupid = req.params.groupid;
+	var id = req.params.id;
+	var status = req.params.status;
+	var data = db.groups.findOne({"name": groupid});
+	console.log("Changing status on id " + id + " to status " + status);
 
-		//search all items, send false if any status not done
-		allSubmitted = true;
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].connected == 1 && obj.members[i].status == 0) {
-				allSubmitted = false;
-				break;
-			}
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].id == id) {
+			data.members[i].status = status;
 		}
+	}
 
-		console.log("allSubmitted: " + allSubmitted);
-		res.send(allSubmitted);
-	});
+	//write to group
+	db.groups.update({"name": groupid}, data);
+	res.json(data);
+}
+
+// CHECK IF ALL STATUS TRUE
+exports.allSubmitted = function(req, res) {
+	var groupid = req.params.groupid;
+	var data = db.groups.findOne({"name": groupid});
+
+	allSubmitted = true;
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].connected && data.members[i].status == 0) {
+			allSubmitted = false;
+			break;
+		}
+	}
+
+	console.log("allSubmitted: " + allSubmitted);
+	res.send(allSubmitted);
 };
 
-//gets post request data and writes it to file
+// GETS POST REQUEST DATA AND WRITES IT TO FILE
 exports.collectData = function(req, res) {
-	var group = req.params.groupid;
+	var groupid = req.params.groupid;
 	var id = req.params.id;
-	console.log(req.body);
+	var data = db.groups.findOne({"name": groupid});
+	console.log("Request: ", req.body);
 
-	//get data and write to user
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
-
-		for (var i=0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				//overwrite data
-				obj.members[i].choices = req.body;
-				store.add(obj, function(err) {
-					if (err) throw err;
-					res.send("post successful!");
-				})
-				break;
-			}
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].id == id) {
+			data.members[i].choices = req.body;
+			db.groups.update({"name": groupid}, data);
+			res.send("post successful");
+			break;
 		}
-	});
+	}
 }

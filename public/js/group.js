@@ -39,9 +39,11 @@ function updateGroup(resobj) {
 	//write members in if no args
 	if (!resobj) {
 		$.get("/getgroup/" + group, function(res) {
+			console.log("Updating group with:", res);
 			updateGroupWrite(res);
 		});
 	} else {
+		console.log("Updating group with:", resobj);
 		updateGroupWrite(resobj);
 	}
 }

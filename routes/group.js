@@ -1,142 +1,105 @@
-var store = require('json-fs-store')('./tmp');
+var db = require('diskdb');
+db.connect("./tmp/").loadCollections(["groups"]);
 var animalList = require('../tmp/animals');
 
-// GET PAGE
+// GET REQUEST FOR GROUP PAGE
 exports.view = function(req, res) {
-	// get group data
 	var groupid = req.params.groupid;
+	var data = db.groups.findOne({"name": groupid});
 
-	// check master if group exists
-	store.load("/master", function(err, obj) {
-		groupExists = false;
-		for (var i = 0; i < obj.groups.length; i++) {
-			//if name is in master, load
-			if (obj.groups[i] == groupid) {	
-				groupExists = true;	
-				store.load("/groups/" + groupid, function(err, obj) {
-					//check if group is open
-					if (obj.open == 1) {
-						console.log("Group Loaded: " + groupid)
-						res.render('group', obj);
-					} else {
-						res.render('error', {"errmsg":"Your group is closed!"});
-					}
-				});
-				break;
-			}
+	//if group exists, load
+	if (data) {
+		if (data.open) {
+			res.render('group', data);
+		} else {
+			res.render('error', {"errmsg":"Your group is closed!"});
 		}
+	} else {
+		res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
+	}
+}
 
-		if (!groupExists) {
-			res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
-		}
-	});
-};
-
-// get group
+// RETURNS GROUP DATA
 exports.getGroup = function(req, res) {
 	var groupid = req.params.groupid;
-	store.load("/groups/" + groupid, function(err, obj) {
-		if (err) throw err;
-		res.json(obj);
-	});
+	var data = db.groups.findOne({"name": groupid});
+	res.json(data);
 }
 
-// check if id is in group and write new member
-exports.checkID = function(id, group) {
-	//load group obj
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
+// CHECKS USER ID. IF PART OF GROUP CONNECT, ELSE ADD TO GROUP
+exports.checkID = function(id, groupid) {
+	var data = db.groups.findOne({"name": groupid});
 
-		//determine if leader (first one to join)
-		var leader = !obj.members.length ? 1 : 0;
-
-		//look for name in array
-		exists = false;
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				exists = true;
-				obj.members[i].connected = 1;
-				break;
-			}
+	//look for name in array
+	exists = false;
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].id == id) {
+			exists = true;
+			data.members[i].connected = true;
+			break;
 		}
+	}
 
-		//choose random animal
-		animal = "Anonymous " + animalList.animals[Math.floor(Math.random() * animalList.animals.length)];
-
-		//if id doesn't exist, add to group
-		if (!exists) {
-			obj.members.push({
-				"id": id,
-				"name": animal,
-				"leader": leader,
-				"connected": 1,
-				"status": 0,
-				"choices": 0
-			});
-		}
-
-		// write new group
-		store.add(obj, function(err) {
-			if (err) throw err;
+	//otherwise create new
+	if (!exists) {
+		//check if leader (first one to join)
+		var leader = (!data.members.length)?1:0;
+		//generate random animal name
+		var animal = "Anonymous " + animalList.animals[Math.floor(Math.random() * animalList.animals.length)];
+		
+		//generate new id
+		data.members.push({
+			"id": id,
+			"name": animal,
+			"leader": leader,
+			"connected": true,
+			"status": 0,
+			"choices": 0
 		});
-	});
+	}
+
+	//write to group
+	db.groups.update({"name": groupid}, data);
 }
 
-// when id leaves, rewrite connected to 0
-exports.userLeave = function(id, group) {
-	//load group obj
-	store.load("/groups/" + group, function(err, obj) {
-		if (obj.open == 1) {
-			if (err) throw err;
+// WRITE CONNECTED TO 0 WHEN USER LEAVES
+exports.userLeave = function(id, groupid) {
+	var data = db.groups.findOne({"name": groupid});
 
-			//search for item
-			for (var i = 0; i < obj.members.length; i++) {
-				if (obj.members[i].id == id) {
-					obj.members[i].connected = 0;
-				}
-			}
-
-			//write new group
-			store.add(obj, function(err) {
-				if (err) throw err;
-			});
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].id == id) {
+			data.members[i].connected = false;
 		}
-	});
+	}
+
+	//write to group
+	db.groups.update({"name": groupid}, data);
+	console.log( db.groups.findOne({"name": groupid}));
 }
 
+// CHANGE USER NAME
 exports.changeName = function(req, res) {
-	var group = req.params.groupid;
+	console.log("Changing name on id " + id + " to name " + name);
+	var groupid = req.params.groupid;
 	var id = req.params.id;
 	var name = req.params.name;
-	console.log("change name on id " + id + " with name " + name);
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
+	var data = db.groups.findOne({"name": groupid});
 
-		//search for item, rewrite new name
-		for (var i = 0; i < obj.members.length; i++) {
-			if (obj.members[i].id == id) {
-				obj.members[i].name = name;
-			}
+	for (var i=0; i < data.members.length; i++) {
+		if (data.members[i].id == id) {
+			data.members[i].name = name;
 		}
+	}
 
-		//store and return obj
-		store.add(obj, function(err) {
-			if (err) throw err;
-			res.json(obj);
-		})
-	})
+	//write to group
+	db.groups.update({"name": groupid}, data);
+	res.json(data);
 }
 
-exports.closeGroup = function(group) {
-	console.log("Closing group " + group);
-	store.load("/groups/" + group, function(err, obj) {
-		if (err) throw err;
-
-		obj.open = 0;
-
-		//write new group
-		store.add(obj, function(err) {
-			if (err) throw err;
-		});
-	});
+// CHANGE GROUP STATUS TO FALSE
+exports.closeGroup = function(groupid) {
+	console.log("Closing group " + groupid);
+	var data = db.groups.findOne({"name": groupid});
+	data.open = false;
+	db.groups.update({"name": groupid}, data);
 }

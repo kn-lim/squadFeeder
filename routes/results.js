@@ -1,28 +1,16 @@
-var store = require('json-fs-store')('./tmp');
+var db = require('diskdb');
+db.connect("./tmp/").loadCollections(["groups"]);
 
-//GET HOMEPAGE
+//GET REQUEST FOR RESULTS PAGE
 exports.view = function(req, res) {
 	var groupid = req.params.groupid;
+	var data = db.groups.findOne({"name": groupid});
 
-	//check master if exists
-	store.load("/master", function(err, obj) {
-		groupExists = false;
-		for (var i = 0; i < obj.groups.length; i++) {
-			//if name is in master, load
-			if (obj.groups[i] == groupid) {	
-				groupExists = true;	
-				store.load("/groups/" + groupid, function(err, obj) {
-					//parse data and return values
-					res.render('results', calculateData(obj));
-				});
-				break;
-			}
-		}
-
-		if (!groupExists) {
-			res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
-		}
-	});
+	if (data) {
+		res.render('results', calculateData(data));
+	} else {
+		res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
+	}
 }
 
 function calculateData(data) {
