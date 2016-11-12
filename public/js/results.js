@@ -20,8 +20,8 @@ var map;
 //     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
 // ];
 
-var markers;
-var infoWindowContent;
+var markers = [];
+var infoWindowContent = [];
 
 var bounds;
 
@@ -155,13 +155,11 @@ function writeResults(res) {
         // infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
 
         // Multiple Markers
-        markers[i].push([]);
         markers[i][0].push(res_name);
         markers[i][1].push(rec_lat);
         markers[i][2].push(rec_lng);
 
         // Info Window Content
-        infoWindowContent[i].push([]);
         infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
 
         console.log("Added to Marker and infoWindowContent array");
