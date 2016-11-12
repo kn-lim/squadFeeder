@@ -20,8 +20,8 @@ var map;
 //     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
 // ];
 
-var markers = [];
-var infoWindowContent = [];
+var markers;
+var infoWindowContent;
 
 var bounds;
 
@@ -57,11 +57,26 @@ $(document).ready(function() {
     //location
     url += "&latitude=32.8800604&longitude=-117.2362022";
 
+    markers = createArray(5, 3);
+    infoWindowContent = createArray(5, 1);
+
     console.log(url);
     if (!nocategories) {
         yelpSearch(url);
     }
 });
+
+function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
+};
 
 /* Grab access token and token type from Yelp */
 function yelpInit() {
