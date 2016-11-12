@@ -5,7 +5,7 @@ var access_token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-
 
 /* Google Map Global Variables */
 var map;
-var bound;
+var bounds;
 
 var markers = createArray(5, 3);
 var infoWindowContent = createArray(5, 1);
@@ -137,7 +137,7 @@ function write_results(res) {
         var res_lng = loc[i].coordinates.longitude;
         var res_lat = loc[i].coordinates.latitude;
         var res_loc_address1 = loc[i].location.address1;
-        var res_loc_address2 = res.businesses[i].location.address2;
+        var res_loc_address2 = loc[i].location.address2;
         var res_loc_country = loc[i].location.county;
         var res_loc_zip_code = loc[i].location.zip_code;
         var res_loc_city = loc[i].location.city;
