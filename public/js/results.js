@@ -62,7 +62,7 @@ $(document).ready(function() {
     }
 
     /* Adds coordinates to Yelp Search URL */
-    url += "&latitude=32.8800604&longitude=-117.2362022";
+    search_url += "&latitude=32.8800604&longitude=-117.2362022";
 
     /* Prints Yelp Search URL */
     console.log("Yelp Search URL = " + search_url);
