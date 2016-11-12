@@ -59,6 +59,7 @@ $(document).ready(function() {
 
     markers = createArray(5, 3);
     infoWindowContent = createArray(5, 1);
+    console.log("Finished creating arrays");
 
     console.log(url);
     if (!nocategories) {
@@ -75,6 +76,7 @@ function createArray(length) {
         while(i--) arr[length-1 - i] = createArray.apply(this, args);
     }
 
+    console.log("Created arrays");
     return arr;
 };
 
@@ -160,22 +162,20 @@ function writeResults(res) {
         console.log("Appended");
 
         // Multiple Markers
-        // markers[i] = [];
-        // markers[i][0] = res_name;
-        // markers[i][1] = rec_lat;
-        // markers[i][2] = rec_lng;
-
-        // // // Info Window Content
-        // infoWindowContent[i] = [];
-        // infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
-
-        // Multiple Markers
-        markers[i][0].push(res_name);
-        markers[i][1].push(rec_lat);
-        markers[i][2].push(rec_lng);
+        markers[i][0] = res_name;
+        markers[i][1] = rec_lat;
+        markers[i][2] = rec_lng;
 
         // Info Window Content
-        infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
+        infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
+
+        // Multiple Markers
+        // markers[i][0].push(res_name);
+        // markers[i][1].push(rec_lat);
+        // markers[i][2].push(rec_lng);
+
+        // Info Window Content
+        // infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
 
         console.log("Added to Marker and infoWindowContent array");
     }
