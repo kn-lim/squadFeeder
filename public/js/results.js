@@ -32,7 +32,7 @@ $(document).ready(function() {
         topthree.push($(this).text());
     });
 
-    var url = "https://api.yelp.com/v3/businesses/search?term=food&limit=5";
+    var url = "https://api.yelp.com/v3/businesses/search?term=food&limit=5&open_now=true&sort_by=rating";
 
     //categories
     var nocategories = false;
@@ -159,12 +159,15 @@ function writeResults(res) {
                         "</div>" +
                     "</div>";
         $(".results-container").append(listitem);
-        console.log("Appended");
+        console.log("Appended to Restaurant List");
 
         // Multiple Markers
         markers[i][0] = res_name;
+        console.log(markers[i][0]);
         markers[i][1] = res_lat;
+        console.log(markers[i][1]);
         markers[i][2] = res_lng;
+        console.log(markers[i][2]);
 
         // Info Window Content
         infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";
