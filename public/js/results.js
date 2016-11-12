@@ -164,7 +164,7 @@ function writeResults(res) {
         infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
         }
     }
-}
+};
 
 function initialize() {
     console.log("Setting location to UCSD");
