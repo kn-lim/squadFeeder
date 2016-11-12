@@ -1,4 +1,3 @@
-var store = require('json-fs-store')('./tmp');
 var db = require('diskdb');
 db.connect('./tmp/').loadCollections(["groups"]);
 

@@ -43,6 +43,5 @@ function calculateData(data) {
 	}
 
 	console.log(topthree);
-
 	return topthree;
 }
