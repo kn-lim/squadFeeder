@@ -162,7 +162,6 @@ function writeResults(res) {
         // Info Window Content
         infoWindowContent[i].push([]);
         infoWindowContent[i][0].push("<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>");
-        }
     }
 };
 
