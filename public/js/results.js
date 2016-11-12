@@ -65,6 +65,8 @@ $(document).ready(function() {
     if (!nocategories) {
         yelpSearch(url);
     }
+
+    map_init();
 });
 
 function createArray(length) {
@@ -184,7 +186,7 @@ function writeResults(res) {
     }
 };
 
-function initialize() {
+function map_init() {
     console.log("Setting location to UCSD");
     var pos = {
         lng: 32.8800604,
