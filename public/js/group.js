@@ -17,8 +17,8 @@ $(document).ready(function() {
 	});
 
 	window.setTimeout(function() {
-		leaderCheck();
-	}, 1000);	
+			leaderCheck();
+	}, 1000);
 })
 
 //change name write

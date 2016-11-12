@@ -16,13 +16,15 @@ exports.view = function(req, res) {
 function calculateData(data) {
 	cuisinecount = {};
 	for (var i=0; i < data.members.length; i++) {
-		for (var j=0; j < data.members[i].choices.cuisine.length; j++) {
-			if (data.members[i].choices.cuisine[j] in cuisinecount) {
-				cuisinecount[data.members[i].choices.cuisine[j]]++;
-			} else {
-				cuisinecount[data.members[i].choices.cuisine[j]] = 1;
+			if (data.members[i].choices != 0 && data.members[i].choices["cuisine"]) {
+				for (var j=0; j < data.members[i].choices.cuisine.length; j++) {
+					if (data.members[i].choices.cuisine[j] in cuisinecount) {
+						cuisinecount[data.members[i].choices.cuisine[j]]++;
+					} else {
+						cuisinecount[data.members[i].choices.cuisine[j]] = 1;
+					}
+				}
 			}
-		}
 	}
 
 	//pull top three out of list

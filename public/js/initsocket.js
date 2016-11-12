@@ -34,9 +34,10 @@ function initSocketIO() {
 
 	//when everyone has submitted
 	socket.on('allsubmitted', function() {
+		submittedModal();
 		window.setTimeout(function() {
 			window.location.href = "/" + group + "/results";
-		}, 1000);
+		}, 3000);
 	});
 }
 

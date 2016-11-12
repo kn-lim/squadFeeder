@@ -36,9 +36,7 @@ $(document).ready(function() {
 		});
 
 		//submit data
-		window.setTimeout(function() {
-			collectData();
-		}, 2000);
+		collectData();
 	});
 
 	//on modal close
@@ -114,4 +112,9 @@ function collectData() {
 
 	//send data
 	$.post("/senddata/" + group + "/" + id, choices);
+}
+
+//change modal to submitted form
+function submittedModal() {
+	$(".modal-content").html('<div class="modal-submitted"><h3>All users have submitted! Calculating results...</h3></div>');
 }

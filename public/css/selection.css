@@ -42,3 +42,9 @@ a:hover {
 	color: #70AE5D;
 	font-weight: bold;
 }
+
+/* ALL DONE MODAL */
+.modal-submitted {
+	padding: 50px;
+	text-align: center;
+}
