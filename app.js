@@ -4,6 +4,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var socketio = require('socket.io');
+require('es6-promise').polyfill();
 
 // SET UP ROUTE VARIABLES (pages)
 var index = require('./routes/index');
