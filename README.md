@@ -1,7 +1,7 @@
 # squadFeeder
 Created by: Zi Pan, Kevin Lim, Nicholas Pung
 
-##libraries used:
+##libraries used (client):
 [Bootstrap 4](http://devdocs.io/bootstrap~4/)
 
 [Socket.IO](http://socket.io/)
@@ -14,19 +14,19 @@ Created by: Zi Pan, Kevin Lim, Nicholas Pung
   
 [clipboard.js](https://clipboardjs.com/)
 
-[URL.js](https://medialize.github.io/URI.js/)
-
-[JSONProxy](https://jsonp.afeld.me/) a lifesaver!
-  
+##libraries used (server):
 [diskdb](https://www.npmjs.com/package/diskdb)
   
+[yelp-v3](https://www.npmjs.com/package/yelp-v3)
+
+[es6-promise](https://github.com/stefanpenner/es6-promise)
+
 [Handlebars.js](http://handlebarsjs.com/)
   
 [Express 3](http://expressjs.com/)
-
-[body-parser](https://github.com/expressjs/body-parser)
   
 [Node.js](https://nodejs.org/en/)
+
 
 ##useful links:
 [Google WebFont Examples](http://femmebot.github.io/google-type/)
