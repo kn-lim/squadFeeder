@@ -2,6 +2,7 @@ var Yelp = require('yelp-v3');
 var yelp = new Yelp({
 	access_token: '9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx'
 });
+var Promise = require('es6-promise').Promise;
 var db = require('diskdb');
 db.connect("./tmp/").loadCollections(["groups"]);
 

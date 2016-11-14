@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "diskdb": "^0.1.17",
+    "es6-promise": "^4.0.5",
     "express": "3.x",
     "express3-handlebars": "*",
     "socket.io": "^1.5.1",
