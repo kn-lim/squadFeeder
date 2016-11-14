@@ -12,11 +12,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "body-parser": "^1.15.2",
     "diskdb": "^0.1.17",
     "express": "3.x",
     "express3-handlebars": "*",
-    "socket.io": "^1.5.1"
+    "socket.io": "^1.5.1",
+    "yelp-v3": "0.0.5"
   },
   "engines": {
     "node": "0.10.x"

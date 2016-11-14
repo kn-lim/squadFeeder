@@ -4,7 +4,6 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var socketio = require('socket.io');
-var bodyParser = require('body-parser');
 
 // SET UP ROUTE VARIABLES (pages)
 var index = require('./routes/index');
@@ -27,7 +26,6 @@ app.use(express.cookieParser("secret"));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
 
 // development only
 if ('development' == app.get('env')) {
@@ -52,6 +50,7 @@ app.get('/changename/:groupid/:id/:name', group.changeName);
 app.get('/changestatus/:groupid/:id/:status', selection.changeStatus);
 app.get('/allsubmitted/:groupid', selection.allSubmitted);
 app.post('/senddata/:groupid/:id', selection.collectData);
+app.post('/yelprequest', results.yelpRequest);
 
 //start server
 var server = http.createServer(app).listen(app.get('port'), function(){

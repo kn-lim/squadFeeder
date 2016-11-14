@@ -1,6 +1,5 @@
 'use strict'
 // yelp api token
-var access_token = "9SwSEoDWUYwCGDFVdI9L6T2PZ9lWa3qZu4PbE64tc3dZtlyKEzndIGjuU2O-JPxShQEB6M8ESc7RmYMCzB1M3T4uo_Ft8zFFAO3sQqObjxB-6q6Gsh07sHVAxa4bWHYx";
 // google map variables
 var map;
 // var markers = [
@@ -22,49 +21,26 @@ var map;
 
 var markers;
 var infoWindowContent;
-
 var bounds;
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
+    //initialize map    
+    markers = createArray(5, 3);
+    infoWindowContent = createArray(5, 1);
+    console.log("Finished creating arrays");
+
+    //obtain top three
     var topthree = [];
     $(".results span").each(function() {
         topthree.push($(this).text());
     });
 
-    var url = "https://api.yelp.com/v3/businesses/search?term=food&limit=5&open_now=true&sort_by=rating";
-
-    //categories
-    var nocategories = false;
-    if (topthree[2] == "no category") {
-        if (topthree[1] == "no category") {
-            if (topthree[0] == "nocategory") {
-                //no categories
-                nocategories = true;
-            } else {
-                //1 category
-                url += "&categories=" + topthree[0];
-            }
-        } else {
-            //2 categories
-            url += "&categories=" + topthree[0] + "," + topthree[1];
-        }
-    } else {
-        //3 categories
-        url += "&categories=" + topthree[0] + "," + topthree[1] + "," + topthree[2];
-    }
-
-    //location
-    url += "&latitude=32.8800604&longitude=-117.2362022";
-
-    markers = createArray(5, 3);
-    infoWindowContent = createArray(5, 1);
-    console.log("Finished creating arrays");
-
-    console.log(url);
-    if (!nocategories) {
-        yelpSearch(url);
-    }
+    //yelp search to server
+    $.post("/yelprequest", {"topthree": topthree}, function(res) {
+        writeResults(res);
+        initialize();
+    });
 });
 
 function createArray(length) {
@@ -78,41 +54,6 @@ function createArray(length) {
 
     console.log("Created arrays");
     return arr;
-};
-
-/* Grab access token and token type from Yelp */
-function yelpInit() {
-    console.log("Yelp - Starting Authorization");
-    $.ajax({
-        url: "https://api.yelp.com/oauth2/token",
-        method: "POST",
-        dataType: "json",
-        data: {
-            client_id: "XSB11XkGiPzzB6Oq3rJ77A",
-            client_secret: "2XtQUalVyB6z6Ety9veg5qICLMQpmobGZGz9cqrlUms8FtqIwo2h6uxOTWeoVODn",
-            grant_type: "client_credentials"
-        }
-    }).done(function(res) {
-        console.log("Yelp Authorization Successful", res);
-    });
-};
-
-// FUNCTION FOR YELP SEARCH
-function yelpSearch(searchurl) {
-    console.log("Yelp - Beginning Search");
-    $.jsonp({
-        url: searchurl,
-        corsSupport: true,
-        jsonpSupport: true,
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + access_token);
-        },
-        success: function(res) {
-            console.log("Yelp Search Successful", res);
-            writeResults(res);
-            initialize();
-        }
-    });
 };
 
 function writeResults(res) {
