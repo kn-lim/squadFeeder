@@ -1,23 +1,7 @@
 'use strict'
-// yelp api token
+
 // google map variables
 var map;
-// var markers = [
-//     //['current location', pos.lat, pos.lng],
-//     ['manna BBQ', 32.827480, -117.157500],
-//     ['Grandma\'s Tofu Shop', 32.8205014,-117.1567012],
-//     ['Min Sok Chon', 32.8258868,-117.1580301],
-//     ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],
-//     ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]
-// ];
-//
-// var infoWindowContent = [
-//     ['<div class="info_content">' + '<p>manna BBQ</p>' + '</div>'],
-//     ['<div class="info_content">' + '<p>Grandma\'s Tofu</p>' + '</div>'],
-//     ['<div class="info_content">' + '<p>Min Sok Chon</p>' + '</div>'],
-//     ['<div class="info_content">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],
-//     ['<div class="info_content">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']
-// ];
 
 var markers;
 var infoWindowContent;
@@ -69,12 +53,14 @@ function writeResults(res) {
         var res_lng = loc[i].coordinates.longitude;
         var res_lat = loc[i].coordinates.latitude;
         var res_loc_address1 = loc[i].location.address1;
-        // // var res_loc_address2 = res.businesses[i].location.address2;
+        var res_loc_address2 = loc[i].location.address2;
         var res_loc_country = loc[i].location.county;
         var res_loc_zip_code = loc[i].location.zip_code;
         var res_loc_city = loc[i].location.city;
         var res_loc_state = loc[i].location.state;
-        var mapaddress = res_loc_address1.replace(/ /g,"+");
+
+        var mapaddress1 = res_loc_address1.replace(/ /g,"+");
+        var mapaddress2 = res_loc_address2.replace(/ /g,"+");
         var mapcity = res_loc_city.replace(/ /g,"+");
 
         var listitem = "";
@@ -96,8 +82,8 @@ function writeResults(res) {
                         '<div class="results-text">' +
                             "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
                             "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
-                            mapaddress + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
-                            res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
+                            mapaddress1 + "+" + mapaddress2 "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
+                            res_loc_address1  + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
                         "</div>" +
                     "</div>";
         $(".results-container").append(listitem);
