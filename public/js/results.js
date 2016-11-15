@@ -68,7 +68,7 @@ $(document).ready(function() {
     // search_url += "&latitude=32.8800604&longitude=-117.2362022";
 
     /* Prints Yelp Search URL */
-    $.post("/yelprequest", {"topthree": topthree, "pos": pos}, function(res) {
+    $.post("/yelprequest", {"topthree": top_three, "pos": pos}, function(res) {
         writeResults(res);
     });
 
