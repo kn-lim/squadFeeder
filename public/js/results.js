@@ -53,14 +53,13 @@ function writeResults(res) {
         var res_lng = loc[i].coordinates.longitude;
         var res_lat = loc[i].coordinates.latitude;
         var res_loc_address1 = loc[i].location.address1;
-        var res_loc_address2 = loc[i].location.address2;
+        var res_loc_address2 = loc[i].location.address2; //might not exist
         var res_loc_country = loc[i].location.county;
         var res_loc_zip_code = loc[i].location.zip_code;
         var res_loc_city = loc[i].location.city;
         var res_loc_state = loc[i].location.state;
 
         var mapaddress1 = res_loc_address1.replace(/ /g,"+");
-        var mapaddress2 = res_loc_address2.replace(/ /g,"+");
         var mapcity = res_loc_city.replace(/ /g,"+");
 
         var listitem = "";
@@ -75,17 +74,36 @@ function writeResults(res) {
         }
         ratingstring += ")"
 
-        listitem += '<div class="results-item">' +
-                        '<div class="results-img">' +
-                            '<img src="' + res_image_url + '">' +
-                        '</div>' +
-                        '<div class="results-text">' +
-                            "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
-                            "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
-                            mapaddress1 + "+" + mapaddress2 + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
-                            res_loc_address1  + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
-                        "</div>" +
-                    "</div>";
+        if(res_loc_address2 == "") {
+            var mapaddress2 = rec_loc_address2.replace(/ /g,"+");
+
+            listitem += '<div class="results-item">' +
+                            '<div class="results-img">' +
+                                '<img src="' + res_image_url + '">' +
+                            '</div>' +
+                            '<div class="results-text">' +
+                                "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
+                                "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
+                                mapaddress1 + "+" + mapaddress2 + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
+                                res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
+                            "</div>" +
+                        "</div>";
+        }
+
+        else {
+            listitem += '<div class="results-item">' +
+                            '<div class="results-img">' +
+                                '<img src="' + res_image_url + '">' +
+                            '</div>' +
+                            '<div class="results-text">' +
+                                "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
+                                "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
+                                mapaddress1 + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
+                                res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
+                            "</div>" +
+                        "</div>";
+        }
+        
         $(".results-container").append(listitem);
         console.log("Appended to Restaurant List");
 
