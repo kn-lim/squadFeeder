@@ -74,8 +74,8 @@ function writeResults(res) {
         }
         ratingstring += ")"
 
-        if(res_loc_address2 == "") {
-            var mapaddress2 = rec_loc_address2.replace(/ /g,"+");
+        if(res_loc_address2 != "") {
+            var mapaddress2 = res_loc_address2.replace(/ /g,"+");
 
             listitem += '<div class="results-item">' +
                             '<div class="results-img">' +
@@ -103,7 +103,7 @@ function writeResults(res) {
                             "</div>" +
                         "</div>";
         }
-        
+
         $(".results-container").append(listitem);
         console.log("Appended to Restaurant List");
 
