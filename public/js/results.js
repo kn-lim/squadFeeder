@@ -137,7 +137,7 @@ function initialize() {
 
     // Display a map on the page
     bounds = new google.maps.LatLngBounds();
-    map = new google.maps.Map(document.getElementById("map_canvas"), {zoom: 13});
+    map = new google.maps.Map(document.getElementById("map_canvas"));
 
     // Display multiple markers on a map
     var infoWindow = new google.maps.InfoWindow(), marker, i;

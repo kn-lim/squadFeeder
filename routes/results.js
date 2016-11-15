@@ -55,23 +55,6 @@ function calculateData(data) {
 
 /* Modified by Kevin to include User Location */
 exports.yelpRequest = function(req, res) {
-    /* Grabbing User Location */
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Yelp - Found User Location");
-            pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
-    } else {
-        console.log("Setting location to UCSD");
-        var pos = {
-            lng: 32.8800604,
-            lat: -117.2362022
-        };
-    }
-
 	//parse top categories
 	var top = req.body.topthree;
 	var categories = '';
@@ -86,11 +69,10 @@ exports.yelpRequest = function(req, res) {
 	}
 
 	console.log("categories: " + categories);
-    console.log("latitude: " + pos.lat + ", longitude: " + pos.lng);
 	console.log("Sending yelp request!");
 
 	//yelp request
-	yelp.search({term: 'food', latitude: loc.lat, longitude: loc.lng, limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
+	yelp.search({term: 'food', latitude: '32.8800604', longitude: '-117.2362022', limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
 		.then(function(data) {
 			console.log("yelp request success");
 			res.json(data);
