@@ -36,25 +36,8 @@ $(document).ready(function() {
         topthree.push($(this).text());
     });
 
-    /* Grabbing User Location */
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Yelp - Found User Location");
-            pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-        });
-    } else {
-        console.log("Setting location to UCSD");
-        var pos = {
-            lng: 32.8800604,
-            lat: -117.2362022
-        };
-    }
-
     //yelp search to server
-    $.post("/yelprequest", {"topthree": topthree, "pos": pos}, function(res) {
+    $.post("/yelprequest", {"topthree": topthree}, function(res) {
         writeResults(res);
         initialize();
     });

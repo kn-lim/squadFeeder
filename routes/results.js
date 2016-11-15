@@ -55,9 +55,25 @@ function calculateData(data) {
 
 /* Modified by Kevin to include User Location */
 exports.yelpRequest = function(req, res) {
+    /* Grabbing User Location */
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Yelp - Found User Location");
+            pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+        });
+    } else {
+        console.log("Setting location to UCSD");
+        var pos = {
+            lng: 32.8800604,
+            lat: -117.2362022
+        };
+    }
+
 	//parse top categories
 	var top = req.body.topthree;
-    var loc = req.body.pos;
 	var categories = '';
 	for (var i=0; i < top.length; i++) {
 		if (top[i] != "no category") {
@@ -70,7 +86,7 @@ exports.yelpRequest = function(req, res) {
 	}
 
 	console.log("categories: " + categories);
-    console.log("latitude: " + loc.lat + ", longitude: " + loc.lng);
+    console.log("latitude: " + pos.lat + ", longitude: " + pos.lng);
 	console.log("Sending yelp request!");
 
 	//yelp request
