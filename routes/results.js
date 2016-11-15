@@ -53,9 +53,11 @@ function calculateData(data) {
 	return topthree;
 }
 
+/* Modified by Kevin to include User Location */
 exports.yelpRequest = function(req, res) {
 	//parse top categories
 	var top = req.body.topthree;
+    var loc = req.body.pos;
 	var categories = '';
 	for (var i=0; i < top.length; i++) {
 		if (top[i] != "no category") {
@@ -68,10 +70,11 @@ exports.yelpRequest = function(req, res) {
 	}
 
 	console.log("categories: " + categories);
+    console.log("latitude: " + loc.lat + ", longitude: " + loc.lng);
 	console.log("Sending yelp request!");
 
 	//yelp request
-	yelp.search({term: 'food', latitude: '32.8800604', longitude: '-117.2362022', limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
+	yelp.search({term: 'food', latitude: loc.lat, longitude: loc.lng, limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
 		.then(function(data) {
 			console.log("yelp request success");
 			res.json(data);
