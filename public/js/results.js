@@ -74,7 +74,7 @@ function writeResults(res) {
         }
         ratingstring += ")"
 
-        if(res_loc_address2 != "") {
+        if(res_loc_address2) {
             var mapaddress2 = res_loc_address2.replace(/ /g,"+");
 
             listitem += '<div class="results-item">' +
