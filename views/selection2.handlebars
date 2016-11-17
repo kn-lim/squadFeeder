@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+	<title>squadFeeder: {{name}}</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- LIBRARIES -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-flex.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-grid.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
+	<!-- STYLESHEETS -->
+	<link href="/css/main.css" rel="stylesheet"> 
+	<link href="/css/selection.css" rel="stylesheet">
+	<!--FONTS-->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<!-- SOCKET IO /EARLY SCRIPTS -->
+	<script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+	<script>var group = "{{name}}"</script>
+	<script src="/js/initsocket.js"></script>
+</head>
+
+<body class="gradient-bg">
+	<div class="container spacer"></div>
+	<div class="container main-container">
+		<div class="row header">
+			<div class="col-sm-8">
+				<h1>Selection</h1>
+			</div>
+			<div class="col-sm-4">
+				<a href="/"><button type="button" class="btn btn-block btn-secondary">Back to Home Page</button></a>
+			</div>
+		</div>
+
+		<!-- PROGRESSBAR -->
+		<div class="row progress-bg">
+    		<div class="progressbar" role="progressbar" style="width: 66%;">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-8 text-xs-center">
+				
+				<h3>What kind of food would you like to eat?</h3>
+
+				<!-- SEARCH BAR -->
+				<!-- <div class="input-group">
+					<input type="text" class="form-control" placeholder="Search restaurants...">
+					<button type="button" class="btn btn-primary btn-color">Search</button>
+				</div> -->
+
+				<!--TOGGLE GROUP -->
+				<div class="btn-group" data-toggle="buttons">
+					{{#each select-cuisine}}
+					<label class="btn btn-secondary btn-toggle">
+						<input type="checkbox" value="{{this.tag}}">
+						{{this.name}}
+					</label>
+					{{/each}}
+				</div>
+
+				<!-- FORM GROUPS -->
+				<div class="form-group">
+					<label for="select-price">Price Maximum:</label>
+					<select class="form-control" id="select-price">
+						{{#each select-price}}
+						<option value="{{this.tag}}">{{this.name}}</option>
+						{{/each}}
+					</select>
+				</div>
+
+				<!-- <div class="form-group">
+					<label for="select-distance">Distance:</label>
+					<select class="form-control" id="select-distance">
+						{{#each select-distance}}
+						<option>{{this}}</option>
+						{{/each}}
+					</select>
+				</div> -->
+			</div>
+
+			<!-- SIDEBAR -->
+			<div class="col-sm-4 text-xs-center">
+				<h3>Users</h3>
+				<ul class="list-group">
+					<!-- JQUERY CONTENTS -->
+				</ul>
+
+			</div>
+		</div>
+
+		<!-- SUBMIT BUTTON -->
+		<div class="row">
+			<div class="col-sm-12 text-xs-center">
+				<button type="button" class="btn btn-lg btn-primary btn-block btn-submit btn-color" data-toggle="modal" data-target="#confirmModal">Submit</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="container spacer"></div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Submitted!</h4>
+				</div>
+				<div class="modal-body">
+					<p>Waiting on other users to complete submissions....</p>
+					<ul class="list-group">
+						<!-- JQUERY CONTENTS -->
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button id="btn-mistake" type="button" class="btn btn-primary btn-color" data-dismiss="modal">I've Made a Mistake!</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SCRIPTS -->
+	<script src="/js/jquery-3.1.1.min.js"></script>
+	<script src="/js/tether.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/selection.js"></script>
+
+	<!-- GOOGLE ANALYTICS for squadfeeder-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-87206604-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+
+	<!-- GOOGLE ANALYTICS for hcibuild -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-87217404-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+</body>
+</html>

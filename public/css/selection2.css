@@ -1,0 +1,50 @@
+a:hover {
+	text-decoration: none;
+}
+
+/* SEARCHBAR */
+.input-group {
+	margin-bottom: 15px;
+}
+
+.input-group button {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+/* GIANT LIST OF CUSIINES */
+.btn-group {
+	margin-bottom: 15px;
+	vertical-align: middle;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.btn-group label {
+	border-radius: 0;
+	flex-grow: 1;
+}
+
+.active {
+	background-color: #DE7684 !important;
+	border: 1px solid #DE7684 !important;
+	color: white !important;
+}
+
+/* CHOOSING/DONE TAGS (in jquery)*/
+.tag-choosing {
+	color: #DE7684;
+	font-weight: bold;
+}
+
+.tag-done {
+	color: #70AE5D;
+	font-weight: bold;
+}
+
+/* ALL DONE MODAL */
+.modal-submitted {
+	padding: 50px;
+	text-align: center;
+}
