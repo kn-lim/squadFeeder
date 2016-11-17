@@ -11,7 +11,7 @@
 	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
 	<!-- STYLESHEETS -->
 	<link href="/css/main.css" rel="stylesheet"> 
-	<link href="/css/selection.css" rel="stylesheet">
+	<link href="/css/selection2.css" rel="stylesheet">
 	<!--FONTS-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<!-- SOCKET IO /EARLY SCRIPTS -->
@@ -50,13 +50,29 @@
 				</div> -->
 
 				<!--TOGGLE GROUP -->
-				<div class="btn-group" data-toggle="buttons">
-					{{#each select-cuisine}}
-					<label class="btn btn-secondary btn-toggle">
-						<input type="checkbox" value="{{this.tag}}">
-						{{this.name}}
-					</label>
-					{{/each}}
+				<div class="form-group">
+					<label for="select-option1">1st Choice:</label>
+					<select class="form-control" id="select-option1">
+						{{#each select-cuisine}}
+						<option value="{{this.tag}}">{{this.name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="select-option2">2nd Choice:</label>
+					<select class="form-control" id="select-option2">
+						{{#each select-cuisine}}
+						<option value="{{this.tag}}">{{this.name}}</option>
+						{{/each}}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="select-option3">3rd Choice:</label>
+					<select class="form-control" id="select-option3">
+						{{#each select-cuisine}}
+						<option value="{{this.tag}}">{{this.name}}</option>
+						{{/each}}
+					</select>
 				</div>
 
 				<!-- FORM GROUPS -->
@@ -68,6 +84,7 @@
 						{{/each}}
 					</select>
 				</div>
+
 
 				<!-- <div class="form-group">
 					<label for="select-distance">Distance:</label>
@@ -126,7 +143,7 @@
 	<script src="/js/jquery-3.1.1.min.js"></script>
 	<script src="/js/tether.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/selection.js"></script>
+	<script src="/js/selection2.js"></script>
 
 	<!-- GOOGLE ANALYTICS for squadfeeder-->
 	<script>
