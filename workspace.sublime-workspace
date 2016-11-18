@@ -446,7 +446,7 @@
 			"file": "views/results.handlebars",
 			"settings":
 			{
-				"buffer_size": 3782,
+				"buffer_size": 3708,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -488,19 +488,15 @@
 			}
 		},
 		{
+			"contents": "'use strict'\nvar map;\n// var markers = [\n//     //['current location', pos.lat, pos.lng],\n//     ['manna BBQ', 32.827480, -117.157500],\n//     ['Grandma\\'s Tofu Shop', 32.8205014,-117.1567012],\n//     ['Min Sok Chon', 32.8258868,-117.1580301],\n//     ['Tajima Japanese Restaurant', 32.8255461,-117.1565583],\n//     ['Kula Revolving Sushi Bar', 32.8245055,-117.1550359]\n// ];\n//\n// var infoWindowContent = [\n//     ['<div class=\"info_content\">' + '<p>manna BBQ</p>' + '</div>'],\n//     ['<div class=\"info_content\">' + '<p>Grandma\\'s Tofu</p>' + '</div>'],\n//     ['<div class=\"info_content\">' + '<p>Min Sok Chon</p>' + '</div>'],\n//     ['<div class=\"info_content\">' + '<p>Tajima Japanese Restaurant</p>' + '</div>'],\n//     ['<div class=\"info_content\">' + '<p>Kula Revolving Sushi Bar</p>' + '</div>']\n// ];\n\nvar markers;\nvar infoWindowContent;\nvar bounds;\n\n// Call this function when the page loads (the \"ready\" event)\n$(document).ready(function() {\n    //initialize map    \n    markers = createArray(5, 3);\n    infoWindowContent = createArray(5, 1);\n    console.log(\"Finished creating arrays\");\n\n    //obtain top three\n    var topthree = [];\n    $(\".results span\").each(function() {\n        topthree.push($(this).text());\n    });\n\n    //yelp search to server\n    $.post(\"/yelprequest\", {\"topthree\": topthree}, function(res) {\n        writeResults(res);\n        initialize();\n    });\n});\n\nfunction createArray(length) {\n    var arr = new Array(length || 0),\n        i = length;\n\n    if (arguments.length > 1) {\n        var args = Array.prototype.slice.call(arguments, 1);\n        while(i--) arr[length-1 - i] = createArray.apply(this, args);\n    }\n\n    console.log(\"Created arrays\");\n    return arr;\n};\n\nfunction writeResults(res) {\n    $(\".list-group\").empty();\n    var loc = res[\"businesses\"];\n    for(var i = 0; i < loc.length; i++) {\n        console.log(loc[i]);\n        var res = loc[i].name;\n        var res_name = loc[i].name;\n        var res_url = loc[i].url;\n        var res_rating = loc[i].rating;\n        var res_image_url = loc[i].image_url;\n        var res_lng = loc[i].coordinates.longitude;\n        var res_lat = loc[i].coordinates.latitude;\n        var res_loc_address1 = loc[i].location.address1;\n        // // var res_loc_address2 = res.businesses[i].location.address2;\n        var res_loc_country = loc[i].location.county;\n        var res_loc_zip_code = loc[i].location.zip_code;\n        var res_loc_city = loc[i].location.city;\n        var res_loc_state = loc[i].location.state;\n        var mapaddress = res_loc_address1.replace(/ /g,\"+\");\n        var mapcity = res_loc_city.replace(/ /g,\"+\");\n\n        var listitem = \"\";\n\n        //appending rating string\n        var ratingstring = \" (\";\n        for (var j=1; j <= res_rating; j++) {\n            ratingstring += \"&#9733\";\n        }\n        if (res_rating % 1 > 0) {\n            ratingstring += \"&#189\"\n        }\n        ratingstring += \")\"\n\n        listitem += '<div class=\"results-item\">' +\n                        '<div class=\"results-img\">' +\n                            '<img src=\"' + res_image_url + '\">' +\n                        '</div>' +\n                        '<div class=\"results-text\">' +\n                            \"<p><span>\" + \"<a href='\" + res_url + \"'>\" + res_name + ratingstring + \"</a></span></p>\" +\n                            \"<p>\" + \"<a href='https://www.google.com/maps/dir/Current+Location/\" +\n                            mapaddress + \"+\" + mapcity + \"+\" + res_loc_state + \"+\" + res_loc_zip_code + \"'>\" +\n                            res_loc_address1 + \", \" + res_loc_city + \", \" + res_loc_state + \" \" + res_loc_zip_code + \"</p></a>\"+\n                        \"</div>\" +\n                    \"</div>\";\n        $(\".results-container\").append(listitem);\n        console.log(\"Appended to Restaurant List\");\n\n        // Multiple Markers\n        markers[i][0] = res_name;\n        console.log(markers[i][0]);\n        markers[i][1] = res_lat;\n        console.log(markers[i][1]);\n        markers[i][2] = res_lng;\n        console.log(markers[i][2]);\n\n        // Info Window Content\n        infoWindowContent[i][0] = \"<div class=\\\"info_content\\\">\" + \"<p>\" + res_name + \"</p>\" + \"</div>\";\n\n        // Multiple Markers\n        // markers[i][0].push(res_name);\n        // markers[i][1].push(rec_lat);\n        // markers[i][2].push(rec_lng);\n\n        // Info Window Content\n        // infoWindowContent[i][0].push(\"<div class=\\\"info_content\\\">\" + \"<p>\" + res_name + \"</p>\" + \"</div>\");\n\n        console.log(\"Added to Marker and infoWindowContent array\");\n    }\n};\n\nfunction initialize() {\n    console.log(\"Setting location to UCSD\");\n    var pos = {\n        lng: 32.8800604,\n        lat: -117.2362022\n    };\n\n    var marker;\n\n    // Display a map on the page\n    bounds = new google.maps.LatLngBounds();\n    map = new google.maps.Map(document.getElementById(\"map_canvas\"), {zoom: 13});\n\n    // Display multiple markers on a map\n    var infoWindow = new google.maps.InfoWindow(), marker, i;\n\n    // Loop through our array of markers &  place each one on the map\n    for( i = 0; i < 5; i++ ) {\n        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);\n        bounds.extend(position);\n        marker = new google.maps.Marker({\n            position: position,\n            map: map,\n            title: markers[i][0]\n        });\n\n        // Allow each marker to have an info window\n        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n            return function() {\n                infoWindow.setContent(infoWindowContent[i][0]);\n                infoWindow.open(map, marker);\n            }\n        })(marker, i));\n\n        // Automatically center the map fitting all markers on the screen\n        map.fitBounds(bounds);\n    }\n\n    //GEOLOCATION MARKER\n    if (navigator.geolocation) {\n        navigator.geolocation.getCurrentPosition(function(position) {\n            console.log(\"Google Maps - Found User Location\");\n            var pos = {\n                lat: position.coords.latitude,\n                lng: position.coords.longitude\n            };\n\n            //create marker\n            var position = new google.maps.LatLng(pos.lat, pos.lng);\n            bounds.extend(position);\n            marker = new google.maps.Marker({\n                position: position,\n                map: map,\n                title: \"current location\",\n                icon: \"https://www.robotwoods.com/dev/misc/bluecircle.png\"\n            });\n\n            //refit bounds\n            map.fitBounds(bounds);\n\n        }, function() {\n            handleLocationError(true, infoWindow, map.getCenter());\n        });\n    } else {\n        // Browser doesn't support Geolocation\n        handleLocationError(false, infoWindow, map.getCenter());\n    }\n}\n",
 			"file": "public/js/results.js",
+			"file_size": 6988,
+			"file_write_time": 131236379687988934,
 			"settings":
 			{
-				"buffer_size": 8656,
+				"buffer_size": 6750,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 498,
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -552,7 +548,7 @@
 			"file": "app.js",
 			"settings":
 			{
-				"buffer_size": 2832,
+				"buffer_size": 2845,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -588,7 +584,7 @@
 			"file": "routes/results.js",
 			"settings":
 			{
-				"buffer_size": 1351,
+				"buffer_size": 2292,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -644,8 +640,16 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Arlen/Dropbox/personalwebsite/package.json",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/package.json",
+		"/C/Users/Arlen/Dropbox/personalwebsite/app.js",
+		"/C/Users/Arlen/AppData/Local/Temp/Temp1_Skeleton-2.0.4.zip/Skeleton-2.0.4/css/normalize.css",
+		"/C/Users/Arlen/AppData/Local/Temp/Temp1_Skeleton-2.0.4.zip/Skeleton-2.0.4/css/skeleton.css",
+		"/C/Users/Arlen/Dropbox/personalwebsite/LICENSE",
+		"/C/Users/Arlen/Dropbox/personalwebsite/README.md",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/groups.json",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/data.json",
+		"/C/Users/Arlen/Dropbox/CSE170Collaborate/README.md",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/animals.json",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/results.js",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/master-backup.json",
@@ -659,7 +663,6 @@
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/groups/default.json",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/groups/be9yc.json",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/tmp/groups/u4ity.json",
-		"/C/Users/Arlen/Dropbox/CSE170Collaborate/package.json",
 		"/C/Users/Arlen/Desktop/CSE170Collaborate/package.json",
 		"/C/Users/arlen/Dropbox/CSE170Collaborate/public/js/initsocket-selection.js",
 		"/C/Users/arlen/Dropbox/CSE170Collaborate/tmp/groups/6uj4v.json",
@@ -716,7 +719,6 @@
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/group.js",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/selection.js",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/css/main.css",
-		"/C/Users/Arlen/Dropbox/CSE170Collaborate/README.md",
 		"/C/Users/Arlen/AppData/Local/Temp/Temp1_html5up-stellar.zip/assets/sass/main.scss",
 		"/C/Users/Arlen/AppData/Local/Temp/Temp1_html5up-stellar.zip/assets/css/main.css",
 		"/C/Users/Arlen/Dropbox/CSE170Collaborate/public/js/tether.min.js",
@@ -765,13 +767,7 @@
 		"/C/Users/Arlen/AppData/Local/Temp/Temp1_react-scroll-up-master.zip/react-scroll-up-master/index.js",
 		"/C/Users/Arlen/AppData/Local/Temp/Temp1_react-scroll-up-master.zip/react-scroll-up-master/test/test.jsx",
 		"/C/Users/Arlen/Dropbox/twittermockup/src/css/main.css",
-		"/C/Users/Arlen/Dropbox/twittermockup/src/css/imagebar.css",
-		"/C/Users/Arlen/Dropbox/twittermockup/src/sass/imagebar.scss",
-		"/C/Users/Arlen/Dropbox/twittermockup/src/sass/content.scss",
-		"/C/Users/Arlen/Dropbox/twittermockup/src/config.rb",
-		"/C/Users/Arlen/Dropbox/twittermockup/docs/index.html",
-		"/C/Users/Arlen/Dropbox/twittermockup/package.json",
-		"/C/Users/Arlen/Dropbox/twittermockup/server.js"
+		"/C/Users/Arlen/Dropbox/twittermockup/src/css/imagebar.css"
 	],
 	"find":
 	{
@@ -789,6 +785,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"body_parser",
 			"store",
 			"obj",
 			"\"groupid\"",
@@ -877,7 +874,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -906,7 +903,7 @@
 						"translation.y": 99.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -935,7 +932,7 @@
 						"translation.y": 518.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -961,7 +958,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1708.0,
+						"translation.y": 448.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 11,
@@ -973,15 +970,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3782,
+						"buffer_size": 3708,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2414,
-								2414
+								950,
+								950
 							]
 						],
 						"settings":
@@ -989,10 +986,10 @@
 							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 980.0,
+						"translation.y": 223.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1027,7 +1024,7 @@
 						"translation.y": 420.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1111,10 +1108,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1428.0,
+						"translation.y": 1245.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1123,15 +1120,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8656,
+						"buffer_size": 6750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								6511,
+								6511
 							]
 						],
 						"settings":
@@ -1140,41 +1137,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 672.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 498,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								248,
-								248
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1680.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1184,7 +1151,7 @@
 			"sheets":
 			[
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "public/css/main.css",
 					"semi_transient": false,
 					"settings":
@@ -1209,11 +1176,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "public/css/index.css",
 					"semi_transient": false,
 					"settings":
@@ -1239,11 +1206,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 11,
 					"file": "public/css/group.css",
 					"semi_transient": false,
 					"settings":
@@ -1268,11 +1235,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 12,
 					"file": "public/css/results.css",
 					"semi_transient": false,
 					"settings":
@@ -1298,11 +1265,11 @@
 						"translation.y": 369.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 13,
 					"file": "public/css/selection.css",
 					"semi_transient": false,
 					"settings":
@@ -1327,30 +1294,30 @@
 						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
-					"buffer": 15,
+					"buffer": 14,
 					"file": "app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2832,
+						"buffer_size": 2845,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1843,
-								1843
+								1419,
+								1419
 							]
 						],
 						"settings":
@@ -1358,14 +1325,14 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 882.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 15,
 					"file": "routes/index.js",
 					"semi_transient": false,
 					"settings":
@@ -1389,11 +1356,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 16,
 					"file": "routes/group.js",
 					"semi_transient": false,
 					"settings":
@@ -1405,8 +1372,8 @@
 						"selection":
 						[
 							[
-								2526,
-								2526
+								1359,
+								1359
 							]
 						],
 						"settings":
@@ -1415,14 +1382,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 336.0,
+						"translation.y": 1050.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 17,
 					"file": "routes/selection.js",
 					"semi_transient": false,
 					"settings":
@@ -1434,8 +1401,8 @@
 						"selection":
 						[
 							[
-								1730,
-								1730
+								2052,
+								2052
 							]
 						],
 						"settings":
@@ -1444,27 +1411,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 714.0,
+						"translation.y": 882.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 18,
 					"file": "routes/results.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1351,
+						"buffer_size": 2292,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								585,
-								585
+								2122,
+								2122
 							]
 						],
 						"settings":
@@ -1475,7 +1442,7 @@
 						"translation.y": 168.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -1527,7 +1494,7 @@
 		"rows":
 		[
 			0.0,
-			0.440566823812,
+			0.415267512311,
 			1.0
 		]
 	},

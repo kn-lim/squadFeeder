@@ -11,7 +11,7 @@
 	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
 	<!-- STYLESHEETS -->
 	<link href="/css/main.css" rel="stylesheet"> 
-	<link href="/css/selection2.css" rel="stylesheet">
+	<link href="/css/selection.css" rel="stylesheet">
 	<!--FONTS-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<!-- SOCKET IO /EARLY SCRIPTS -->
@@ -53,6 +53,7 @@
 				<div class="form-group">
 					<label for="select-option1">1st Choice:</label>
 					<select class="form-control" id="select-option1">
+						<option value="nopref">NO PREFERENCE</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}">{{this.name}}</option>
 						{{/each}}
@@ -61,6 +62,7 @@
 				<div class="form-group">
 					<label for="select-option2">2nd Choice:</label>
 					<select class="form-control" id="select-option2">
+						<option value="nopref">NO PREFERENCE</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}">{{this.name}}</option>
 						{{/each}}
@@ -69,6 +71,7 @@
 				<div class="form-group">
 					<label for="select-option3">3rd Choice:</label>
 					<select class="form-control" id="select-option3">
+						<option value="nopref">NO PREFERENCE</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}">{{this.name}}</option>
 						{{/each}}

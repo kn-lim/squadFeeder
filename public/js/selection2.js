@@ -4,6 +4,8 @@
 $(document).ready(function() {
 	console.log("Page initialized!");
 
+	$('.dropdown-toggle').dropdown()
+
 	//check status done or not (if so, open modal and wait)
 	$.get("/getgroup/" + group, function(res) {
 		//search for id
@@ -104,6 +106,23 @@ function collectData() {
 		}
 	});
 
+	var option1 = $("#select-option1").val();
+	if (option1 != "nopref") {
+		cuisine.push($("#select-option1").val());
+	}
+
+	var option2 = $("#select-option2").val();
+	if (option2 != "nopref") {
+		cuisine.push($("#select-option2").val());
+	}
+
+	var option3 = $("#select-option3").val();
+	if (option3 != "nopref") {
+		cuisine.push($("#select-option3").val());
+	}
+
+	console.log(cuisine);
+
 	//create object to send
 	var choices = {
 		"cuisine": cuisine,
@@ -118,5 +137,3 @@ function collectData() {
 function submittedModal() {
 	$(".modal-content").html('<div class="modal-submitted"><h3>All users have submitted! Calculating results...</h3></div>');
 }
-
-$('.dropdown-toggle').dropdown()

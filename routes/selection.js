@@ -34,6 +34,38 @@ exports.view = function(req, res) {
 	}
 }
 
+// GET REQUEST FOR SELECTION PAGE 2
+exports.view2 = function(req, res) {
+	var groupid = req.params.groupid;
+	var id = req.params.id;
+	var data = db.groups.findOne({"name": groupid});
+
+	//if group exists, load
+	if (data) {
+		//check if user in group
+		var userInGroup = false;
+		for (var i=0; i< data.members.length; i++) {
+			if (data.members[i].id == id) {
+				userInGroup = true;
+				break;
+			}
+		}
+
+		if (userInGroup) {
+			console.log("Group loaded: " + groupid);
+			//combine json and load
+			for (var key in datajson) {
+				data[key] = datajson[key];
+			}
+			res.render('selection2', data);
+		} else {
+			res.render('error', {"errmsg":"You are not in this group."});
+		}
+	} else {
+		res.render('error', {"errmsg":"Your group is not found! Perhaps you entered the link incorrectly?"});
+	}
+}
+
 // CHANGE USER STATUS
 exports.changeStatus = function(req, res) {
 	var groupid = req.params.groupid;
