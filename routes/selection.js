@@ -4,8 +4,11 @@ var datajson = require("../tmp/data.json");
 
 // GET REQUEST FOR SELECTION PAGE
 exports.view = function(req, res) {
-	var groupid = req.params.groupid;
-	var id = req.params.id;
+	var groupid = req.query.group;
+	var id = req.query.id;
+	console.log("SELECTION", groupid, id);
+	// var groupid = req.params.groupid;
+	// var id = req.params.id;
 	var data = db.groups.findOne({"name": groupid});
 
 	//if group exists, load
@@ -36,8 +39,11 @@ exports.view = function(req, res) {
 
 // GET REQUEST FOR SELECTION PAGE 2
 exports.view2 = function(req, res) {
-	var groupid = req.params.groupid;
-	var id = req.params.id;
+	var groupid = req.query.group;
+	var id = req.query.id;
+	console.log("SELECTION", groupid, id);
+	// var groupid = req.params.groupid;
+	// var id = req.params.id;
 	var data = db.groups.findOne({"name": groupid});
 
 	//if group exists, load

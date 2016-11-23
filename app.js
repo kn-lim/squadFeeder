@@ -40,9 +40,11 @@ if ('development' == app.get('env')) {
 
 // main route for page nav
 app.get('/', index.view);
+app.get('/selection', selection.view);
+app.get('/selection2', selection.view2);
 app.get('/:groupid', group.view);
-app.get('/:groupid/selection/:id', selection.view);
-app.get('/:groupid/selection2/:id', selection.view2);
+// app.get('/:groupid/selection/:id', selection.view);
+// app.get('/:groupid/selection2/:id', selection.view2);
 app.get('/:groupid/results', results.view);
 
 // routes for data logic
