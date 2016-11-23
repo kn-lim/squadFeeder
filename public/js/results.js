@@ -59,6 +59,8 @@ function writeResults(res) {
         var res_loc_city = loc[i].location.city;
         var res_loc_state = loc[i].location.state;
 
+        var res_category = loc[i].categories[0].title;
+
         var mapaddress1 = res_loc_address1.replace(/ /g,"+");
         var mapcity = res_loc_city.replace(/ /g,"+");
 
@@ -83,6 +85,7 @@ function writeResults(res) {
                             '</div>' +
                             '<div class="results-text">' +
                                 "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
+                                "<p>" + res_category + "</p>" +
                                 "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
                                 mapaddress1 + "+" + mapaddress2 + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
                                 res_loc_address1 + " " + res_loc_address2 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
@@ -97,6 +100,7 @@ function writeResults(res) {
                             '</div>' +
                             '<div class="results-text">' +
                                 "<p><span>" + "<a href='" + res_url + "'>" + res_name + ratingstring + "</a></span></p>" +
+                                "<p>" + res_category + "</p>" +
                                 "<p>" + "<a href='https://www.google.com/maps/dir/Current+Location/" +
                                 mapaddress1 + "+" + mapcity + "+" + res_loc_state + "+" + res_loc_zip_code + "'>" +
                                 res_loc_address1 + ", " + res_loc_city + ", " + res_loc_state + " " + res_loc_zip_code + "</p></a>"+
