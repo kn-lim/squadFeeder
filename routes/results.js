@@ -21,6 +21,13 @@ exports.view = function(req, res) {
 }
 
 function calculateData(data) {
+	// FOR PRICES
+	var chosenprice;
+	for (var i=0; i < data.members.length; i++) {
+		console.log(data.members[i].choices["price"]);
+	}
+
+	// FOR CUISINE
 	cuisinecount = {};
 	for (var i=0; i < data.members.length; i++) {
 		if (data.members[i].choices != 0 && data.members[i].choices["cuisine"]) {
