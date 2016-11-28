@@ -11,6 +11,8 @@ exports.view = function(req, res) {
 	var data = db.groups.findOne({"name": groupid});
 
 	if (data) {
+        console.log("Data" + data);
+        
 		var topthree = calculateData(data);
 		res.render('results', topthree);
 	} else {
@@ -21,15 +23,15 @@ exports.view = function(req, res) {
 function calculateData(data) {
 	cuisinecount = {};
 	for (var i=0; i < data.members.length; i++) {
-			if (data.members[i].choices != 0 && data.members[i].choices["cuisine"]) {
-				for (var j=0; j < data.members[i].choices.cuisine.length; j++) {
-					if (data.members[i].choices.cuisine[j] in cuisinecount) {
-						cuisinecount[data.members[i].choices.cuisine[j]]++;
-					} else {
-						cuisinecount[data.members[i].choices.cuisine[j]] = 1;
-					}
+		if (data.members[i].choices != 0 && data.members[i].choices["cuisine"]) {
+			for (var j=0; j < data.members[i].choices.cuisine.length; j++) {
+				if (data.members[i].choices.cuisine[j] in cuisinecount) {
+					cuisinecount[data.members[i].choices.cuisine[j]]++;
+				} else {
+					cuisinecount[data.members[i].choices.cuisine[j]] = 1;
 				}
 			}
+		}
 	}
 
 	//pull top three out of list
@@ -53,6 +55,13 @@ function calculateData(data) {
 	return topthree;
 }
 
+// function priceSelector(data) {
+//     pricecount = {};
+//     for(var i = 0; i < data.members.length; i++) {
+//         if(data.members[i].)
+//     }
+// }
+
 /* Modified by Kevin to include User Location */
 exports.yelpRequest = function(req, res) {
 	//parse top categories
@@ -68,11 +77,37 @@ exports.yelpRequest = function(req, res) {
 		}
 	}
 
+    var pos = {
+        lat: '32.8800604',
+        lng: '-117.2362022'
+    };
+
+    // if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log("Yelp - Found User Location");
+    //         pos = {
+    //             lat: position.coords.latitude,
+    //             lng: position.coords.longitude
+    //         };
+    //     }, function() {
+    //         handleLocationError(true, infoWindow, map.getCenter());
+    //     });
+    // } else {
+    //     // Browser doesn't support Geolocation
+    //     console.log("Yelp - Setting Position to UCSD");
+    //     pos = {
+    //         lat: '32.8800604',
+    //         lng: '-117.2362022'
+    //     };
+    //     handleLocationError(false, infoWindow, map.getCenter());
+    // }
+
+    console.log("Latitude: " + pos.lat + " | Longitude: " + pos.lng);
 	console.log("categories: " + categories);
 	console.log("Sending yelp request!");
 
 	//yelp request
-	yelp.search({term: 'food', latitude: '32.8800604', longitude: '-117.2362022', limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
+	yelp.search({term: 'food', latitude: pos.lat, longitude: pos.lng, limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
 		.then(function(data) {
 			console.log("yelp request success");
 			res.json(data);

@@ -135,11 +135,11 @@ function writeResults(res) {
 };
 
 function initialize() {
-    console.log("Setting location to UCSD");
-    var pos = {
-        lng: 32.8800604,
-        lat: -117.2362022
-    };
+    // console.log("Setting location to UCSD");
+    // var pos = {
+    //     lng: 32.8800604,
+    //     lat: -117.2362022
+    // };
 
     var marker;
 
@@ -180,6 +180,8 @@ function initialize() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+
+            console.log("Latitude: " + pos.lat + " | Longitude: " + pos.lng);
 
             //create marker
             var position = new google.maps.LatLng(pos.lat, pos.lng);
