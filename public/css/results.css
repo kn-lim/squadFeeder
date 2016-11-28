@@ -28,7 +28,11 @@ h4 {
 
 .results-item {
     display: flex;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
+}
+
+.results-item p {
+    margin-bottom: 5px;
 }
 
 .results-img {
