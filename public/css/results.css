@@ -36,6 +36,7 @@ h4 {
 }
 
 .results-img {
+    flex: none;
     width: 75px;
     border-radius: 5px;
     overflow: hidden;
@@ -45,6 +46,7 @@ h4 {
 .results-img img {
     border-radius: 5px;
     height: 75px;
+    width: 100%;
 }
 
 .results-text {

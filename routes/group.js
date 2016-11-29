@@ -42,6 +42,7 @@ exports.checkID = function(id, groupid) {
 
 	//otherwise create new
 	if (!exists) {
+		console.log("user not found!");
 		//check if leader (first one to join)
 		var leader = (!data.members.length)?1:0;
 		//generate random animal name
@@ -56,6 +57,8 @@ exports.checkID = function(id, groupid) {
 			"status": 0,
 			"choices": 0
 		});
+	} else {
+		console.log("user found!");
 	}
 
 	//write to group

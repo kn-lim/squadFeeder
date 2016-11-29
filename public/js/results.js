@@ -2,7 +2,6 @@
 
 // google map variables
 var map;
-
 var markers;
 var infoWindowContent;
 var bounds;
@@ -44,7 +43,11 @@ function writeResults(res) {
     console.log(res);
     $(".list-group").empty();
     var loc = res["businesses"];
-    for(var i = 0; i < loc.length; i++) {
+
+    var loclength;
+    (loc.length > 5) ? loclength = 5 : loclength = loc.length;
+
+    for(var i = 0; i < loclength; i++) {
         console.log(loc[i]);
         var res = loc[i].name;
         var res_name = loc[i].name;
@@ -86,7 +89,10 @@ function writeResults(res) {
         //insert categories
         listitem += "<p><i>";
         for (var j in loc[i].categories) {
-            listitem += loc[i].categories[j].title + " ";
+            listitem += loc[i].categories[j].title;
+            if (j < loc[i].categories.length - 1) {
+                listitem += ", ";
+            }
         }
         listitem += "</i></p>"
 
@@ -109,11 +115,11 @@ function writeResults(res) {
 
         // Multiple Markers
         markers[i][0] = res_name;
-        console.log(markers[i][0]);
+        // console.log(markers[i][0]);
         markers[i][1] = res_lat;
-        console.log(markers[i][1]);
+        // console.log(markers[i][1]);
         markers[i][2] = res_lng;
-        console.log(markers[i][2]);
+        // console.log(markers[i][2]);
 
         // Info Window Content
         infoWindowContent[i][0] = "<div class=\"info_content\">" + "<p>" + res_name + "</p>" + "</div>";

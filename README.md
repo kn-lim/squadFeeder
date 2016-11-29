@@ -36,3 +36,10 @@ Created by: Zi Pan, Kevin Lim, Nicholas Pung
 [Yelp API v3 Business Search](https://www.yelp.com/developers/documentation/v3/business_search)
 
 [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
+
+TODO:
+
+- location variance
+- price variance
+- result sorting
+- bugfixing random users

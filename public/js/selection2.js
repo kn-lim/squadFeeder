@@ -100,11 +100,6 @@ function updateGroupWrite(res) {
 function collectData() {
 	//collect checkbox data
 	var cuisine = [];
-	$("input[type=checkbox]").each(function() {
-		if (this.checked) {
-			cuisine.push($(this).val());
-		}
-	});
 
 	var option1 = $("#select-option1").val();
 	if (option1 != "nopref") {

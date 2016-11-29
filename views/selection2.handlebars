@@ -4,6 +4,7 @@
 	<title>(2/3) squadFeeder: {{name}}</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type"image/ico" href="/assets/favicon.ico">
 	<!-- LIBRARIES -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-flex.min.css" rel="stylesheet">
@@ -11,7 +12,7 @@
 	<link href="/css/bootstrap-reboot.min.css" rel="stylesheet">
 	<!-- STYLESHEETS -->
 	<link href="/css/main.css" rel="stylesheet"> 
-	<link href="/css/selection2.css" rel="stylesheet">
+	<link href="/css/selection.css" rel="stylesheet">
 	<!--FONTS-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<!-- SOCKET IO /EARLY SCRIPTS -->
@@ -83,6 +84,7 @@
 				<div class="form-group">
 					<label for="select-option1">1st Choice:</label>
 					<select class="form-control" id="select-option1">
+						<option value="nopref">No Preference</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}" onclick="ga('send', 'event', 'button', 'click', 'Choice 1')">{{this.name}}</option>
 						{{/each}}
@@ -91,6 +93,7 @@
 				<div class="form-group">
 					<label for="select-option2">2nd Choice:</label>
 					<select class="form-control" id="select-option2">
+						<option value="nopref">No Preference</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}" onclick="ga('send', 'event', 'button', 'click', 'Choice 2')">{{this.name}}</option>
 						{{/each}}
@@ -99,6 +102,7 @@
 				<div class="form-group">
 					<label for="select-option3">3rd Choice:</label>
 					<select class="form-control" id="select-option3">
+						<option value="nopref">No Preference</option>
 						{{#each select-cuisine}}
 						<option value="{{this.tag}}" onclick="ga('send', 'event', 'button', 'click', 'Choice 3')">{{this.name}}</option>
 						{{/each}}
@@ -128,7 +132,7 @@
 
 			<!-- SIDEBAR -->
 			<div class="col-sm-4 text-xs-center">
-				<h3>Users</h3>
+				<h3>Group</h3>
 				<ul class="list-group">
 					<!-- JQUERY CONTENTS -->
 				</ul>

@@ -6,16 +6,15 @@
 
 #copylink input {
 	padding: 10px;
-	color: #636363;
 	flex: auto;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
+	box-shadow: none;
+	appearance: none;
 }
 
 #copylink button {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
-	border: 1px solid #A9A9A9;
+	border: 1px solid #7a7a7a;
 }
 
 /* WAITING BUTTON */

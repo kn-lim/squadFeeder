@@ -2,7 +2,10 @@
 
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
-	console.log("Page initialized!");
+	console.log("Page initialized!");  
+
+	// initialize tooltips
+	$('[data-toggle="tooltip"]').tooltip()
 
 	// name change form listener
 	$("#btn-namechange").click(function(e) {
@@ -52,6 +55,7 @@ function updateGroup(resobj) {
 function updateGroupWrite(res) {
 	$(".list-group").empty();
 	for (var i in res.members) {
+		console.log("RES MEMBER:", res.members[i]);
 		//show all online members
 		var listitem = "";
 

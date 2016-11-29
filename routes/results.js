@@ -114,7 +114,7 @@ exports.yelpRequest = function(req, res) {
 	console.log("Sending yelp request!");
 
 	//yelp request
-	yelp.search({term: 'food', latitude: pos.lat, longitude: pos.lng, limit: '5', open_now: 'true', sort_by: 'rating', categories: categories})
+	yelp.search({term: 'food', latitude: pos.lat, longitude: pos.lng, open_now: 'true', radius: '13000', sort_by: 'rating', categories: categories})
 		.then(function(data) {
 			console.log("yelp request success");
 			res.json(data);

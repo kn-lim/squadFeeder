@@ -4,6 +4,7 @@
 	<title>squadFeeder</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type"image/ico" href="/assets/favicon.ico">
 	<!-- LIBRARIES -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-flex.min.css" rel="stylesheet">
@@ -47,24 +48,25 @@
             </div>
             {{/each}}
         </div>
+        <div class="row spacer"></div>
 
         <!-- SHOWS RESULTS -->
         <div class="row">
 	        <div class="col-sm-6">
-	            <h4>Best Choices:</h4>
+	            <h4>We recommend:</h4>
                 <!-- Yelp Search -->
             	<div class="results-container">
                     <!-- JQUERY CONTENTS -->
             	</div>
 	        </div>
 	        <div class="col-sm-6">
-	            <h4>Map:</h4>
+	        	<h4>Map:</h4>
 	            <div id="map_wrapper">
 	                   <div id="map_canvas" class="mapping"></div>
 	            </div>
 	        </div>
 	    </div>
-	    <div class="row spacer"></div>
+        <div class="row spacer"></div>
 	</div>
 	<div class="container spacer"></div>
 

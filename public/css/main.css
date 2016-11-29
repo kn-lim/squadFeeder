@@ -33,7 +33,6 @@ html, body {
 
 /*CONTAINERS*/
 .main-container {
-	overflow: hidden;
 	background-color: white;
 	border-radius: 5px;
 	width: 90%;

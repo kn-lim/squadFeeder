@@ -4,6 +4,7 @@
 	<title>squadFeeder: {{name}}</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type"image/ico" href="/assets/favicon.ico">
 	<!-- LIBRARIES -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-flex.min.css" rel="stylesheet">
@@ -62,20 +63,17 @@
 			</div>
 		</div>
 
-		<!-- FACEBOOK BUTTON -->
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="fb-send" data-href={{url}}></div>
-			</div>
-		</div>
-
 		<!-- BODY DESCRIPTION -->
 		<div class="row">
 			<div class="col-sm-12 text-xs-center">
 				<br>
-				<p>Copy the link below and share it with your friends. Once they click on the link, it will redirect them into a group with you where you can choose your preferences, and start to decide what you guys should eat!</p>
+				<p>Copy the link below and share it with your friends. They open the link and join this group!</p>
+			</div>
+		</div>
 
-				<!-- COPY LINK -->
+		<!-- COPY LINK -->
+		<div class="row row-copylink">
+			<div class="col-sm-12">
 				<div id="copylink" class="input-group" id="flexbox">
 					<input id="input-link" type="text" value="{{url}}" readonly>
 		    		<button class="btn btn-secondary" type="button" data-clipboard-action="copy" data-clipboard-target="#input-link" data-toggle="tooltip" data-placement="top" title="Copy to Clipboard">
@@ -86,10 +84,17 @@
 			</div>
 		</div>
 
+		<!-- FACEBOOK BUTTON -->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="fb-send" data-href={{url}} data-toggle="tooltip" data-placement="right" title="Send to Messenger"></div>
+			</div>
+		</div>
+
 		<!-- GROUP LIST -->
 		<div class="row">
 			<div class="col-sm-12">
-				<h3>Joined:</h3>
+				<h3>Your Group:</h3>
 				<ul class="list-group">
 					<!-- JQUERY CONTENTS -->
 				</ul>

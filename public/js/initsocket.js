@@ -28,12 +28,13 @@ function initSocketIO() {
 
 	socket.on('allready', function() {
 		window.setTimeout(function() {
+			window.location.replace("/selection2?group=" + group + "&id=" + id);
 			// CHOOSE RANDOM PAGE
-			if (Math.random() < 0.5) {
-				window.location.replace("/selection?group=" + group + "&id=" + id);
-			} else {
-				window.location.replace("/selection2?group=" + group + "&id=" + id);
-			}
+			// if (Math.random() < 0.5) {
+			// 	window.location.replace("/selection?group=" + group + "&id=" + id);
+			// } else {
+			// 	window.location.replace("/selection2?group=" + group + "&id=" + id);
+			// }
 			// window.location.replace("/" + group + "/selection/" + id);
 		}, 1000);
 	});

@@ -19,3 +19,12 @@
         font-size: 2rem;
     }
 }
+
+.logo-text {
+    color: #DE7684;
+}
+
+.logo-img {
+    width: 10%;
+    margin-bottom: 1rem;
+}
